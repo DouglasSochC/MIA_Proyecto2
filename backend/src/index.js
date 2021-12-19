@@ -5,6 +5,7 @@ const app = express();
 
 //Imports
 const exampleRoutes = require('./routes/example_init');
+const usuarioRoutes = require('./routes/usuario');
 
 //Settings
 app.set('port', 3000);
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //Routes
 app.use(exampleRoutes);
+app.use(usuarioRoutes);
 
 //Run
 app.listen(app.get('port'), () => {

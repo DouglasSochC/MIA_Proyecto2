@@ -1,0 +1,6 @@
+pais,nombre,fecha_ing,capacidad,direccion,estado
+España,Camp Nou,01/01/21,10000,Dir 1,Activo
+España,Bernabeu,02/01/21,11000,Dir 2,No Activo
+Inglaterra,Old Trafford,03/01/21,12000,Dir 3,Activo
+Inglaterra,Anfield,04/01/21,13000,Dir 4,Activo
+Guatemala,Mateo Flores,05/01/21,14000,Dir 5,No Activo
