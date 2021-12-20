@@ -23,6 +23,40 @@ router.get('/getLogUsuario', async (req, res) => {
     res.status(200).json(Persons);
 });
 
+//READ
+router.get('/getInformacionUsuario', async (req, res) => {
+    const { id_usuario } = req.body;
+    sql = "SELECT USUARIO.id, USUARIO.nombres, USUARIO.apellidos, USUARIO.correo,\
+    USUARIO.telefono, USUARIO.genero, USUARIO.fecha_nac, USUARIO.fecha_registro, USUARIO.direccion,\
+    USUARIO.membresia_activa, PAIS.nombre, TIPO_USUARIO.nombre\
+    FROM USUARIO\
+    INNER JOIN PAIS ON USUARIO.ID_PAIS = PAIS.ID \
+    INNER JOIN TIPO_USUARIO ON USUARIO.ID_TIPO = TIPO_USUARIO.ID \
+    WHERE USUARIO.id = :id_usuario";
+    //query, campos, aqui se verifica si es un commit
+    let result = await BD.Open(sql, [id_usuario], false);
+    Listado = [];
+
+    result.rows.map(usuario => {
+        let usuarioSchema = {
+            "id": usuario[0],
+            "nombres": usuario[1],
+            "apellidos": usuario[2],
+            "correo": usuario[3],
+            "telefono": usuario[4],
+            "genero": usuario[5],
+            "fecha_nac": usuario[6],
+            "fecha_registro": usuario[7],
+            "direccion": usuario[8],
+            "membresia_activa": usuario[9],
+            "nombre_pais": usuario[10],
+            "nombre_tipo_usuario": usuario[11]
+        }
+        Listado.push(usuarioSchema);
+    })
+    res.status(200).json(Listado);
+});
+
 //CREATE
 router.post('/addUsuarioCliente', async (req, res) => {
     const { nombres, apellidos, clave, correo, telefono, genero, fecha_nac, direccion, id_pais } = req.body;
