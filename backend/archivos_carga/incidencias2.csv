@@ -3,3 +3,4 @@ Fecha,Estadio,Estado,Asistencia,Pais_Local,Equipo_Local,Pais_Visita,Equipo_Visit
 03/03/16,estadio1p1,activo,7000,pais1,equipo2p1,pais2,equipo2p2,3 – 1,3,25:40,equipo2p2,jugador1e2
 04/04/16,estadio1p1,activo,8000,pais1,equipo1p1,pais3,equipo1p3,5 – 4,4,60:15,equipo1p3,jugador1e1
 05/05/16,estadio1p1,activo,5000,pais1,equipo2p1,pais3,equipo2p3,2 – 3,6,85:00,equipo2p1,jugador2e2
+02/02/20,estadio,no activo,100,pais4,equipo5,pais4,equipo6,0 – 0,0,,equipo4,jugadoNA
