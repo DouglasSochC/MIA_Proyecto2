@@ -1,17 +1,13 @@
 nombre,año,tipo,campeon,pais,pais_equipo,equipo
-Champions League,2020,Copa,Bayer Munich,Muchos,Alemania,Bayern Munich
-Champions League,2020,Copa,Bayer Munich,Muchos,España,Barcelona
-Champions League,2020,Copa,Bayer Munich,Muchos,España,Real Madrid
-Champions League,2020,Copa,Bayer Munich,Muchos,Francia,Paris
-Champions League,2020,Copa,Bayer Munich,Muchos,Inglaterra,Liverpool
-Champions League,2020,Copa,Bayer Munich,Muchos,Inglaterra,Arsenal
-Champions League,2020,Copa,Bayer Munich,Muchos,Inglaterra,Chelsea
-Champions League,2020,Copa,Bayer Munich,Muchos,Alemania,Dormuntd
-Chapins League,2010,Copa,Bayer Munich1,Muchos,Alemania1,Bayern Munich
-Chapins League,2011,Copa,Bayer Munich1,Muchos,España1,Barcelona
-Chapins League,2012,Copa,Bayer Munich1,Muchos,España1,Real Madrid
-Chapins League,2013,Copa,Bayer Munich1,Muchos,Francia1,Paris
-Chapins League,2014,Copa,Bayer Munich1,Muchos,Inglaterra1,Liverpool
-Chapins League,2015,Copa,Bayer Munich1,Muchos,Inglaterra1,Arsenal
-Chapins League,2016,Copa,Bayer Munich1,Muchos,Inglaterra1,Chelsea
-Chapins League,2017,Copa,Bayer Munich1,Muchos,Alemania1,Dormuntd
+Champions League,2002,Copa,equipo1p1,pais3,pais1,equipo1p1
+Champions League,2004,Copa,equipo2p1,pais3,pais1,equipo2p1
+Champions League,2006,Copa,equipo1p2,pais3,pais2,equipo1p2
+Champions League,2008,Copa,equipo2p2,pais3,pais2,equipo2p2
+Champions League,2010,Copa,equipo1p3,pais3,pais3,equipo1p3
+Champions League,2012,Copa,equipo2p3,pais3,pais3,equipo2p3
+Chapins League,2005,Copa,equipo1p1,pais1,pais1,equipo1p1
+Chapins League,2007,Copa,equipo2p1,pais1,pais1,equipo2p1
+Chapins League,2009,Copa,equipo1p2,pais1,pais2,equipo1p2
+Chapins League,2011,Copa,equipo2p2,pais1,pais2,equipo2p2
+Chapins League,2013,Copa,equipo1p3,pais1,pais3,equipo1p3
+Chapins League,2015,Copa,equipo2p3,pais1,pais3,equipo2p3

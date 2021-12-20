@@ -1,21 +1,7 @@
 nombre,fecha_fun,pais
-Barcelona,01/01/90,España
-Real Madrid,02/01/90,España
-Arsenal,03/01/90,Inglaterra
-Chelsea,04/01/90,Inglaterra
-Barcelona2,01/01/91,España
-Real Madrid2,02/01/91,España
-Arsenal2,03/01/91,Inglaterra
-Chelsea2,04/01/91,Inglaterra
-Barcelona3,01/01/92,España
-Real Madrid3,01/01/93,España
-Arsenal3,01/01/94,Inglaterra
-Chelsea3,01/01/95,Inglaterra
-Barcelona4,01/01/96,España
-Real Madrid4,01/01/97,España
-Arsenal4,01/01/98,Inglaterra
-Chelsea4,01/01/99,Inglaterra
-Barcelona5,01/01/90,España
-Real Madrid5,01/01/91,España
-Arsenal5,01/01/92,Inglaterra
-Chelsea5,01/01/93,Inglaterra
+equipo1p1,01/01/1981,pais1
+equipo2p1,02/02/1981,pais1
+equipo1p2,03/03/1981,pais2
+equipo2p2,04/04/1981,pais2
+equipo1p3,05/05/1981,pais3
+equipo2p3,06/06/1981,pais3
