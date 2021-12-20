@@ -1,20 +1,10 @@
 pais,nombre,fecha_ing,capacidad,direccion,estado
-España,Camp Nou1,01/01/90,10000,Dir 1,Activo
-España,Bernabeu2,02/01/91,11000,Dir 2,No Activo
-Inglaterra,Old Trafford3,03/01/92,12000,Dir 3,Activo
-Inglaterra,Anfield4,04/01/93,13000,Dir 4,Activo
-Guatemala,Mateo Flores5,05/01/94,14000,Dir 5,No Activo
-España,Camp Nou6,01/01/95,10000,Dir 1,Activo
-España,Bernabeu7,02/01/90,11000,Dir 2,No Activo
-Inglaterra,Old Trafford8,03/01/91,12000,Dir 3,Activo
-Inglaterra,Anfield9,04/01/92,13000,Dir 4,Activo
-Guatemala,Mateo Flores10,05/01/93,14000,Dir 5,No Activo
-España,Camp Nou11,01/01/94,10000,Dir 1,Activo
-España,Bernabeu12,02/01/95,11000,Dir 2,No Activo
-Inglaterra,Old Trafford13,03/01/96,12000,Dir 3,Activo
-Inglaterra,Anfield14,04/01/97,13000,Dir 4,Activo
-Guatemala,Mateo Flores15,05/01/98,14000,Dir 5,No Activo
-España,Bernabeu16,02/01/95,11000,Dir 2,No Activo
-Inglaterra,Old Trafford17,03/01/96,12000,Dir 3,Activo
-Inglaterra,Anfield18,04/01/97,13000,Dir 4,Activo
-Guatemala,Mateo Flores19,05/01/98,14000,Dir 5,No Activo
+pais1,estadio1p1,1. Jan. 1981,10000,Dir 1p1,Activo
+pais1,estadio2p1,1. Jan. 1981,20000,Dir 2p1,Activo
+pais1,estadio3p1,1. Jan. 1981,30000,Dir 3p1,No Activo
+pais2,estadio1p2,2. Feb. 1982,10000,Dir 1p2,Activo
+pais2,estadio2p2,2. Feb. 1982,20000,Dir 2p2,Activo
+pais2,estadio3p2,2. Feb. 1982,30000,Dir 3p2,No Activo
+pais3,estadio1p3,3. Mar. 1983,10000,dir 1p3,Activo
+pais3,estadio2p3,3. Mar. 1983,20000,dir 2p3,Activo
+pais3,estadio3p3,3. Mar. 1983,30000,dir 3p3,No Activo
