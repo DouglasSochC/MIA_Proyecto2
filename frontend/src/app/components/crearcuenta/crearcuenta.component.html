@@ -1,100 +1,123 @@
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
 <div class="container">
+  <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="https://cdn.svgporn.com/logos/solidjs-icon.svg" alt="" width="72" height="72">
-      <p class="lead">¡Bienvenido!, estas apunto de recibir la mejor informacion relacionada al mundo del futbol</p>
+      <img class="d-block mx-auto mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Google_Forms_logo_%282014-2020%29.svg/640px-Google_Forms_logo_%282014-2020%29.svg.png" alt="" width="50" height="60">
+      <h2>Registro</h2>
+      <p class="lead">Estas a un solo paso de recibir la mejor informacion relacionada al mundo del futbol</p>
     </div>
 
-    <div class="row">
-        <form>
-            <div class="mb-3">
-              <label for="txtNombres" class="form-label">Nombres</label>
-              <input type="text" class="form-control" id="txtNombres">
-            </div>
-            <div class="mb-3">
-                <label for="txtApellidos" class="form-label">Apellidos</label>
-                <input type="text" class="form-control" id="txtApellidos">
+    <div class="container">
+      <div class="">
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Nombres</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Tus nombres son requeridos
               </div>
-            <div class="mb-3">
-              <label for="txtContrasenia" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="txtContrasenia">
             </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="txtTelefono" class="form-label">Telefono</label>
-                <input type="text" class="form-control" id="txtTelefono">
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Apellidos</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Tus apellidos son requeridos
               </div>
-            <div class="mb-3">
-                <label for="txtLinkFoto" class="form-label">Link de Fotografia</label>
-                <input type="text" class="form-control" id="txtLinkFoto">
             </div>
-            <div class="mb-3">
+
+            <div class="col-sm-6">
+              <label for="username" class="form-label">Contraseña</label>
+              <div class="input-group has-validation">
+                <input type="password" class="form-control" id="txtContrasenia">
+              <div class="invalid-feedback">
+                  Tu contraseña es requerrida
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="email" class="form-label">Correo Electronico </label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Por favor ingrese un correo electronico valido
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="address" class="form-label">Telefono</label>
+              <input type="text" class="form-control" id="address" placeholder="12345678" required>
+              <div class="invalid-feedback">
+                Por favor ingrese su numero de telefono
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="address2" class="form-label">Link de Fotografia <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="">
+            </div>
+
+            <div class="col-sm-6">
                 <label for="txtGenero" class="form-label">Genero</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option value="0" selected>Elegir...</option>
-                    <option value="1">Masculino</option>
-                    <option value="2">Femenino</option>
+                <select class="form-select" id="txtGenero" required>
+                  <option value="0" selected>Elegir...</option>
+                  <option value="1">Masculino</option>
+                  <option value="2">Femenino</option>
                 </select>
+              <div class="invalid-feedback">
+                Por favor ingrese un genero valido
+              </div>
             </div>
-            <div class="mb-3">
-                <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="start" name="trip-start"
-                    min="1900-01-01" max="2030-12-31">
-            </div>        
-            <div class="mb-3">
-                <label for="txtDireccion" class="form-label">Direccion</label>
-                <input type="text" class="form-control" id="txtDireccion">
-            </div>           
-            <div class="mb-3">
-                <label for="txtPais" class="form-label">Pais</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option value="0" selected>Elegir...</option>
-                    <option value="1">Masculino</option>
-                    <option value="2">Femenino</option>
-                </select>
+
+            <div class="col-sm-6">
+              <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+              <input type="date" class="form-control" id="start" name="trip-start"
+                  min="1900-01-01" max="2030-12-31" required>
+              <div class="invalid-feedback">
+                Por favor ingrese su fecha de nacimiento
+              </div>
             </div>
-            <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" class="btn btn-primary">Crear Usuario</button>
-                <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes una cuenta? 
-                <a href="./crearcuenta" class="link-danger">Registrarse</a></p>
+
+            <div class="col-sm-6">
+              <label for="txtDireccion" class="form-label">Direccion <span class="text-muted"></span></label>
+              <input type="text" class="form-control" id="txtDireccion" placeholder="">
             </div>
-          </form>
+
+            <div class="col-sm-6">
+              <label for="txtPais" class="form-label">Pais</label>
+              <select class="form-select" id="txtPais" required>
+                <option value="0" selected>Elegir...</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+              </select>
+            <div class="invalid-feedback">
+              Por favor ingrese su pais de nacimiento
+            </div>
+          </div>
+          </div>
+          <hr class="my-4">
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Registrar</button>
+        </form>
+      </div>
     </div>
+  </main>
 
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-      
-    </footer>
-  </div>
-
-  <!-- Bootstrap core JavaScript
-  ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-  <script src="../../assets/js/vendor/popper.min.js"></script>
-  <script src="../../dist/js/bootstrap.min.js"></script>
-  <script src="../../assets/js/vendor/holder.min.js"></script>
-  <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-      'use strict';
-
-      window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-    })();
-  </script>
+  <footer class="my-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+  </footer>
+</div>

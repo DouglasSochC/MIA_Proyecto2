@@ -6,13 +6,21 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { CrearcuentaComponent } from './components/crearcuenta/crearcuenta.component';
+import { MenuClienteComponent } from './components/menu-cliente/menu-cliente.component';
+import { MenuEmpleadoComponent } from './components/menu-empleado/menu-empleado.component';
+import { MenuAdministradorComponent } from './components/menu-administrador/menu-administrador.component';
+import { EquipoComponent } from './components/equipo/equipo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    CrearcuentaComponent
+    CrearcuentaComponent,
+    MenuClienteComponent,
+    MenuEmpleadoComponent,
+    MenuAdministradorComponent,
+    EquipoComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from "./components/login/login.component";
 import { CrearcuentaComponent } from "./components/crearcuenta/crearcuenta.component";
+import { MenuAdministradorComponent } from './components/menu-administrador/menu-administrador.component';
+import { MenuClienteComponent } from './components/menu-cliente/menu-cliente.component';
+import { MenuEmpleadoComponent } from './components/menu-empleado/menu-empleado.component';
+import { EquipoComponent } from './components/equipo/equipo.component';
 
 const routes: Routes = [
   {
@@ -16,6 +20,22 @@ const routes: Routes = [
   {
     path: 'crearcuenta',
     component: CrearcuentaComponent
+  },
+  {
+    path: 'menu_administrador',
+    component: MenuAdministradorComponent
+  },
+  {
+    path: 'menu_cliente',
+    component: MenuClienteComponent
+  },
+  {
+    path: 'menu_empleado',
+    component: MenuEmpleadoComponent
+  },
+  {
+    path: 'equipo',
+    component: EquipoComponent
   }
 ];
 
