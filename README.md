@@ -6,17 +6,17 @@ _Este es un proyecto universitario del curso de Manejo e Implementacion de Archi
 
 ### Requerimientos
 
-* Nodejs 10.x.x ó superior.   [Instalar Nodejs](https://github.com/nodesource/distributions/blob/master/README.md)
+* Nodejs 16.13.1 ó superior.   [Instalar Nodejs](https://github.com/nodesource/distributions/blob/master/README.md)
 ```console
 ~$ node --version
 ```
 
-* Angular 6 ó superior [Instalar Angular](https://cli.angular.io/)
+* Angular CLI: 13.0.3 ó superior [Instalar Angular](https://cli.angular.io/)
 ```console
 ~$ ng version
 ```
 
-* Oracle 11g ó superior
+* Oracle 18c ó superior
     
 
 ### Instalacion de Oracle

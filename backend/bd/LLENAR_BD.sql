@@ -170,3 +170,74 @@ FROM TEMP_JUGADOR;
 COMMIT;
 
 /*ARCHIVO PARTIDO INCIDENCIAS*/
+INSERT INTO ESTADIO(nombre)
+SELECT DISTINCT 
+estadio
+FROM TEMP_INCIDENCIAS
+WHERE (SELECT COUNT(id) FROM ESTADIO WHERE ESTADIO.nombre = TEMP_INCIDENCIAS.estadio) <= 0;
+
+INSERT INTO ESTADO_PARTIDO(nombre)
+SELECT DISTINCT estado FROM TEMP_INCIDENCIAS;
+
+INSERT INTO PAIS(nombre)
+SELECT DISTINCT pais_local FROM TEMP_INCIDENCIAS
+WHERE (SELECT COUNT(id) FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_local) <= 0;
+
+INSERT INTO PAIS(nombre)
+SELECT DISTINCT pais_visita FROM TEMP_INCIDENCIAS
+WHERE (SELECT COUNT(id) FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_visita) <= 0;
+
+INSERT INTO EQUIPO(nombre, id_pais)
+SELECT DISTINCT
+equipo_local, 
+(SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_local)
+FROM TEMP_INCIDENCIAS
+WHERE 
+(
+    SELECT COUNT(id) 
+    FROM EQUIPO 
+    WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_local 
+    AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_local)
+) <= 0;
+
+INSERT INTO EQUIPO(nombre, id_pais)
+SELECT DISTINCT
+equipo_visita, 
+(SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_visita)
+FROM TEMP_INCIDENCIAS
+WHERE 
+(
+    SELECT COUNT(id) 
+    FROM EQUIPO 
+    WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_visita 
+    AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_visita)
+) <= 0;
+
+INSERT INTO PARTIDO(fecha, id_estadio, id_estado, asistencia, id_equipo_visita, id_equipo_local, resultado)
+SELECT DISTINCT
+TO_DATE(fecha,'DD/MM/YY'), 
+(SELECT id FROM ESTADIO WHERE ESTADIO.nombre = TEMP_INCIDENCIAS.estadio),
+(SELECT id FROM ESTADO_PARTIDO WHERE ESTADO_PARTIDO.nombre = TEMP_INCIDENCIAS.estado),
+asistencia,
+(SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_visita AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_visita)),
+(SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_local AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_local)),
+resultado
+FROM TEMP_INCIDENCIAS;
+
+INSERT INTO INCIDENCIAS_PARTIDO(descripcion, minuto, equipo_incidencia, jugador, id_partido)
+SELECT DISTINCT
+incidencia,
+minuto,
+equipo_incidencia,
+jugador,
+(
+    SELECT id FROM PARTIDO WHERE PARTIDO.id_estadio = (SELECT id FROM ESTADIO WHERE ESTADIO.nombre = TEMP_INCIDENCIAS.estadio) AND
+    PARTIDO.id_estado = (SELECT id FROM ESTADO_PARTIDO WHERE ESTADO_PARTIDO.nombre = TEMP_INCIDENCIAS.estado) AND
+    PARTIDO.asistencia = asistencia AND
+    PARTIDO.id_equipo_visita = (SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_visita AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_visita)) AND
+    PARTIDO.id_equipo_local = (SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_local AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_local)) AND
+    PARTIDO.resultado = resultado
+)
+FROM TEMP_INCIDENCIAS;
+
+

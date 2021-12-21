@@ -1,10 +1,10 @@
 pais,nombre,fecha_ing,capacidad,direccion,estado
-pais1,estadio1p1,1. Jan. 1981,10000,Dir 1p1,Activo
-pais1,estadio2p1,1. Jan. 1981,20000,Dir 2p1,Activo
-pais1,estadio3p1,1. Jan. 1981,30000,Dir 3p1,No Activo
-pais2,estadio1p2,2. Feb. 1982,10000,Dir 1p2,Activo
-pais2,estadio2p2,2. Feb. 1982,20000,Dir 2p2,Activo
-pais2,estadio3p2,2. Feb. 1982,30000,Dir 3p2,No Activo
-pais3,estadio1p3,3. Mar. 1983,10000,dir 1p3,Activo
-pais3,estadio2p3,3. Mar. 1983,20000,dir 2p3,Activo
-pais3,estadio3p3,3. Mar. 1983,30000,dir 3p3,No Activo
+pais1,estadio1p1,01/01/81,10000,Dir 1p1,Activo
+pais1,estadio2p1,01/01/81,20000,Dir 2p1,Activo
+pais1,estadio3p1,01/01/81,30000,Dir 3p1,No Activo
+pais2,estadio1p2,02/02/82,10000,Dir 1p2,Activo
+pais2,estadio2p2,02/02/82,20000,Dir 2p2,Activo
+pais2,estadio3p2,02/02/82,30000,Dir 3p2,No Activo
+pais3,estadio1p3,02/02/83,10000,dir 1p3,Activo
+pais3,estadio2p3,02/02/83,20000,dir 2p3,Activo
+pais3,estadio3p3,02/02/83,30000,dir 3p3,No Activo
