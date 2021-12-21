@@ -240,4 +240,4 @@ jugador,
 )
 FROM TEMP_INCIDENCIAS;
 
-
+COMMIT;
