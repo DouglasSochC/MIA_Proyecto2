@@ -1,1 +1,90 @@
-<p>estadio works!</p>
+
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Google_Forms_logo_%282014-2020%29.svg/640px-Google_Forms_logo_%282014-2020%29.svg.png" alt="" width="50" height="60">
+        <h2>ESTADIO</h2>
+      </div>
+  
+      <!-- HASTA AQUI EL TITULO-->
+
+      <div class="container">
+        <div class="form-outline">
+          <form class="needs-validation" novalidate>
+
+            <div class="row" >
+
+                <div class="">
+                    <label for="firstName" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nameEstadio" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Es necesario el nombre del estadio
+                    </div>
+                </div>
+    
+                <div class="">
+                    <label for="lastName" class="form-label">Fecha Inauguración</label>
+                    <input type="date" class="form-control" id="fechaInauguracion" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Es necesario la fecha de inauguracion
+                    </div>
+                </div>
+    
+                <div class="">
+                    <label for="username" class="form-label">Capacidad</label>
+                    <div class="input-group has-validation">
+                    <input type="number" class="form-control" id="capacidad">
+                    <div class="invalid-feedback">
+                        Es necesario ingresar la capacidad
+                    </div>
+                    </div>
+                </div>
+    
+                <div class="">
+                    <label for="email" class="form-label">País</label>
+                    <input type="text" class="form-control" id="pais" placeholder="">
+                    <div class="invalid-feedback">
+                    Es necesario ingresar el pais de origen
+                    </div>
+                </div>
+    
+                <div class="">
+                    <label for="address" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" placeholder="" required>
+                    <div class="invalid-feedback">
+                    Es necesario ingresar la direccion
+                    </div>
+                </div>
+    
+                
+
+                <div class="">
+                    <label for="opcion" class="form-label">Estado</label>
+                    <select class="form-select" id="estado" required>
+                      <option value="0" selected>No activo</option>
+                      <option value="1">Activo</option>
+                    </select>
+                </div>
+
+                
+
+
+                <div class="">
+                    <label for="" class="form-label">Foto</label>
+                    <input type="image" class="form-control" id="foto" >
+                </div>
+  
+            </div><!-- del row 3 -->
+            
+            <hr class="my-4">
+            <button class="w-100 btn btn-success btn-lg" type="submit">Registrar</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>
