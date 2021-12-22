@@ -8,6 +8,8 @@ const usuarioRoutes = require('./routes/usuario');
 const reportesadmRoutes = require('./routes/reportes_adm');
 const equipoRoutes = require('./routes/equipo');
 const paisRoutes = require('./routes/pais');
+const estadoestadioRoutes = require('./routes/estado_estadio');
+const estadioRoutes = require('./routes/estadio');
 
 //Settings
 app.set('port', 3000);
@@ -30,10 +32,12 @@ Se le indica a la API que URL va a consumirlo
 */
 app.use(cors({origin: 'http://localhost:4200'}));
 //Routes
+app.use(estadioRoutes);
 app.use(usuarioRoutes);
 app.use(reportesadmRoutes);
 app.use(equipoRoutes);
 app.use(paisRoutes);
+app.use(estadoestadioRoutes);
 
 //Run
 app.listen(app.get('port'), () => {
