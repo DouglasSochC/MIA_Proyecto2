@@ -7,6 +7,8 @@ const app = express();
 const exampleRoutes = require('./routes/example_init');
 const usuarioRoutes = require('./routes/usuario');
 const reportesadmRoutes = require('./routes/reportes_adm');
+const equipoRoutes = require('./routes/equipo');
+const paisRoutes = require('./routes/pais');
 
 //Settings
 app.set('port', 3000);
@@ -24,11 +26,16 @@ app.use(express.json());
 Se le indica a la API que no se enviara informacion atraves de la URL
 */
 app.use(express.urlencoded({ extended: false }));
-
+/*
+Se le indica a la API que URL va a consumirlo
+*/
+app.use(cors({origin: 'http://localhost:4200'}));
 //Routes
 app.use(exampleRoutes);
 app.use(usuarioRoutes);
 app.use(reportesadmRoutes);
+app.use(equipoRoutes);
+app.use(paisRoutes);
 
 //Run
 app.listen(app.get('port'), () => {

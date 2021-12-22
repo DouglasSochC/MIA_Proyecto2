@@ -117,7 +117,7 @@ router.post('/addUsuarioAdmEmp', async (req, res) => {
                     :correo,\
                     :telefono,\
                     :genero,\
-                    TO_DATE(:fecha_nac, 'dd/mm/yyyy hh24:mi:ss'),\
+                    TO_DATE(:fecha_nac, 'DD/MM/YYYY'),\
                     TO_DATE('" + result +"', 'dd/mm/yyyy hh24:mi:ss'),\
                     :direccion,\
                     0,\
@@ -152,11 +152,8 @@ router.put("/updateUsuario", async (req, res) => {
 //DELETE
 router.delete("/deleteUsuario", async (req, res) => {
     const { id_usuario } = req.body;
-    console.log(id_usuario);
     sql = "UPDATE USUARIO SET id_estado_usuario = (SELECT (ID) FROM ESTADO_USUARIO WHERE nombre='No Activo') WHERE id=:id_usuario";
-
     await BD.Open(sql, [id_usuario], true);
-
     res.json({ "msg": "Usuario Eliminado" })
 });
 

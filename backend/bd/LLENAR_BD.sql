@@ -12,7 +12,7 @@ SELECT DISTINCT estado FROM TEMP_ESTADIO;
 INSERT INTO ESTADIO(nombre, fecha_inaguracion, capacidad, direccion, id_estado, id_pais)
 SELECT DISTINCT 
 nombre,
-TO_DATE(fecha_ing,'DD/MM/YY'), 
+TO_DATE(fecha_ing,'DD/MM/YYYY'), 
 capacidad, 
 direccion, 
 (SELECT id FROM ESTADO_ESTADIO WHERE ESTADO_ESTADIO.nombre = TEMP_ESTADIO.estado), 
@@ -29,7 +29,7 @@ WHERE (SELECT COUNT(id) FROM PAIS WHERE PAIS.nombre = TEMP_EQUIPO.pais) <= 0;
 INSERT INTO EQUIPO(nombre, fecha_fundacion, id_pais)
 SELECT DISTINCT 
 nombre, 
-TO_DATE(fecha_fun,'DD/MM/YY'), 
+TO_DATE(fecha_fun,'DD/MM/YYYY'), 
 (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_EQUIPO.pais)
 FROM TEMP_EQUIPO;
 
@@ -63,7 +63,7 @@ WHERE
 INSERT INTO TECNICO(nombres, fecha_nac, id_nacionalidad, id_estado)
 SELECT DISTINCT
 nombres,
-TO_DATE(fecha_nac,'DD/MM/YY'), 
+TO_DATE(fecha_nac,'DD/MM/YYYY'), 
 (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_TECNICO.pais),
 (SELECT id FROM ESTADO_TECNICO WHERE ESTADO_TECNICO.nombre = TEMP_TECNICO.estado)
 FROM TEMP_TECNICO;
@@ -72,8 +72,8 @@ INSERT INTO TRAYECTORIA_TECNICO(id_tecnico, id_equipo, fecha_inicial, fecha_fina
 SELECT
 (SELECT id FROM TECNICO WHERE TECNICO.nombres = TEMP_TECNICO.nombres),
 (SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_TECNICO.equipo),
-TO_DATE(fecha_ini,'DD/MM/YY'), 
-TO_DATE(fecha_fin,'DD/MM/YY')
+TO_DATE(fecha_ini,'DD/MM/YYYY'), 
+TO_DATE(fecha_fin,'DD/MM/YYYY')
 FROM TEMP_TECNICO;
 
 COMMIT;
@@ -154,7 +154,7 @@ FROM TEMP_JUGADOR;
 INSERT INTO JUGADOR(nombres, fecha_nac, id_nacionalidad, id_posicion)
 SELECT DISTINCT
 nombre,
-TO_DATE(fecha_nac,'DD/MM/YY'),
+TO_DATE(fecha_nac,'DD/MM/YYYY'),
 (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_JUGADOR.nacionalidad),
 (SELECT id FROM POSICION_JUGADOR WHERE POSICION_JUGADOR.nombre = TEMP_JUGADOR.posicion)
 FROM TEMP_JUGADOR;
@@ -163,8 +163,8 @@ INSERT INTO TRAYECTORIA_JUGADOR(id_jugador, id_equipo, fecha_inicial, fecha_fina
 SELECT
 (SELECT id FROM JUGADOR WHERE JUGADOR.nombres = TEMP_JUGADOR.nombre),
 (SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_JUGADOR.equipo),
-TO_DATE(fecha_ini,'DD/MM/YY'), 
-TO_DATE(fecha_fin,'DD/MM/YY')
+TO_DATE(fecha_ini,'DD/MM/YYYY'), 
+TO_DATE(fecha_fin,'DD/MM/YYYY')
 FROM TEMP_JUGADOR;
 
 COMMIT;
@@ -215,7 +215,7 @@ WHERE
 
 INSERT INTO PARTIDO(fecha, id_estadio, id_estado, asistencia, id_equipo_visita, id_equipo_local, resultado)
 SELECT DISTINCT
-TO_DATE(fecha,'DD/MM/YY'), 
+TO_DATE(fecha,'DD/MM/YYYY'), 
 (SELECT id FROM ESTADIO WHERE ESTADIO.nombre = TEMP_INCIDENCIAS.estadio),
 (SELECT id FROM ESTADO_PARTIDO WHERE ESTADO_PARTIDO.nombre = TEMP_INCIDENCIAS.estado),
 asistencia,

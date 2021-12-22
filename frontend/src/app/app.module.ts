@@ -10,6 +10,8 @@ import { MenuClienteComponent } from './components/menu-cliente/menu-cliente.com
 import { MenuEmpleadoComponent } from './components/menu-empleado/menu-empleado.component';
 import { MenuAdministradorComponent } from './components/menu-administrador/menu-administrador.component';
 import { EquipoComponent } from './components/equipo/equipo.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { EquipoComponent } from './components/equipo/equipo.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
