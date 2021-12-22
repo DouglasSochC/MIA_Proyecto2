@@ -10,6 +10,8 @@ const equipoRoutes = require('./routes/equipo');
 const paisRoutes = require('./routes/pais');
 const estadoestadioRoutes = require('./routes/estado_estadio');
 const estadioRoutes = require('./routes/estadio');
+const tipocompetenciaRoutes = require('./routes/tipo_competencia');
+const competenciaRoutes = require('./routes/competencia');
 
 //Settings
 app.set('port', 3000);
@@ -32,12 +34,14 @@ Se le indica a la API que URL va a consumirlo
 */
 app.use(cors({origin: 'http://localhost:4200'}));
 //Routes
+app.use(competenciaRoutes);
 app.use(estadioRoutes);
 app.use(usuarioRoutes);
 app.use(reportesadmRoutes);
 app.use(equipoRoutes);
 app.use(paisRoutes);
 app.use(estadoestadioRoutes);
+app.use(tipocompetenciaRoutes);
 
 //Run
 app.listen(app.get('port'), () => {

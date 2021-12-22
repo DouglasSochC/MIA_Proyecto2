@@ -3,16 +3,16 @@ const router = Router();
 const BD = require('../config/configbd');
 
 //READ
-router.get('/getPaises', async (req, res) => {
+router.get('/getTiposCompetencias', async (req, res) => {
     const {  } = req.body;
-    sql = "SELECT * FROM PAIS ORDER BY PAIS.nombre";
+    sql = "SELECT * FROM TIPO_COMPETENCIA ORDER BY TIPO_COMPETENCIA.nombre";
     
     let result = await BD.Open(sql, [], false);
     Listado = [];
 
     result.rows.map(registro => {
         let LSchema = {
-            "id_pais": registro[0],
+            "id_competencia": registro[0],
             "nombre": registro[1]
         }
         Listado.push(LSchema);
