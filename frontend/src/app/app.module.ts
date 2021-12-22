@@ -12,6 +12,7 @@ import { MenuAdministradorComponent } from './components/menu-administrador/menu
 import { EquipoComponent } from './components/equipo/equipo.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SUsuarioService } from './services/s-usuario.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     MenuClienteComponent,
     MenuEmpleadoComponent,
     MenuAdministradorComponent,
-    EquipoComponent
+    EquipoComponent    
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [SUsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

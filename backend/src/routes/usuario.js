@@ -3,7 +3,7 @@ const router = Router();
 const BD = require('../config/configbd');
 
 //READ
-router.get('/getLogUsuario', async (req, res) => {
+router.post('/loguearUsuario', async (req, res) => {
     const { email, pass } = req.body;
     sql = "SELECT USUARIO.id, USUARIO.nombres, USUARIO.apellidos, USUARIO.membresia_activa, TIPO_USUARIO.nombre FROM USUARIO INNER JOIN TIPO_USUARIO ON USUARIO.ID_TIPO = TIPO_USUARIO.ID  WHERE CORREO =:email AND CLAVE =:pass AND USUARIO.id_estado_usuario = 1";
     //query, campos, aqui se verifica si es un commit
@@ -16,11 +16,21 @@ router.get('/getLogUsuario', async (req, res) => {
             "nombres": usuario[1],
             "apellidos": usuario[2],
             "membresia_activa": usuario[3],
-            "id_tipo": usuario[4]
+            "tipo_usuario": usuario[4]
         }
         Persons.push(usuarioSchema);
     })
-    res.status(200).json(Persons);
+    if (Persons.length > 0) {
+        res.status(201).json({
+            "msg": true, 
+            "datos":Persons
+        });
+    }else{
+        res.status(201).json({
+            "msg": false
+        });
+    }
+    
 });
 
 //READ

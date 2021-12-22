@@ -7,6 +7,7 @@ import { MenuAdministradorComponent } from './components/menu-administrador/menu
 import { MenuClienteComponent } from './components/menu-cliente/menu-cliente.component';
 import { MenuEmpleadoComponent } from './components/menu-empleado/menu-empleado.component';
 import { EquipoComponent } from './components/equipo/equipo.component';
+import { AutenticacionGuard } from './guard/autenticacion.guard';
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
   },
   {
     path: 'equipo',
-    component: EquipoComponent
+    component: EquipoComponent,
+    canActivate:[AutenticacionGuard]
   }
 ];
 

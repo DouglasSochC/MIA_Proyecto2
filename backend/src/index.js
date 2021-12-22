@@ -4,7 +4,6 @@ const cors = require('cors');
 const app = express();
 
 //Imports
-const exampleRoutes = require('./routes/example_init');
 const usuarioRoutes = require('./routes/usuario');
 const reportesadmRoutes = require('./routes/reportes_adm');
 const equipoRoutes = require('./routes/equipo');
@@ -31,7 +30,6 @@ Se le indica a la API que URL va a consumirlo
 */
 app.use(cors({origin: 'http://localhost:4200'}));
 //Routes
-app.use(exampleRoutes);
 app.use(usuarioRoutes);
 app.use(reportesadmRoutes);
 app.use(equipoRoutes);
