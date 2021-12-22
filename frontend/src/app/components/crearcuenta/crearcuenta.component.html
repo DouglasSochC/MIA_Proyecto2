@@ -26,92 +26,66 @@
         <form class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
-              <label for="firstName" class="form-label">Nombres</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Tus nombres son requeridos
-              </div>
+              <label class="form-label">Nombres</label>
+              <input [(ngModel)] = "nombres" name = "nombres" type="text" class="form-control" placeholder="" value="" required>
             </div>
 
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">Apellidos</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Tus apellidos son requeridos
-              </div>
+              <label class="form-label">Apellidos</label>
+              <input [(ngModel)] = "apellidos" name = "apellidos" type="text" class="form-control" placeholder="" value="" required>
             </div>
 
             <div class="col-sm-6">
-              <label for="username" class="form-label">Contraseña</label>
+              <label class="form-label">Contraseña</label>
               <div class="input-group has-validation">
-                <input type="password" class="form-control" id="txtContrasenia">
-              <div class="invalid-feedback">
-                  Tu contraseña es requerrida
-                </div>
+                <input [(ngModel)] = "contrasenia" name = "contrasenia" type="password" class="form-control">
               </div>
             </div>
 
             <div class="col-sm-6">
-              <label for="email" class="form-label">Correo Electronico </label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
-              <div class="invalid-feedback">
-                Por favor ingrese un correo electronico valido
-              </div>
+              <label class="form-label">Correo Electronico </label>
+              <input [(ngModel)] = "correo_electronico" name = "correo_electronico" type="email" class="form-control" placeholder="you@example.com">
             </div>
 
             <div class="col-sm-6">
-              <label for="address" class="form-label">Telefono</label>
-              <input type="text" class="form-control" id="address" placeholder="12345678" required>
-              <div class="invalid-feedback">
-                Por favor ingrese su numero de telefono
-              </div>
+              <label class="form-label">Telefono <span class="text-muted">(Opcional)</span></label>
+              <input [(ngModel)] = "telefono" name = "telefono" type="text" class="form-control" placeholder="12345678" required>
             </div>
 
             <div class="col-sm-6">
-              <label for="address2" class="form-label">Link de Fotografia <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="">
+              <label class="form-label">Link de Fotografia <span class="text-muted">(Opcional)</span></label>
+              <input [(ngModel)] = "link_fotografia" name = "link_fotografia" type="text" class="form-control" placeholder="">
             </div>
 
             <div class="col-sm-6">
                 <label for="txtGenero" class="form-label">Genero</label>
-                <select class="form-select" id="txtGenero" required>
-                  <option value="0" selected>Elegir...</option>
-                  <option value="1">Masculino</option>
-                  <option value="2">Femenino</option>
+                <select [(ngModel)] = "genero" name = "genero" class="form-select" id="txtGenero" required>
+                  <option value="" selected>Elegir...</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
                 </select>
-              <div class="invalid-feedback">
-                Por favor ingrese un genero valido
-              </div>
             </div>
 
             <div class="col-sm-6">
-              <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-              <input type="date" class="form-control" id="start" name="trip-start"
-                  min="1900-01-01" max="2030-12-31" required>
-              <div class="invalid-feedback">
-                Por favor ingrese su fecha de nacimiento
-              </div>
+              <label class="form-label">Fecha de Nacimiento</label>
+              <input [(ngModel)] = "fecha_nacimiento" name = "fecha_nacimiento" type="date" class="form-control" id="start" name="trip-start"
+                  min="1900-01-01" max="2099-12-31" required>
             </div>
 
             <div class="col-sm-6">
-              <label for="txtDireccion" class="form-label">Direccion <span class="text-muted"></span></label>
-              <input type="text" class="form-control" id="txtDireccion" placeholder="">
+              <label class="form-label">Direccion <span class="text-muted">(Opcional)</span></label>
+              <input [(ngModel)] = "direccion" name = "direccion" type="text" class="form-control" placeholder="">
             </div>
 
             <div class="col-sm-6">
-              <label for="txtPais" class="form-label">Pais</label>
-              <select class="form-select" id="txtPais" required>
-                <option value="0" selected>Elegir...</option>
-                <option value="1">Masculino</option>
-                <option value="2">Femenino</option>
+              <label class="form-label">Pais</label>
+              <select [(ngModel)] = "id_pais" name = "id_pais" class="form-select" required>                        
+                  <option *ngFor="let pais of Paises" value="{{ pais.id_pais }}">{{ pais.nombre }}</option>
               </select>
-            <div class="invalid-feedback">
-              Por favor ingrese su pais de nacimiento
-            </div>
           </div>
           </div>
           <hr class="my-4">
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Registrar</button>
+          <button (click) = "crearCuentaNueva()" class="w-100 btn btn-primary btn-lg" type="submit">Registrar</button>
         </form>
       </div>
     </div>

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SUsuarioService } from './services/s-usuario.service';
 import { EstadioComponent } from './components/estadio/estadio.component';
+import { TecnicoComponent } from './components/tecnico/tecnico.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EstadioComponent } from './components/estadio/estadio.component';
     MenuEmpleadoComponent,
     MenuAdministradorComponent,
     EquipoComponent,
-    EstadioComponent    
+    EstadioComponent,
+    TecnicoComponent    
   ],
   imports: [
     BrowserModule,

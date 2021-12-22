@@ -50,4 +50,24 @@ export class SUsuarioService {
     this.router.navigate(['/login']);
   }
 
+  crearCuentaNueva(nombres:string, apellidos:string, clave:string, correo:string, telefono:number, genero:string, fecha_nac:string, direccion:string, id_pais:number){
+    const url = "http://localhost:3000/addUsuarioCliente";
+    return this.http.post(url, 
+    {
+      "nombres": nombres,
+      "apellidos": apellidos,
+      "clave": clave,
+      "correo": correo,
+      "telefono": telefono,
+      "genero": genero,
+      "fecha_nac": fecha_nac,
+      "direccion": direccion,
+      "id_pais": id_pais
+    }, 
+    { headers: this.headers }
+    //Para retornar el resultado es necesario utilizar la funcion map. Recordar que se debe de importar
+    //la libreria rxjs/operators
+    ).pipe(map(data => data));
+  }
+
 }

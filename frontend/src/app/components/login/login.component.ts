@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       if (res['response']) {
         Swal.fire({
           icon: 'success',
-          title: 'Exito',
+          title: '¡Bienvenido!',
           text: res['msg']
         });
         let DatosUsuario:UsuarioInterface = res['datos'][0];
