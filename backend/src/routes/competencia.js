@@ -5,10 +5,8 @@ const BD = require('../config/configbd');
 /*********************************
 CAMPOS OBLIGATORIOS
 nombre != ""
-fecha_inaguracion != ""
-capacidad != -1
-direccion != ""
-id_estado_estadio != -1
+anio != -1
+tipo_competencia != -1
 id_pais != -1
 **********************************/
 
@@ -99,9 +97,8 @@ router.put("/updateCompetencia", async (req, res) => {
             });
         }
     } catch (error) {
-        console.log(error);
         res.status(201).json({
-            "response": true,
+            "response": false,
             "msg": "Ha ocurrido un error al actualizar"
         });
     }

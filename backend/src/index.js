@@ -11,7 +11,10 @@ const paisRoutes = require('./routes/pais');
 const estadoestadioRoutes = require('./routes/estado_estadio');
 const estadioRoutes = require('./routes/estadio');
 const tipocompetenciaRoutes = require('./routes/tipo_competencia');
+const estadotecnicoRoutes = require('./routes/estado_tecnico');
 const competenciaRoutes = require('./routes/competencia');
+const tecnicoRoutes = require('./routes/tecnico');
+const partidoRoutes = require('./routes/partido');
 
 //Settings
 app.set('port', 3000);
@@ -42,6 +45,9 @@ app.use(equipoRoutes);
 app.use(paisRoutes);
 app.use(estadoestadioRoutes);
 app.use(tipocompetenciaRoutes);
+app.use(estadotecnicoRoutes);
+app.use(tecnicoRoutes);
+app.use(partidoRoutes);
 
 //Run
 app.listen(app.get('port'), () => {

@@ -106,9 +106,8 @@ router.put("/updateEstadio", async (req, res) => {
             });
         }
     } catch (error) {
-        console.log(error);
         res.status(201).json({
-            "response": true,
+            "response": false,
             "msg": "Ha ocurrido un error al actualizar"
         });
     }

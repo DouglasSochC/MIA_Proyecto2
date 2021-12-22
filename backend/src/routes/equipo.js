@@ -2,6 +2,13 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
+/*********************************
+CAMPOS OBLIGATORIOS
+id_pais != -1
+nombre != ""
+fecha_fundacion != ""
+**********************************/
+
 //READ
 router.get('/getEquipos', async (req, res) => {
     const {  } = req.body;
@@ -83,7 +90,7 @@ router.put("/updateEquipo", async (req, res) => {
         }
     } catch (error) {
         res.status(201).json({
-            "response": true,
+            "response": false,
             "msg": "Ha ocurrido un error al actualizar"
         });
     }
