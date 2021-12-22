@@ -10,13 +10,26 @@ export class AutenticacionGuard implements CanActivate {
 
   constructor(private autenticacionServicio: SUsuarioService, private router: Router) { }
 
-  canActivate(){
-    if (this.autenticacionServicio.getUsuarioActual()) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
-      return false;
-    }
+  canActivate(route: ActivatedRouteSnapshot){
+    
+    return true;
+    // if (this.autenticacionServicio.getUsuarioActual()) {
+    //   if (this.autenticacionServicio.getUsuarioActual()['tipo_usuario'] == "Empleado") {
+    //     if (route.url[0]['path'] == "menu_empleado") {
+    //       return true;
+    //     }else if (route.url[0]['path'] == "equipo") {
+    //       return true;
+    //     }
+    //   }else if(this.autenticacionServicio.getUsuarioActual()['tipo_usuario'] == "Cliente"){
+        
+    //   }else if(this.autenticacionServicio.getUsuarioActual()['tipo_usuario'] == "Administrador"){
+
+    //   }
+    //   return false;
+    // } else {
+    //   this.router.navigate(['/login']);
+    //   return false;
+    // }
   }
   
 }

@@ -8,6 +8,7 @@ import { MenuClienteComponent } from './components/menu-cliente/menu-cliente.com
 import { MenuEmpleadoComponent } from './components/menu-empleado/menu-empleado.component';
 import { EquipoComponent } from './components/equipo/equipo.component';
 import { AutenticacionGuard } from './guard/autenticacion.guard';
+import { EstadioComponent } from './components/estadio/estadio.component';
 
 const routes: Routes = [
   {
@@ -24,19 +25,27 @@ const routes: Routes = [
   },
   {
     path: 'menu_administrador',
-    component: MenuAdministradorComponent
+    component: MenuAdministradorComponent,
+    canActivate:[AutenticacionGuard]
   },
   {
     path: 'menu_cliente',
-    component: MenuClienteComponent
+    component: MenuClienteComponent,
+    canActivate:[AutenticacionGuard]
   },
   {
     path: 'menu_empleado',
-    component: MenuEmpleadoComponent
+    component: MenuEmpleadoComponent,
+    canActivate:[AutenticacionGuard]
   },
   {
     path: 'equipo',
     component: EquipoComponent,
+    canActivate:[AutenticacionGuard]
+  },
+  {
+    path: 'estadio',
+    component: EstadioComponent,
     canActivate:[AutenticacionGuard]
   }
 ];

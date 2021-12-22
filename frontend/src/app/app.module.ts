@@ -13,6 +13,7 @@ import { EquipoComponent } from './components/equipo/equipo.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SUsuarioService } from './services/s-usuario.service';
+import { EstadioComponent } from './components/estadio/estadio.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SUsuarioService } from './services/s-usuario.service';
     MenuClienteComponent,
     MenuEmpleadoComponent,
     MenuAdministradorComponent,
-    EquipoComponent    
+    EquipoComponent,
+    EstadioComponent    
   ],
   imports: [
     BrowserModule,
