@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioInterface } from 'src/app/models/usuario-interface';
 import { SUsuarioService } from 'src/app/services/s-usuario.service';
 import { Router } from "@angular/router";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,12 @@ export class LoginComponent implements OnInit {
 
   loguearse(){
     this.autenticacion.loginUsuario(this.correo, this.contrasenia).subscribe((res:any) => {
-      if (res['msg']) {
+      if (res['response']) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito',
+          text: res['msg']
+        });
         let DatosUsuario:UsuarioInterface = res['datos'][0];
         this.autenticacion.setUsuarioActual(DatosUsuario);
         if (DatosUsuario.tipo_usuario == "Administrador") {
@@ -30,6 +36,12 @@ export class LoginComponent implements OnInit {
         }else if(DatosUsuario.tipo_usuario == "Cliente"){
           this.router.navigate(['/menu_cliente']);
         }        
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res['msg']
+        });
       }
     });
   }

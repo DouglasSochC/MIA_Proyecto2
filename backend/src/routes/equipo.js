@@ -34,7 +34,8 @@ router.post('/addEquipo', async (req, res) => {
     sql_existencia = "SELECT id FROM EQUIPO WHERE EQUIPO.nombre = :nombre AND EQUIPO.id_pais = :id_pais";
     let r_existencia = await BD.Open(sql_existencia, [nombre, id_pais], false);
     if (r_existencia.rows.length > 0) {
-        res.status(400).json({
+        res.status(201).json({
+            "response":false,
             "msg": "El equipo ya ha sido ingresado"
         });
     }else{
@@ -46,7 +47,8 @@ router.post('/addEquipo', async (req, res) => {
             :id_pais\
         )";
         await BD.Open(sql, [nombre, fecha_fundacion, link_fotografia, id_pais], true);
-        res.status(200).json({
+        res.status(201).json({
+            "response":true,
             "msg": "Equipo ingresado correctamente"
         });
     }
@@ -54,16 +56,24 @@ router.post('/addEquipo', async (req, res) => {
 
 //UPDATE
 router.put("/updateEquipo", async (req, res) => {
-    const { id_equipo, nombre, fecha_fundacion, link_fotografia, id_pais } = req.body;
-    sql = "UPDATE EQUIPO SET nombre=:nombre, fecha_fundacion = TO_DATE(:fecha_fundacion, 'dd/mm/yyyy'),\
-    link_fotografia=:link_fotografia, id_pais=:id_pais\
-    WHERE id = :id_equipo";
+    try {
+        const { id_equipo, nombre, fecha_fundacion, link_fotografia, id_pais } = req.body;
+        sql = "UPDATE EQUIPO SET nombre=:nombre, fecha_fundacion = TO_DATE(:fecha_fundacion, 'dd/mm/yyyy'),\
+        link_fotografia=:link_fotografia, id_pais=:id_pais\
+        WHERE id = :id_equipo";
 
-    await BD.Open(sql, [nombre, fecha_fundacion, link_fotografia, id_pais, id_equipo], true);
+        await BD.Open(sql, [nombre, fecha_fundacion, link_fotografia, id_pais, id_equipo], true);
 
-    res.status(200).json({
-        "msg": "Actualizado Correctamente"
-    })
+        res.status(201).json({
+            "response": true,
+            "msg": "Actualizado Correctamente"
+        });
+    } catch (error) {
+        res.status(201).json({
+            "response": true,
+            "msg": "Ha ocurrido un error al actualizar"
+        });
+    }
 });
 
 //DELETE
@@ -72,9 +82,15 @@ router.delete("/deleteEquipo/:id_equipo", async (req, res) => {
         const { id_equipo } = req.params;
         sql = "DELETE FROM EQUIPO WHERE id = :id_equipo";
         await BD.Open(sql, [id_equipo], true);
-        res.status(200).json({ "msg": "El equipo ha sido eliminado correctamente" });
+        res.status(201).json({ 
+            "response": true,
+            "msg": "El equipo ha sido eliminado correctamente" 
+        });
     } catch (error) {
-        res.status(400).json({ "msg": "El dato que desea eliminar esta siendo utilizado" });
+        res.status(201).json({ 
+            "response": false,
+            "msg": "El dato que desea eliminar esta siendo utilizado" 
+        });
     }
 });
 

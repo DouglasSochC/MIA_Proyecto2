@@ -22,12 +22,14 @@ router.post('/loguearUsuario', async (req, res) => {
     })
     if (Persons.length > 0) {
         res.status(201).json({
-            "msg": true, 
+            "response": true, 
+            "msg": "¡Bienvenido!",
             "datos":Persons
         });
     }else{
         res.status(201).json({
-            "msg": false
+            "response": false,
+            "msg": "Credenciales invalidas"
         });
     }
     
