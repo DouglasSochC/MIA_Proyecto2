@@ -15,6 +15,9 @@ const estadotecnicoRoutes = require('./routes/estado_tecnico');
 const competenciaRoutes = require('./routes/competencia');
 const tecnicoRoutes = require('./routes/tecnico');
 const partidoRoutes = require('./routes/partido');
+const jugadorRoutes = require('./routes/jugador');
+const estadojugadorRoutes = require('./routes/estado_jugador');
+const posicionjugadorRoutes = require('./routes/posicion_jugador');
 
 //Settings
 app.set('port', 3000);
@@ -48,6 +51,9 @@ app.use(tipocompetenciaRoutes);
 app.use(estadotecnicoRoutes);
 app.use(tecnicoRoutes);
 app.use(partidoRoutes);
+app.use(jugadorRoutes);
+app.use(estadojugadorRoutes);
+app.use(posicionjugadorRoutes);
 
 //Run
 app.listen(app.get('port'), () => {
