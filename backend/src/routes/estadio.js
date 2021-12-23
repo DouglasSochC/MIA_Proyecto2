@@ -15,7 +15,7 @@ id_pais != -1
 //READ
 router.get('/getEstadios', async (req, res) => {
     const {  } = req.body;
-    sql = "SELECT ESTADIO.id, ESTADIO.nombre, ESTADIO.fecha_inaguracion, ESTADIO.capacidad,\
+    sql = "SELECT ESTADIO.id, ESTADIO.nombre, TO_CHAR(ESTADIO.fecha_inaguracion, 'DD/MM/YYYY'), ESTADIO.capacidad,\
     ESTADIO.direccion, ESTADIO.link_fotografia,ESTADO_ESTADIO.id,ESTADO_ESTADIO.nombre,\
     PAIS.id, PAIS.nombre\
     FROM ESTADIO\
