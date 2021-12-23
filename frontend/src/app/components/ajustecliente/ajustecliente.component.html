@@ -1,0 +1,80 @@
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://images.vexels.com/media/users/3/218820/isolated/preview/415e1175994622e83c5b71d7f1a58bad-icono-de-trazo-de-configuracion-de-ventana-de-computadora.png" alt="" width="100" height="60">
+        <h2>Ajustes</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <label class="form-label">Nombres</label>
+                    <input [(ngModel)] = "nombres" name = "nombres" type="text" class="form-control" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Apellidos</label>
+                    <input [(ngModel)] = "apellidos" name = "apellidos" type="text" class="form-control" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Clave</label>
+                    <input [(ngModel)] = "clave" name = "clave" type="text" class="form-control" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Telefono</label>
+                    <input [(ngModel)] = "telefono" name = "telefono" type="text" class="form-control" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Genero</label>
+                    <select [(ngModel)] = "genero" name = "genero" class="form-select" required>
+                      <option value="" selected>Elegir...</option>
+                      <option value="M">Masculino</option>
+                      <option value="F">Femenino</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Fecha de Nacimiento</label>
+                    <input [(ngModel)] = "fecha_nacimiento" name = "fecha_nacimiento" type="date" class="form-control" id="start" name="trip-start"
+                        min="1900-01-01" max="2099-12-31" required>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Direccion <span class="text-muted">(Opcional)</span></label>
+                    <input [(ngModel)] = "direccion" name = "direccion" type="text" class="form-control" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-6">
+                    <label for="address2" class="form-label">Link de Fotografia <span class="text-muted">(Opcional)</span></label>
+                    <input [(ngModel)] = "link_fotografia" name = "link_fotografia" type="text" class="form-control" placeholder="">
+                </div>
+                <div class="col-sm-6">
+                    <label for="txtPais" class="form-label">Pais</label>
+                    <select [(ngModel)] = "id_pais" name = "id_pais" class="form-select" id="txtPais" required>                        
+                        <option *ngFor="let pais of Paises" value="{{ pais.id_pais }}">{{ pais.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+            <button (click)="actualizarCuenta()" class="w-50 btn btn-warning" type="submit">Guardar Cambios</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>

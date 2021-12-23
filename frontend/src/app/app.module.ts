@@ -16,6 +16,7 @@ import { SUsuarioService } from './services/s-usuario.service';
 import { EstadioComponent } from './components/estadio/estadio.component';
 import { TecnicoComponent } from './components/tecnico/tecnico.component';
 import { MembresiaComponent } from './components/membresia/membresia.component';
+import { AjusteclienteComponent } from './components/ajustecliente/ajustecliente.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MembresiaComponent } from './components/membresia/membresia.component';
     EquipoComponent,
     EstadioComponent,
     TecnicoComponent,
-    MembresiaComponent    
+    MembresiaComponent,
+    AjusteclienteComponent
   ],
   imports: [
     BrowserModule,

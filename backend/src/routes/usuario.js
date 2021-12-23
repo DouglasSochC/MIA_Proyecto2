@@ -63,33 +63,29 @@ router.post('/loguearUsuario', async (req, res) => {
 });
 
 //READ
-router.get('/getInformacionUsuario', async (req, res) => {
-    const { id_usuario } = req.body;
-    sql = "SELECT USUARIO.id, USUARIO.nombres, USUARIO.apellidos, USUARIO.correo,\
-    USUARIO.telefono, USUARIO.genero, USUARIO.fecha_nac, USUARIO.fecha_registro, USUARIO.direccion,\
-    USUARIO.membresia_activa, PAIS.nombre, TIPO_USUARIO.nombre\
+router.get('/getInformacionUsuario/:id_usuario', async (req, res) => {
+    const { id_usuario } = req.params;
+    sql = "SELECT USUARIO.nombres, USUARIO.apellidos, USUARIO.clave, USUARIO.telefono,\
+    USUARIO.genero, TO_CHAR(USUARIO.fecha_nac, 'DD/MM/YYYY'), USUARIO.direccion, USUARIO.link_fotografia, PAIS.id\
     FROM USUARIO\
     INNER JOIN PAIS ON USUARIO.ID_PAIS = PAIS.ID \
     INNER JOIN TIPO_USUARIO ON USUARIO.ID_TIPO = TIPO_USUARIO.ID \
     WHERE USUARIO.id = :id_usuario AND USUARIO.id_estado_usuario = 1";
-    //query, campos, aqui se verifica si es un commit
+    
     let result = await BD.Open(sql, [id_usuario], false);
     Listado = [];
 
     result.rows.map(usuario => {
         let usuarioSchema = {
-            "id": usuario[0],
-            "nombres": usuario[1],
-            "apellidos": usuario[2],
-            "correo": usuario[3],
-            "telefono": usuario[4],
-            "genero": usuario[5],
-            "fecha_nac": usuario[6],
-            "fecha_registro": usuario[7],
-            "direccion": usuario[8],
-            "membresia_activa": usuario[9],
-            "nombre_pais": usuario[10],
-            "nombre_tipo_usuario": usuario[11]
+            "nombres": usuario[0],
+            "apellidos": usuario[1],
+            "clave": usuario[2],
+            "telefono": usuario[3],
+            "genero": usuario[4],
+            "fecha_nac": usuario[5],
+            "direccion": usuario[6],
+            "link_fotografia": usuario[7],
+            "id_pais": usuario[8]
         }
         Listado.push(usuarioSchema);
     })
@@ -246,18 +242,23 @@ router.post('/addUsuarioAdmEmp', async (req, res) => {
 
 //UPDATE
 router.put("/updateUsuario", async (req, res) => {
-    const { nombres, apellidos, clave, telefono, genero, fecha_nac, direccion, id_pais, id_usuario } = req.body;
-    //Lo unico que no puede modificar seria su membresia y correo
-    sql = "UPDATE USUARIO SET nombres=:nombres, apellidos=:apellidos, clave=:clave,\
-                telefono=:telefono, genero=:genero, fecha_nac=TO_DATE(:fecha_nac, 'dd/mm/yyyy hh24:mi:ss'), \
-                direccion=:direccion,id_pais=:id_pais WHERE id=:id_usuario";
-
-    await BD.Open(sql, [nombres, apellidos, clave, telefono, genero, fecha_nac, direccion, id_pais, id_usuario], true);
-
-    res.status(200).json({
-        "msg": "Actualizado Correctamente"
-    })
-
+    const { id_usuario, nombres, apellidos, clave, telefono, genero, fecha_nac, direccion, link_fotografia, id_pais } = req.body;
+    
+    if (!(nombres != "" && apellidos != "" && clave != "" && telefono != -1 && genero != "" && fecha_nac != "" && id_pais != -1 && id_usuario != -1)){
+        res.status(201).json({
+            "response": false,
+            "msg": "No ha ingresado los campos obligatorios"
+        });
+    } else{
+        sql = "UPDATE USUARIO SET nombres=:nombres, apellidos=:apellidos, clave=:clave,\
+                telefono=:telefono, genero=:genero, fecha_nac=TO_DATE(:fecha_nac, 'dd/mm/yyyy'), \
+                direccion=:direccion, link_fotografia = :link_fotografia, id_pais=:id_pais WHERE id=:id_usuario";
+        await BD.Open(sql, [nombres, apellidos, clave, telefono, genero, fecha_nac, direccion, link_fotografia, id_pais, id_usuario], true);
+        res.status(201).json({
+            "response": true,
+            "msg": "Actualizado Correctamente"
+        });
+    }
 });
 
 //DELETE

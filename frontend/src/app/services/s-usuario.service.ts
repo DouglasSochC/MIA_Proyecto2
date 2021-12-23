@@ -70,4 +70,30 @@ export class SUsuarioService {
     ).pipe(map(data => data));
   }
 
+  actualizarCuentaCliente(id_usuario:number,nombres:string,apellidos:string,clave:string,telefono:number,genero:string,fecha_nac:string,direccion:string,link_fotografia:string,id_pais:number){
+    const url = "http://localhost:3000/updateUsuario";
+    return this.http.put(url, 
+    {
+      "id_usuario": id_usuario,
+      "nombres": nombres,
+      "apellidos": apellidos,
+      "clave": clave,
+      "telefono": telefono,
+      "genero": genero,
+      "fecha_nac":fecha_nac,
+      "direccion":direccion,
+      "link_fotografia":link_fotografia,
+      "id_pais":id_pais
+    }, 
+    { headers: this.headers }
+    //Para retornar el resultado es necesario utilizar la funcion map. Recordar que se debe de importar
+    //la libreria rxjs/operators
+    ).pipe(map(data => data));
+  }
+
+  GetDatoscuentaCliente(id_usuario:number){
+    const url = "http://localhost:3000/getInformacionUsuario/"+id_usuario;
+    return this.http.get(url);
+  }
+
 }

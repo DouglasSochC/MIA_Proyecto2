@@ -10,6 +10,7 @@ import { EquipoComponent } from './components/equipo/equipo.component';
 import { AutenticacionGuard } from './guard/autenticacion.guard';
 import { EstadioComponent } from './components/estadio/estadio.component';
 import { MembresiaComponent } from './components/membresia/membresia.component';
+import { AjusteclienteComponent } from './components/ajustecliente/ajustecliente.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,11 @@ const routes: Routes = [
   {
     path: 'membresia',
     component: MembresiaComponent,
+    canActivate: [AutenticacionGuard]
+  },
+  {
+    path: 'ajustecliente',
+    component: AjusteclienteComponent,
     canActivate: [AutenticacionGuard]
   }
 ];
