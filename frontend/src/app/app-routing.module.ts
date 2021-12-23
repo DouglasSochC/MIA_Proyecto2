@@ -9,6 +9,7 @@ import { MenuEmpleadoComponent } from './components/menu-empleado/menu-empleado.
 import { EquipoComponent } from './components/equipo/equipo.component';
 import { AutenticacionGuard } from './guard/autenticacion.guard';
 import { EstadioComponent } from './components/estadio/estadio.component';
+import { MembresiaComponent } from './components/membresia/membresia.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
     path: 'estadio',
     component: EstadioComponent,
     canActivate:[AutenticacionGuard]
+  },
+  {
+    path: 'membresia',
+    component: MembresiaComponent,
+    canActivate: [AutenticacionGuard]
   }
 ];
 

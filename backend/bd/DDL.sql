@@ -264,7 +264,8 @@ CREATE TABLE HISTORIAL_MEMBRESIA(
     id_usuario INTEGER NOT NULL,
     id_membresia INTEGER NOT NULL,
     fecha_inicio DATE NOT NULL,
-    fecha_final DATE,
+    fecha_final DATE NOT NULL,
+    num_tarjeta INTEGER NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (id_usuario) REFERENCES USUARIO(id),
     FOREIGN KEY (id_membresia) REFERENCES MEMBRESIA(id)
@@ -357,6 +358,7 @@ INSERT INTO TIPO_USUARIO(nombre) VALUES('Empleado');
 INSERT INTO TIPO_USUARIO(nombre) VALUES('Cliente');
 INSERT INTO ESTADO_USUARIO (nombre) VALUES('Activo');
 INSERT INTO ESTADO_USUARIO (nombre) VALUES('No Activo');
+INSERT INTO MEMBRESIA(nombre) VALUES('Normal');
 COMMIT;
 
 /*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*/
@@ -414,7 +416,7 @@ VALUES (
     '05/01/2001',
     '06/01/2021',
     'Dir 3',
-    1,
+    0,
     (SELECT(ID) FROM PAIS WHERE NOMBRE = 'Alemania'),
     (SELECT(ID) FROM TIPO_USUARIO WHERE NOMBRE = 'Cliente'),
     (SELECT(ID) FROM ESTADO_USUARIO WHERE NOMBRE = 'Activo'));
@@ -431,7 +433,7 @@ VALUES (
     '06/01/2000',
     '07/01/2021',
     'Dir 4',
-    1,
+    0,
     (SELECT(ID) FROM PAIS WHERE NOMBRE = 'Italia'),
     (SELECT(ID) FROM TIPO_USUARIO WHERE NOMBRE = 'Cliente'),
     (SELECT(ID) FROM ESTADO_USUARIO WHERE NOMBRE = 'Activo'));

@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SUsuarioService } from './services/s-usuario.service';
 import { EstadioComponent } from './components/estadio/estadio.component';
 import { TecnicoComponent } from './components/tecnico/tecnico.component';
+import { MembresiaComponent } from './components/membresia/membresia.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TecnicoComponent } from './components/tecnico/tecnico.component';
     MenuAdministradorComponent,
     EquipoComponent,
     EstadioComponent,
-    TecnicoComponent    
+    TecnicoComponent,
+    MembresiaComponent    
   ],
   imports: [
     BrowserModule,

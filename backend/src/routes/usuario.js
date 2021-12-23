@@ -6,8 +6,9 @@ const nodemailer = require("nodemailer");
 //READ
 router.post('/loguearUsuario', async (req, res) => {
     const { email, pass } = req.body;
+
     sql = "SELECT USUARIO.id, USUARIO.nombres, USUARIO.apellidos, USUARIO.membresia_activa, TIPO_USUARIO.nombre FROM USUARIO INNER JOIN TIPO_USUARIO ON USUARIO.ID_TIPO = TIPO_USUARIO.ID  WHERE CORREO =:email AND CLAVE =:pass AND USUARIO.id_estado_usuario = 1";
-    //query, campos, aqui se verifica si es un commit
+    
     let result = await BD.Open(sql, [email, pass], false);
     Persons = [];
 
@@ -20,8 +21,34 @@ router.post('/loguearUsuario', async (req, res) => {
             "tipo_usuario": usuario[4]
         }
         Persons.push(usuarioSchema);
-    })
-    if (Persons.length > 0) {
+    });
+
+    if (Persons.length > 0) {  
+        var today = new Date();
+        var anio = today.getFullYear();
+        var mes = today.getMonth()+1;
+        var dia = today.getDate();
+        var fecha_actual =dia+"/"+mes+"/"+anio;
+        id_usuario = Persons[0]['id'];
+        membresia_activa = Persons[0]['membresia_activa'];
+        sql_verificar_membresia = "SELECT COUNT(id) FROM HISTORIAL_MEMBRESIA\
+        WHERE FECHA_FINAL >= TO_DATE(:fecha_actual, 'DD/MM/YYYY') AND HISTORIAL_MEMBRESIA.ID_USUARIO = :id_usuario";
+        let result_verificar = await BD.Open(sql_verificar_membresia, [fecha_actual, id_usuario], false);
+        Cantidad = [];
+
+        result_verificar.rows.map(registro => {
+            let cantidadSchema = {
+                "cantidad": registro[0]
+            }
+            Cantidad.push(cantidadSchema);
+        });
+        
+        if (Cantidad.length > 0 && Cantidad[0]["cantidad"] <= 0 && membresia_activa == 1) {
+            sql_actualizar_membresia = "UPDATE USUARIO SET membresia_activa = 0 WHERE id = :id_usuario";
+            await BD.Open(sql_actualizar_membresia, [id_usuario], true);
+            Persons[0]['id_membresia'] = 0;
+        }
+
         res.status(201).json({
             "response": true, 
             "msg": "¡Bienvenido!",
@@ -32,8 +59,7 @@ router.post('/loguearUsuario', async (req, res) => {
             "response": false,
             "msg": "Credenciales invalidas"
         });
-    }
-    
+    }    
 });
 
 //READ
@@ -167,7 +193,7 @@ router.get('/confirmarCuenta/:data_user', async (req, res) => {
                     :correo,\
                     :telefono,\
                     :genero,\
-                    TO_DATE(:fecha_nac, 'dd/mm/yyyy hh24:mi:ss'),\
+                    TO_DATE(:fecha_nac, 'dd/mm/yyyy'),\
                     TO_DATE('" + fecha_actual +"', 'dd/mm/yyyy hh24:mi:ss'),\
                     :direccion,\
                     0,\

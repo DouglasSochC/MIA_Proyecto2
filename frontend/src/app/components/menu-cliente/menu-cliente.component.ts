@@ -13,8 +13,18 @@ export class MenuClienteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  membresia_activa: number = -1;
+
   CerrarSesion(){
     this.autenticacion.logoutUsuario();
+  }
+
+  VerMembresia(){
+    if (this.autenticacion.getUsuarioActual()) {
+      return this.autenticacion.getUsuarioActual()['membresia_activa'];
+    }else{
+      return 0;
+    }
   }
 
 }

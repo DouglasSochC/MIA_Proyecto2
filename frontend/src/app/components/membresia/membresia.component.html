@@ -1,0 +1,64 @@
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6txJgFCmSRyduufkcso87eQ_4svl3k58JtQ&usqp=CAU" alt="" width="200" height="200">
+        <h2>Membresia</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+                <div *ngIf="membresia_activa == 0" class="col-sm-6">
+                    <label class="form-label">Numero de Tarjeta</label>
+                    <input [(ngModel)] = "num_tarjeta" name = "num_tarjeta" type="text" class="form-control" placeholder="" value="" required>
+                </div>
+    
+                <div *ngIf="membresia_activa == 0" class="col-sm-6">
+                    <label class="form-label">Activar Membresia</label>
+                    <button (click)="comprarMembresia()" class="w-100 btn btn-primary" type="submit">Comprar Membresia</button><br/><br/>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">TIPO MEMBRESIA</th>
+            <th scope="col">FECHA DE INICIO</th>
+            <th scope="col">FECHA DE VENCIMIENTO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mem of Membresia">
+            <th>{{ mem.id_membresia }}</th>
+            <td>{{ mem.nombre_membresia }}</td>
+            <td>{{ mem.fecha_inicio }}</td>
+            <td>{{ mem.fecha_final }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>
