@@ -13,26 +13,62 @@
         <form class="needs-validation" novalidate>
           <div class="row g-3">
 
+  <!--
+  id_nombre:number=-1;
+  nombre: string = ""; 
+  fecha_inaguracion: string = "";
+  capacidad: number =-1;
+  direccion: string = "";
+  link_fotografia: string = "";
+  id_estado_estadio:number=-1;
+  id_pais: number = -1;            
+              <div class="col-sm-4">
+                <label class="form-label">Fecha de Nacimiento</label>
+                <input [(ngModel)] = "fecha_nacimiento" 
+                        name = "fecha_nacimiento" 
+                        type="date" 
+                        class="form-control" 
+                        id="start" 
+                        name="trip-start"
+                        min="1900-01-01" max="2099-12-31" required>
+              </div>    -->           
+
+
+              <!--div class="col-sm-4">
+                <label class="form-label">Nombres</label>
+                <input [(ngModel)] = "nombres" 
+                        name = "nombres" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="" 
+                        value="" required>
+              </div-->
 
               <div class="col-sm-6">
                   <label class="form-label">Nombre</label>
-                  <input [(ngModel)] = "nombre" 
-                          name = "nombre" 
+                  <input [(ngModel)] = "estadio_nombre" 
+                          name = "estadio_nombre" 
                           type="text" 
                           class="form-control" 
                           placeholder="" 
                           value="" required>
               </div>
           
+
+
               <div class="col-sm-6">
-                  <label class="form-label">Fecha de inauguracion</label>
-                  <input [(ngModel)] = "fecha_inauguracion" 
-                          name = "fecha_fundacion" type="date" 
-                          class="form-control" id="fecha_inauguracion" 
+                  <label class="form-label">Fecha de inauguración</label>
+                  <input [(ngModel)] = "fecha_inaguracion" 
+                          name = "fecha_inaguracion" 
+                          type="date" 
+                          class="form-control" 
+                          id="start_inaguracion" 
                           name="trip-start"
                           min="1900-01-01" max="2030-12-31" required
                   >
               </div>  
+
+
 
               <div class="col-sm-6">
                   <label class="form-label">Capacidad</label>
@@ -64,10 +100,14 @@
               </div>
 
 
+
+
+
+
               <div class="col-sm-6">
                 <label  class="form-label">Estados</label>
-                <select [(ngModel)] = "id_estado" 
-                      name = "id_estado" 
+                <select [(ngModel)] = "id_estado_estadio" 
+                      name = "id_estado_estadio" 
                       class="form-select" required>                        
                       <option
                             *ngFor="let estado of Estado_Estadio" 
@@ -119,12 +159,12 @@
 
       <tbody>   
         <tr *ngFor="let estadio of Estadio">          
-          <th>{{ estadio.nombre }}</th>
-          <td>{{ estadio.fecha_inauguracion }}</td>
+          <th>{{ estadio.estadio_nombre }}</th>
+          <td>{{ estadio.fecha_inaguracion }}</td>
           <td>{{ estadio.capacidad }}</td>          
           <td>{{ estadio.id_pais }}</td>
           <td>{{ estadio.direccion }}</td>
-          <td>{{ estadio.id_estado }}</td>
+          <td>{{ estadio.id_estado_estadio }}</td>
           <td><img  src="{{ estadio.link_fotografia }}" 
                     alt="" 
                     width="50" 
@@ -133,18 +173,18 @@
           
           <td>        
             <button (click)="setearInterfaz(
-                              estadio.nombre, 
-                              estadio.fecha_inauguracion, 
+                              estadio.estadio_nombre, 
+                              estadio.fecha_inaguracion, 
                               estadio.capacidad,
                               estadio.id_pais, 
                               estadio.direccion,
-                              estadio.id_estado,
+                              estadio.id_estado_estadio,
                               estadio.link_fotografia )" 
                               class="btn btn-outline-warning" 
                               type="submit"
             >Editar
             </button>&nbsp;
-            <button (click)="eliminarEstadio(estadio.nombre)" 
+            <button (click)="eliminarEstadio(estadio.estadio_nombre)" 
                             class="btn btn-outline-danger" 
                             type="submit"
             >Eliminar
