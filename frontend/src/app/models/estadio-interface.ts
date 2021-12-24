@@ -12,10 +12,19 @@ export interface EstadioInterface{
 
 export interface PaisInterface{
     id_pais: number,
-    nombre: string
+     nombre: string
 }
 
 export interface EstadoEstadioInteface{
-    id_estado:number,
-    nombre:string
+    id_estado: number,
+       nombre: string
 }
+
+/*
+"id_estado": 1,
+		"nombre": "Activo"
+
+export interface EstadoUsuarioInterface{
+    id_estado: number,
+    nombre: string
+}*/

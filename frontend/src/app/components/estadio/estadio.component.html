@@ -17,10 +17,11 @@
               <div class="col-sm-6">
                   <label class="form-label">Nombre</label>
                   <input [(ngModel)] = "nombre" 
-                          name = "nombre" type="text" 
-                          class="form-control" placeholder="" 
-                          value="" required
-                  >
+                          name = "nombre" 
+                          type="text" 
+                          class="form-control" 
+                          placeholder="" 
+                          value="" required>
               </div>
           
               <div class="col-sm-6">
@@ -64,18 +65,18 @@
 
 
               <div class="col-sm-6">
-                <label for="txtEstado" class="form-label">Estados</label>
+                <label  class="form-label">Estados</label>
                 <select [(ngModel)] = "id_estado" 
                       name = "id_estado" 
-                      class="form-select" 
-                      id="txtEstado" required>                        
+                      class="form-select" required>                        
                       <option
-                            *ngFor="let estado of Estado" 
-                            value="{{ estado.id_estado }}"
-                            {{ estado.nombre }}>
+                            *ngFor="let estado of Estado_Estadio" 
+                            value="{{ estado.id_estado }}">
+                            {{ estado.nombre }}
                       </option>
                 </select>
               </div>
+
 
               <div class="">
                 <label for="address2" class="form-label">Link de Fotografia <span class="text-muted">(Opcional)</span></label>
@@ -115,10 +116,9 @@
           <th scope="col">FOTO</th>
         </tr>
       </thead>
-      <tbody>
-   
-        <tr *ngFor="let estadio of Estadio">
-          
+
+      <tbody>   
+        <tr *ngFor="let estadio of Estadio">          
           <th>{{ estadio.nombre }}</th>
           <td>{{ estadio.fecha_inauguracion }}</td>
           <td>{{ estadio.capacidad }}</td>          
@@ -130,9 +130,8 @@
                     width="50" 
                     height="50">
           </td>
-          <td>          
-            
-       
+          
+          <td>        
             <button (click)="setearInterfaz(
                               estadio.nombre, 
                               estadio.fecha_inauguracion, 
@@ -142,11 +141,13 @@
                               estadio.id_estado,
                               estadio.link_fotografia )" 
                               class="btn btn-outline-warning" 
-                              type="submit">Editar
+                              type="submit"
+            >Editar
             </button>&nbsp;
             <button (click)="eliminarEstadio(estadio.nombre)" 
                             class="btn btn-outline-danger" 
-                            type="submit">Eliminar
+                            type="submit"
+            >Eliminar
             </button>          
           </td>           
         </tr>

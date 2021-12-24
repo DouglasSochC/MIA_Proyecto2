@@ -1,11 +1,15 @@
+
 import { Component, OnInit } from '@angular/core';
 import { SEstadioService } from 'src/app/services/s-estadio.service'; 
+import { SEquipoService } from 'src/app/services/s-equipo.service';
 
 import {  EstadioInterface, 
           PaisInterface,
           EstadoEstadioInteface
-           } from 'src/app/models/estadio-interface';
+       } from 'src/app/models/estadio-interface';
+
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-estadio',
@@ -15,12 +19,15 @@ import Swal from 'sweetalert2';
 
 
 export class EstadioComponent implements OnInit {
-  constructor(public sestadioservice: SEstadioService) { }
+  constructor(  public sestadioservice: SEstadioService,
+                public sequiposervice: SEquipoService  
+  ) { }
+  
   //Este nos carga los componentes al ingresar a la pagina
   ngOnInit(): void {
-    this.cargarTabla();
     this.cargarPaises();
     this.cargarEstadosEstadio();
+    this.cargarTabla();
   }
 
   //datos del estadio
@@ -36,12 +43,10 @@ export class EstadioComponent implements OnInit {
   
   Estadio:EstadioInterface[] = [];
   Paises:PaisInterface[] = [];
-  Estado:EstadoEstadioInteface[]=[];
+  Estado_Estadio:EstadoEstadioInteface[]=[];
   
 
   guardarEstadio(){
-    console.log("guardando estadio: " + this.nombre+ "\n"
-          +"guardar fecha: "+ this.fecha_inauguracion );    
     this.fecha_inauguracion = this.fecha_inauguracion.split("-").reverse().join("/");
     this.sestadioservice.InsertEstadios(  this.nombre, 
                                           this.fecha_inauguracion,
@@ -59,7 +64,7 @@ export class EstadioComponent implements OnInit {
         });        
         this.cargarTabla();
         this.cargarPaises();
-        //this.cargarEstadosEstadio();
+        this.cargarEstadosEstadio();
         this.limpiarDatos();
       }else{
         Swal.fire({
@@ -69,9 +74,6 @@ export class EstadioComponent implements OnInit {
         });
       }
     });
-    console.log("salir__ guardando estadio: " + this.nombre
-          +"\nsalir__guardar fecha: "+ this.fecha_inauguracion );    
-
   }
 
   eliminarEstadio(id_estadio:string ){
@@ -158,27 +160,24 @@ export class EstadioComponent implements OnInit {
   }
 
 
-
   cargarPaises(){
-    this.sestadioservice.GetPaises().subscribe((res:any) => {
+    this.sequiposervice.GetPaises().subscribe((res:any) => {
       this.Paises = res;
     });
   }
 
-  
-  cargarEstadosEstadio(){ 
+  cargarEstadosEstadio(){
     this.sestadioservice.GetEstadosEstadio().subscribe((res:any) => {
-      this.Estado = res;
-    });
+      this.Estado_Estadio = res;      
+    });    
   }
-  
 
   cargarTabla(){
     this.sestadioservice.GetEstadios().subscribe((res:any) => {
       this.Estadio = res;
+      console.log( this.Estadio);
     });
   }
-
 
   limpiarDatos(){    
     this.nombre = "";

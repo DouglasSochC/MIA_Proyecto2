@@ -39,7 +39,13 @@ export class SEstadioService {
     const url = "http://localhost:3000/getEstadosEstadio";
     return this.http.get(url);
   }  
+/*
+  GetEstadoUsuario(){
+    const url = "http://localhost:3000/getEstadoUsuario";
+    return this.http.get(url);
+  }
 
+  */
   //------------------------------------------------------------
   //TODO: INSERT estadio
 /*
@@ -65,13 +71,13 @@ id_pais
       const url = "http://localhost:3000/addEstadio";
       return this.http.post(url, 
       {
-        "nombre": nombreEstadio,
-        "fecha_inauguracion": fechaInauguracion,
+        "estadio_nombre": nombreEstadio,
+        "fecha_inaguracion": fechaInauguracion,
         "capacidad": capacidad,
         "direccion":direccion,
         "foto": link_fotografia,
         "estadio": id_estado_estadio,
-        "pais": id_pais
+        "id_pais": id_pais
       }, 
       { headers: this.headers }
       //Para retornar el resultado es necesario utilizar la funcion map. 
