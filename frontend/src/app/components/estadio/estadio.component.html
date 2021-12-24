@@ -1,5 +1,4 @@
 
-
 <div class="container">
   <main>
     <div class="py-5 text-center">
@@ -9,11 +8,12 @@
       <h2>ESTADIO</h2>
     </div>
 
-
     <div class="container">
       <div class="">
         <form class="needs-validation" novalidate>
           <div class="row g-3">
+
+
               <div class="col-sm-6">
                   <label class="form-label">Nombre</label>
                   <input [(ngModel)] = "nombre" 
@@ -21,7 +21,8 @@
                           class="form-control" placeholder="" 
                           value="" required
                   >
-              </div>              
+              </div>
+          
               <div class="col-sm-6">
                   <label class="form-label">Fecha de inauguracion</label>
                   <input [(ngModel)] = "fecha_inauguracion" 
@@ -30,21 +31,29 @@
                           name="trip-start"
                           min="1900-01-01" max="2030-12-31" required
                   >
-              </div>              
+              </div>  
+
               <div class="col-sm-6">
-                  <label for="address2" class="form-label">Capacidad </label>
+                  <label class="form-label">Capacidad</label>
                   <input [(ngModel)] = "capacidad" 
                         name = "capacidad" type="number" 
                         class="form-control" placeholder=""
                   >
               </div>
+              
               <div class="col-sm-6">
-                <label for="address2" class="form-label">Pais</label>
-                <input [(ngModel)] = "pais" 
-                      name = "capacidad" type="string" 
-                      class="form-control" placeholder=""
-                >
+                <label for="txtPais" class="form-label">Pais</label>
+                <select [(ngModel)] = "id_pais" 
+                      name = "id_pais" 
+                      class="form-select" 
+                      id="txtPais" required>                        
+                    <option *ngFor="let pais of Paises" 
+                            value="{{ pais.id_pais }}">
+                            {{ pais.nombre }}
+                    </option>
+                </select>
               </div>
+
               <div class="col-sm-6">
                 <label for="address2" class="form-label">Dirección</label>
                 <input [(ngModel)] = "direccion" 
@@ -52,11 +61,19 @@
                       class="form-control" placeholder=""
                 >
               </div>
+
+
               <div class="col-sm-6">
-                <label for="o" class="form-label">Estado</label>
-                <select class="form-select" id="estado" required>
-                  <option value="0" selected>No activo</option>
-                  <option value="1">Activo</option>
+                <label for="txtEstado" class="form-label">Estados</label>
+                <select [(ngModel)] = "id_estado" 
+                      name = "id_estado" 
+                      class="form-select" 
+                      id="txtEstado" required>                        
+                      <option
+                            *ngFor="let estado of Estado" 
+                            value="{{ estado.id_estado }}"
+                            {{ estado.nombre }}>
+                      </option>
                 </select>
               </div>
 
@@ -82,10 +99,8 @@
     </div>
   </main>
   
+
   <hr class="my-4">
-
-
-
 
 
   <table class="table">
@@ -101,32 +116,33 @@
         </tr>
       </thead>
       <tbody>
-        
-
-
+   
         <tr *ngFor="let estadio of Estadio">
           
           <th>{{ estadio.nombre }}</th>
           <td>{{ estadio.fecha_inauguracion }}</td>
           <td>{{ estadio.capacidad }}</td>          
-          <td>{{ estadio.pais }}</td>
+          <td>{{ estadio.id_pais }}</td>
           <td>{{ estadio.direccion }}</td>
-          <td>{{ estadio.estado }}</td>
+          <td>{{ estadio.id_estado }}</td>
           <td><img  src="{{ estadio.link_fotografia }}" 
                     alt="" 
                     width="50" 
                     height="50">
           </td>
-          <td>                
-            <button (click)="setearInterfaz(estadio.nombre, 
-                                            estadio.fecha_inauguracion, 
-                                            estadio.capacidad,
-                                            estadio.pais, 
-                                            estadio.direccion,
-                                            estadio.estado,
-                                            estadio.link_fotografia )" 
-                                            class="btn btn-outline-warning" 
-                                            type="submit">Editar
+          <td>          
+            
+       
+            <button (click)="setearInterfaz(
+                              estadio.nombre, 
+                              estadio.fecha_inauguracion, 
+                              estadio.capacidad,
+                              estadio.id_pais, 
+                              estadio.direccion,
+                              estadio.id_estado,
+                              estadio.link_fotografia )" 
+                              class="btn btn-outline-warning" 
+                              type="submit">Editar
             </button>&nbsp;
             <button (click)="eliminarEstadio(estadio.nombre)" 
                             class="btn btn-outline-danger" 

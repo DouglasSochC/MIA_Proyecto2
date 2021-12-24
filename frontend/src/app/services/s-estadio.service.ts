@@ -28,14 +28,39 @@ export class SEstadioService {
     return this.http.get(url);
   } 
   //------------------------------------------------------------
+  //TODO: GET PAISES
+  GetPaises(){
+    const url = "http://localhost:3000/getPaises";
+    return this.http.get(url);
+  }
+  //------------------------------------------------------------
+  //
+  GetEstadosEstadio() {
+    const url = "http://localhost:3000/getEstadosEstadio";
+    return this.http.get(url);
+  }  
+
+  //------------------------------------------------------------
   //TODO: INSERT estadio
+/*
+nombre, 
+fecha_inaguracion, 
+capacidad, 
+direccion, 
+link_fotografia, 
+id_estado_estadio, 
+id_pais
+
+
+  */
   InsertEstadios( nombreEstadio:string, 
                   fechaInauguracion:string,
                   capacidad:number,
-                  pais:string,
                   direccion:string, 
-                  estado:string,
-                  link_fotografia: string  ){
+                  link_fotografia: string,
+                  id_estado_estadio:number,
+                  id_pais:number
+                ){
       
       const url = "http://localhost:3000/addEstadio";
       return this.http.post(url, 
@@ -43,10 +68,10 @@ export class SEstadioService {
         "nombre": nombreEstadio,
         "fecha_inauguracion": fechaInauguracion,
         "capacidad": capacidad,
-        "pais": pais,
         "direccion":direccion,
-        "estadio": estado,
-        "foto": link_fotografia
+        "foto": link_fotografia,
+        "estadio": id_estado_estadio,
+        "pais": id_pais
       }, 
       { headers: this.headers }
       //Para retornar el resultado es necesario utilizar la funcion map. 
@@ -58,20 +83,20 @@ export class SEstadioService {
   UpdateEstadio(  nombreEstadio:string, 
                   fechaInauguracion:string,
                   capacidad:number,
-                  pais:string,
                   direccion:string, 
-                  estado:string,
-                  link_fotografia: string){
+                  link_fotografia: string,
+                  id_estado_estadio:number,
+                  id_pais:number){
       const url = "http://localhost:3000/updateEstadio";
       return this.http.put(url, 
       {
         "nombre": nombreEstadio,
         "fecha_inauguracion": fechaInauguracion,
         "capacidad": capacidad,
-        "pais": pais,
         "direccion":direccion,
-        "estadio": estado,
-        "foto":link_fotografia
+        "foto": link_fotografia,
+        "estadio": id_estado_estadio,
+        "pais": id_pais
       }, 
       { headers: this.headers }
       //Para retornar el resultado es necesario utilizar la funcion map. 

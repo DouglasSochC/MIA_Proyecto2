@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
   templateUrl: './equipo.component.html',
   styleUrls: ['./equipo.component.css']
 })
+
+
 export class EquipoComponent implements OnInit {
 
   constructor(public sequipoervice: SEquipoService) { }
