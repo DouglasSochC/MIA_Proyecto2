@@ -5,7 +5,7 @@ import { map } from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class JugadorService {
+export class STecnicoService {
 
   constructor(private http:HttpClient) { }
 
@@ -13,21 +13,21 @@ export class JugadorService {
     "Content-Type": "application/json"
   });
 
-  GetJugadores(){
-    const url = "http://localhost:3000/getJugadoresMinimo";
+  GetTecnicos(){
+    const url = "http://localhost:3000/getTecnicoMinimo";
     return this.http.get(url);
   }
 
-  GetTrayectoriaJugador(id_jugador:number){
-    const url = "http://localhost:3000/getTrayectoriaJugador/"+id_jugador;
+  GetTrayectoriaTecnico(id_tecnico:number){
+    const url = "http://localhost:3000/getTrayectoriaTecnico/"+id_tecnico;
     return this.http.get(url);
   }
 
-  InsertTrayectoria(id_jugador:number, id_equipo_nuevo:number, fecha_transferencia:string){    
-    const url = "http://localhost:3000/addTrayectoriaJugador";
+  InsertTrayectoria(id_tecnico:number, id_equipo_nuevo:number, fecha_transferencia:string){    
+    const url = "http://localhost:3000/addTrayectoriaTecnico";
     return this.http.post(url, 
     {
-      "id_jugador": id_jugador,
+      "id_tecnico": id_tecnico,
       "id_equipo_nuevo": id_equipo_nuevo,
       "fecha_transferencia": fecha_transferencia
     }, 
@@ -37,5 +37,5 @@ export class JugadorService {
     ).pipe(map(data => data));
     
   }
-  
+
 }

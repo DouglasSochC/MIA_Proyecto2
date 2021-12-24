@@ -3,17 +3,17 @@ const router = Router();
 const BD = require('../config/configbd');
 
 //READ
-router.get('/getJugadoresMinimo', async (req, res) => {
+router.get('/getTecnicoMinimo', async (req, res) => {
     const {  } = req.body;
-    sql = "SELECT JUGADOR.ID, JUGADOR.NOMBRES, PAIS.NOMBRE FROM JUGADOR\
-    INNER JOIN PAIS ON PAIS.ID = JUGADOR.ID_NACIONALIDAD ORDER BY JUGADOR.NOMBRES";
+    sql = "SELECT TECNICO.ID, TECNICO.NOMBRES, PAIS.NOMBRE FROM TECNICO\
+    INNER JOIN PAIS ON PAIS.ID = TECNICO.ID_NACIONALIDAD ORDER BY TECNICO.NOMBRES";
     
     let result = await BD.Open(sql, [], false);
     Listado = [];
 
     result.rows.map(registro => {
         let LSchema = {
-            "id_jugador": registro[0],
+            "id_tecnico": registro[0],
             "nombres": registro[1],
             "nombre_pais": registro[2]
         }
@@ -23,23 +23,23 @@ router.get('/getJugadoresMinimo', async (req, res) => {
 });
 
 //READ
-router.get('/getTrayectoriaJugador/:id_jugador', async (req, res) => {
-    const { id_jugador } = req.params;
-    sql = "SELECT JUGADOR.ID, JUGADOR.NOMBRES, EQUIPO.ID, EQUIPO.NOMBRE,\
-    TO_CHAR(TRAYECTORIA_JUGADOR.FECHA_INICIAL, 'DD/MM/YYYY'),\
-    TO_CHAR(TRAYECTORIA_JUGADOR.FECHA_FINAL, 'DD/MM/YYYY')\
-    FROM TRAYECTORIA_JUGADOR\
-    INNER JOIN JUGADOR ON JUGADOR.ID = TRAYECTORIA_JUGADOR.ID_JUGADOR\
-    INNER JOIN EQUIPO ON EQUIPO.ID = TRAYECTORIA_JUGADOR.ID_EQUIPO\
-    WHERE JUGADOR.ID = :id_jugador ORDER BY FECHA_INICIAL ASC";
+router.get('/getTrayectoriaTecnico/:id_tecnico', async (req, res) => {
+    const { id_tecnico } = req.params;
+    sql = "SELECT TECNICO.ID, TECNICO.NOMBRES, EQUIPO.ID, EQUIPO.NOMBRE,\
+    TO_CHAR(TRAYECTORIA_TECNICO.FECHA_INICIAL, 'DD/MM/YYYY'),\
+    TO_CHAR(TRAYECTORIA_TECNICO.FECHA_FINAL, 'DD/MM/YYYY')\
+    FROM TRAYECTORIA_TECNICO\
+    INNER JOIN TECNICO ON TECNICO.ID = TRAYECTORIA_TECNICO.ID_TECNICO\
+    INNER JOIN EQUIPO ON EQUIPO.ID = TRAYECTORIA_TECNICO.ID_EQUIPO\
+    WHERE TECNICO.ID = :id_tecnico ORDER BY FECHA_INICIAL ASC";
     
-    let result = await BD.Open(sql, [id_jugador], false);
+    let result = await BD.Open(sql, [id_tecnico], false);
     Listado = [];
 
     result.rows.map(registro => {
         let LSchema = {
-            "id_jugador": registro[0],
-            "nombre_jugador": registro[1],
+            "id_tecnico": registro[0],
+            "nombre_tecnico": registro[1],
             "id_equipo": registro[2],
             "nombre_equipo": registro[3],
             "fecha_inicial": registro[4],
@@ -50,24 +50,24 @@ router.get('/getTrayectoriaJugador/:id_jugador', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//INTERT
-router.post('/addTrayectoriaJugador', async (req, res) => {
-    const { id_jugador, id_equipo_nuevo, fecha_transferencia } = req.body;
+//INSERT
+router.post('/addTrayectoriaTecnico', async (req, res) => {
+    const { id_tecnico, id_equipo_nuevo, fecha_transferencia } = req.body;
     
-    if (!(id_jugador != -1 && id_equipo_nuevo != -1 && fecha_transferencia != "")) {
+    if (!(id_tecnico != -1 && id_equipo_nuevo != -1 && fecha_transferencia != "")) {
         res.status(201).json({
             "response":false,
             "msg": "No ha ingresado los campos obligatorios"
         });
     }else{
-        sql_existencia = "SELECT ID_EQUIPO, TRAYECTORIA_JUGADOR.ID FROM TRAYECTORIA_JUGADOR WHERE\
-        TRAYECTORIA_JUGADOR.ID_JUGADOR = :id_jugador AND TRAYECTORIA_JUGADOR.FECHA_FINAL IS NULL\
-        ORDER BY TRAYECTORIA_JUGADOR.FECHA_INICIAL";
-        let r_existencia = await BD.Open(sql_existencia, [id_jugador], false);
+        sql_existencia = "SELECT ID_EQUIPO, TRAYECTORIA_TECNICO.ID FROM TRAYECTORIA_TECNICO WHERE\
+        TRAYECTORIA_TECNICO.ID_TECNICO = :id_tecnico AND TRAYECTORIA_TECNICO.FECHA_FINAL IS NULL\
+        ORDER BY TRAYECTORIA_TECNICO.FECHA_INICIAL";
+        let r_existencia = await BD.Open(sql_existencia, [id_tecnico], false);
         if (r_existencia.rows.length == 0) {
             res.status(201).json({
                 "response":false,
-                "msg": "El jugador actualmente no milita en algun equipo, por lo tanto no puede realizar la transferencia"
+                "msg": "El entrenador actualmente no milita en algun equipo, por lo tanto no puede realizar la transferencia"
             });
         }else{
             
@@ -78,18 +78,18 @@ router.post('/addTrayectoriaJugador', async (req, res) => {
                 }); 
             }else{
                 var id_registro = r_existencia.rows[0][1];
-                sql_actualizacion = "UPDATE TRAYECTORIA_JUGADOR SET\
+                sql_actualizacion = "UPDATE TRAYECTORIA_TECNICO SET\
                 FECHA_FINAL = TO_DATE(:fecha_transferencia, 'dd/mm/yyyy')\
                 WHERE ID = :id_registro"
                 await BD.Open(sql_actualizacion, [fecha_transferencia, id_registro], true);
 
-                sql_insertar = "INSERT INTO TRAYECTORIA_JUGADOR (id_jugador, id_equipo, fecha_inicial)\
+                sql_insertar = "INSERT INTO TRAYECTORIA_TECNICO (id_tecnico, id_equipo, fecha_inicial)\
                 VALUES(\
-                    :id_jugador,\
+                    :id_tecnico,\
                     :id_equipo,\
                     TO_DATE(:fecha_transferencia, 'dd/mm/yyyy')\
                     )"
-                await BD.Open(sql_insertar, [id_jugador, id_equipo_nuevo, fecha_transferencia], true);
+                await BD.Open(sql_insertar, [id_tecnico, id_equipo_nuevo, fecha_transferencia], true);
                 res.status(201).json({
                     "response":true,
                     "msg": "Transferencia realizada correctamente"

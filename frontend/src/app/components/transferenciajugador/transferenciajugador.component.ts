@@ -27,8 +27,6 @@ export class TransferenciajugadorComponent implements OnInit {
   LJugador:ListadoJugadores[] = [];
   LEquipo:EquipoInterface [] = [];
 
-  //GetJugadores, GetTrayectoriaJugador(id), InsertTrayectoria(id)
-
   hacerTranseferencia(){
     this.fecha_transferencia = this.fecha_transferencia.split("-").reverse().join("/");
     this.sjugadorservice.InsertTrayectoria(this.id_jugador, this.id_equipo_nuevo, this.fecha_transferencia)
@@ -39,14 +37,14 @@ export class TransferenciajugadorComponent implements OnInit {
           title: 'Exito',
           text: res['msg']
         });
-        this.limpiarDatos();
-        this.cargarTabla();        
+        this.limpiarDatos();   
       }else{
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: res['msg']
         });
+        this.fecha_transferencia = "";
       }
     });
   }
@@ -55,8 +53,13 @@ export class TransferenciajugadorComponent implements OnInit {
     if (this.id_jugador != -1) {
       this.sjugadorservice.GetTrayectoriaJugador(this.id_jugador).subscribe((res:any) => {
         this.TJugador = res;
-        console.log(this.TJugador);
       }); 
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "No ha seleccionado algun jugador"
+      });
     }
   }
 

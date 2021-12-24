@@ -1,1 +1,79 @@
-<p>transferenciatecnico works!</p>
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAYFBMVEX///8AAADCwsKysrLPz8/w8PCtra1/f3/V1dXt7e1OTk6vr68YGBipqal7e3vz8/O8vLxCQkKHh4dQUFDZ2dnm5ub4+Pg0NDRHR0eTk5MdHR0LCwsRERFzc3M+Pj4nJyfXeLsTAAADlklEQVR4nO2cjXaiMBCFGVr8bUUrKrW73fd/y23pKooJ4Ziwk1zv9wLOd46XCcmELCOEEEIIIYQQQgghhBBCCCGEEEIIeUh2e+0KxmZ9KLRLGJlcXmbaNYxLLiKv2kWMyrehrLSrGJPGUBbAYfwxFMEN48lQJtqVjMXZEDaMraHUpXYxo3BhCBrGK0PIznhtiBjGjqFs4MLYNRR51i4pMLeGaGE0GMpUu6igmAxlg7RMNRpChdFiCLRMtRnKb+3KQmE1FJQNHLuhfGCEsccQpDP2GkKEsd9QNnPtAr1xGMpL8mF0GYYK43zypMSb0zDMO+Oz+3cUCRHGuA3ll38YIzcMsEyN3tC7M8ZvKLVfGBMwlKNXGFMw9OuMaRj6dMZEDKXeoRse7n7cJGII/y9Ff9L4Ld0SMPxE7/jwqzbv1+DYDf2Pv+M2DHFQU6xzJd7dgomffLt3olI/o3Eaou8mAkwR9RsinHf3GqYewYY+Q4whMLthDTLFbzVEiGCDzXCpXVgwLIaVdl3hMBpuQYYUGh5y6gsngg03hkegCDZ0DfHuljzaFDTEQrTDpSHmPb3LGyVwEWxoDbG6YMvZEKwLtuTIEWz4MdymP6Bn5TFuySJ2wZZcjrgRbEjniwP3DkncPVzxnykOa+0SxmV2lFy7hlGZfD0PoQ1Xgm043wq24exFsA2Xp1cDVMOpYBsWtWAbniIIazi52iUDNFwJtmGxEGzD6ijYhpOuH5rh9FYQyrDYGgSRDCuTH5Lh0iyIY2iKIJLhvrYJghjOrH4ghoYuiGVojSCIYdldiKIZ9kUQwtDWBWEM+yPY8K51YWMd4GSntHfBGPC/ruCMoDLehr1dMAZ8DVfun1DGz7DYaNfvxsvwakc0VnwMX7WLH4SH4YAuGAN3G84/tUsfyN2GO+OGU4R4/EsHfIYrBnyeNE/axQ/Cq1tUf7TLH4Bnx3e898aA76ot/pbhvfKOPoz+b09V5Eu3ANfZzUcx0RDkwv6AML5pfTxzEmZE3B3GxHeimvlKcENnZ0zfEH9XP3NsC0MY9oYRwzAr7RtTIIb4p9yZvTPiGGbVB7qh5aAGydC8gYNlaOqMYIbZ7CaMaIZZ2X1nhDO86YyAhp3OiGh4PYcJaZjtF+iGl50R1bANI6zheTcV1/DUGYEN/4UR2rBZpmIbfl8SAjfMyg34Fwe+mn8qX38ghBBCCCGEEEIIIYQQQgghhBBCCAnMX0lqML5T4q8VAAAAAElFTkSuQmCC" alt="" width="50" height="60">
+        <h2>Transferencia Tecnico</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+
+            <div class="row g-3">
+              <div class="col-sm-12">
+                  <label class="form-label">Tecnico</label>
+                  <select [(ngModel)] = "id_tecnico" name = "id_tecnico" class="form-select" required>                        
+                      <option *ngFor="let registro_l of LTecnico" value="{{ registro_l.id_tecnico }}">{{ registro_l.nombres }} - {{registro_l.nombre_pais}}</option>
+                  </select>
+              </div>            
+              <div class="col-sm-6">
+                  <label class="form-label">Equipo a Transferir</label>
+                  <select [(ngModel)] = "id_equipo_nuevo" name = "id_equipo_nuevo" class="form-select" required>                        
+                      <option *ngFor="let registro_l of LEquipo" value="{{ registro_l.id_equipo }}">{{ registro_l.nombre }} - {{ registro_l.nombre_pais }}</option>
+                  </select>
+              </div>            
+              <div class="col-sm-6">
+                <label class="form-label">Fecha de Transferencia</label>
+                <input [(ngModel)] = "fecha_transferencia" name = "fecha_transferencia" type="date" class="form-control" id="start" name="trip-start"
+                    min="1900-01-01" max="2099-12-31" required>
+              </div>
+            </div>
+            <br/>
+            <button (click)="hacerTranseferencia()" class="w-100 btn btn-primary btn-lg" type="submit">Realizar Transeferencia</button><br/><br/>
+            <button (click)="cargarTabla()" class="w-50 btn btn-warning" type="submit">Mostrar Trayectoria</button>
+          
+          </form>
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">EQUIPO</th>
+            <th scope="col">FECHA INICIAL</th>
+            <th scope="col">FECHA FINAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of TTecnico">
+            <th>{{ registro.id_tecnico }}</th>
+            <td>{{ registro.nombre_tecnico }}</td>
+            <td>{{ registro.nombre_equipo }}</td>
+            <td>{{ registro.fecha_inicial }}</td>
+            <td>{{ registro.fecha_final }}</td> 
+          </tr>
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>
