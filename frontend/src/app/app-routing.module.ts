@@ -11,6 +11,7 @@ import { AutenticacionGuard } from './guard/autenticacion.guard';
 import { EstadioComponent } from './components/estadio/estadio.component';
 import { MembresiaComponent } from './components/membresia/membresia.component';
 import { AjusteclienteComponent } from './components/ajustecliente/ajustecliente.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,11 @@ const routes: Routes = [
   {
     path: 'ajustecliente',
     component: AjusteclienteComponent,
+    canActivate: [AutenticacionGuard]
+  },
+  {
+    path: 'usuarios',
+    component: UsuariosComponent,
     canActivate: [AutenticacionGuard]
   }
 ];

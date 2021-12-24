@@ -1,0 +1,146 @@
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://images.vexels.com/media/users/3/137047/isolated/lists/5831a17a290077c646a48c4db78a81bb-icono-de-perfil-de-usuario-azul.png" alt="" width="50" height="60">
+        <h2>Registro</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-4">
+                <label class="form-label">Nombres</label>
+                <input [(ngModel)] = "nombres" name = "nombres" type="text" class="form-control" placeholder="" value="" required>
+              </div>
+  
+              <div class="col-sm-4">
+                <label class="form-label">Apellidos</label>
+                <input [(ngModel)] = "apellidos" name = "apellidos" type="text" class="form-control" placeholder="" value="" required>
+              </div>
+  
+              <div class="col-sm-4">
+                <label class="form-label">Contraseña</label>
+                <div class="input-group has-validation">
+                  <input [(ngModel)] = "clave" name = "clave" type="password" class="form-control">
+                </div>
+              </div>
+  
+              <div class="col-sm-4">
+                <label class="form-label">Correo Electronico </label>
+                <input [(ngModel)] = "correo_electronico" name = "correo_electronico" type="email" class="form-control" placeholder="you@example.com">
+              </div>
+  
+              <div class="col-sm-4">
+                <label class="form-label">Telefono <span class="text-muted">(Opcional)</span></label>
+                <input [(ngModel)] = "telefono" name = "telefono" type="text" class="form-control" placeholder="12345678" required>
+              </div>
+  
+              <div class="col-sm-4">
+                <label class="form-label">Link de Fotografia <span class="text-muted">(Opcional)</span></label>
+                <input [(ngModel)] = "link_fotografia" name = "link_fotografia" type="text" class="form-control" placeholder="">
+              </div>
+  
+              <div class="col-sm-4">
+                  <label for="txtGenero" class="form-label">Genero</label>
+                  <select [(ngModel)] = "genero" name = "genero" class="form-select" id="txtGenero" required>
+                    <option value="" selected>Elegir...</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                  </select>
+              </div>
+  
+              <div class="col-sm-4">
+                <label class="form-label">Fecha de Nacimiento</label>
+                <input [(ngModel)] = "fecha_nacimiento" name = "fecha_nacimiento" type="date" class="form-control" id="start" name="trip-start"
+                    min="1900-01-01" max="2099-12-31" required>
+              </div>
+  
+            <div class="col-sm-4">
+                <label class="form-label">Direccion <span class="text-muted">(Opcional)</span></label>
+                <input [(ngModel)] = "direccion" name = "direccion" type="text" class="form-control" placeholder="">
+            </div>
+  
+            <div class="col-sm-4">
+                <label class="form-label">Pais</label>
+                <select [(ngModel)] = "id_pais" name = "id_pais" class="form-select" required>                        
+                    <option *ngFor="let pais of Paises" value="{{ pais.id_pais }}">{{ pais.nombre }}</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label">Estado del Usuario</label>
+                <select [(ngModel)] = "id_estado_usuario" name = "id_estado_usuario" class="form-select" required>                        
+                    <option *ngFor="let dato of Estado_Usuario" value="{{ dato.id_estado }}">{{ dato.nombre }}</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label">Tipo de Usuario</label>
+                <select [(ngModel)] = "id_tipo_usuario" name = "id_tipo_usuario" class="form-select" required>                        
+                    <option *ngFor="let dato of Tipo_Usuario" value="{{ dato.id }}">{{ dato.nombre }}</option>
+                </select>
+            </div>
+            </div>
+            <hr class="my-4">
+            <button (click) = "insertarUsuarioAdmEmp()" class="w-100 btn btn-primary btn-lg" type="submit">Registrar</button><br/><br/>
+            <button (click) = "actualizarUsuarioAdmEmp()" class="w-50 btn btn-warning" type="submit">Guardar Cambios</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE COMPLETO</th>
+            <th scope="col">CLAVE</th>
+            <th scope="col">TELEFONO</th>
+            <th scope="col">GENERO</th>
+            <th scope="col">NACIMIENTO</th>
+            <th scope="col">DIRECCION</th>
+            <th scope="col">FOTOGRAFIA</th>
+            <th scope="col">PAIS</th>
+            <th scope="col">TIPO</th>
+            <th scope="col">ESTADO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of Usuarios">
+            <th>{{ usuario.id_usuario }}</th>
+            <td>{{ usuario.nombres }} {{ usuario.apellidos }}</td>
+            <td>{{ usuario.clave }}</td>
+            <td>{{ usuario.telefono }}</td>
+            <td>{{ usuario.genero }}</td>
+            <td>{{ usuario.fecha_nac }}</td>
+            <td>{{ usuario.direccion }}</td>
+            <td><img src="{{ usuario.link_fotografia }}" alt="" width="50" height="50"></td>
+            <td>{{ usuario.nombre_pais }}</td>
+            <td>{{ usuario.nombre_tipo_usuario }}</td> 
+            <td>{{ usuario.nombre_estado_usuario }}</td> 
+            <td>
+                <button (click)="setearInterfaz(usuario.id_usuario,usuario.nombres,usuario.apellidos,usuario.clave,usuario.telefono,usuario.genero,usuario.fecha_nac,usuario.direccion,usuario.link_fotografia,usuario.id_pais,usuario.id_tipo_usuario,usuario.id_estado_usuario)" class="btn btn-outline-warning" type="submit">Editar</button>&nbsp;
+                <button (click)="eliminarUsuario(usuario.id_usuario)" class="btn btn-outline-danger" type="submit">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>

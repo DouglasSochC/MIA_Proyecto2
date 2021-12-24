@@ -77,4 +77,37 @@ export class AjusteclienteComponent implements OnInit {
     }
   }
 
+  eliminarCuenta(){
+    Swal.fire({
+      title: '¿Esta seguro?',
+      text: "No podras revertir esto",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.susuarioservice.DeleteUsuario(this.id_usuario)
+        .subscribe((res:any) => {
+          if (res['response']) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Exito',
+              text: res['msg']
+            });
+            this.susuarioservice.logoutUsuario();
+            res.redirect('http://localhost:4200/login');
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: res['msg']
+            });
+          }
+        });  
+      }
+    });  
+  }
+
 }

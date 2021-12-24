@@ -14,9 +14,17 @@ export class MenuClienteComponent implements OnInit {
   }
 
   membresia_activa: number = -1;
-
+  
   CerrarSesion(){
     this.autenticacion.logoutUsuario();
+  }
+
+  mostrarNombre(){
+    if (this.autenticacion.getUsuarioActual()) {
+      return "¡Bienvenido! " + this.autenticacion.getUsuarioActual()['nombres'];
+    }else{
+      return "";
+    }
   }
 
   VerMembresia(){

@@ -17,6 +17,7 @@ import { EstadioComponent } from './components/estadio/estadio.component';
 import { TecnicoComponent } from './components/tecnico/tecnico.component';
 import { MembresiaComponent } from './components/membresia/membresia.component';
 import { AjusteclienteComponent } from './components/ajustecliente/ajustecliente.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AjusteclienteComponent } from './components/ajustecliente/ajustecliente
     EstadioComponent,
     TecnicoComponent,
     MembresiaComponent,
-    AjusteclienteComponent
+    AjusteclienteComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,

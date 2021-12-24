@@ -13,6 +13,14 @@ export class MenuAdministradorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  mostrarNombre(){
+    if (this.autenticacion.getUsuarioActual()) {
+      return "¡Bienvenido! " + this.autenticacion.getUsuarioActual()['nombres'];
+    }else{
+      return "";
+    }
+  }
+
   CerrarSesion(){
     this.autenticacion.logoutUsuario();
   }
