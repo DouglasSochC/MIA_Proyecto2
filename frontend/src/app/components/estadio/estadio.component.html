@@ -13,37 +13,6 @@
         <form class="needs-validation" novalidate>
           <div class="row g-3">
 
-  <!--
-  id_nombre:number=-1;
-  nombre: string = ""; 
-  fecha_inaguracion: string = "";
-  capacidad: number =-1;
-  direccion: string = "";
-  link_fotografia: string = "";
-  id_estado_estadio:number=-1;
-  id_pais: number = -1;            
-              <div class="col-sm-4">
-                <label class="form-label">Fecha de Nacimiento</label>
-                <input [(ngModel)] = "fecha_nacimiento" 
-                        name = "fecha_nacimiento" 
-                        type="date" 
-                        class="form-control" 
-                        id="start" 
-                        name="trip-start"
-                        min="1900-01-01" max="2099-12-31" required>
-              </div>    -->           
-
-
-              <!--div class="col-sm-4">
-                <label class="form-label">Nombres</label>
-                <input [(ngModel)] = "nombres" 
-                        name = "nombres" 
-                        type="text" 
-                        class="form-control" 
-                        placeholder="" 
-                        value="" required>
-              </div-->
-
               <div class="col-sm-6">
                   <label class="form-label">Nombre</label>
                   <input [(ngModel)] = "estadio_nombre" 
@@ -53,9 +22,7 @@
                           placeholder="" 
                           value="" required>
               </div>
-          
-
-
+       
               <div class="col-sm-6">
                   <label class="form-label">Fecha de inauguración</label>
                   <input [(ngModel)] = "fecha_inaguracion" 
@@ -67,8 +34,6 @@
                           min="1900-01-01" max="2030-12-31" required
                   >
               </div>  
-
-
 
               <div class="col-sm-6">
                   <label class="form-label">Capacidad</label>
@@ -99,11 +64,6 @@
                 >
               </div>
 
-
-
-
-
-
               <div class="col-sm-6">
                 <label  class="form-label">Estados</label>
                 <select [(ngModel)] = "id_estado_estadio" 
@@ -117,7 +77,6 @@
                 </select>
               </div>
 
-
               <div class="">
                 <label for="address2" class="form-label">Link de Fotografia <span class="text-muted">(Opcional)</span></label>
                 <input [(ngModel)] = "link_fotografia" name = "link_fotografia" type="text" class="form-control" placeholder="">
@@ -127,7 +86,9 @@
           <br/>
           <button (click)="guardarEstadio()" 
                   class="w-100 btn btn-primary btn-lg" 
-                  type="submit">Guardar Estadio</button>
+                  type="submit"
+                  >Guardar Estadio
+          </button>
           <br/>
           <br/>
           <button (click)="actualizarEstadio()" 
@@ -182,18 +143,19 @@
                               estadio.link_fotografia )" 
                               class="btn btn-outline-warning" 
                               type="submit"
-            >Editar
+                              >Editar
             </button>&nbsp;
-            <button (click)="eliminarEstadio(estadio.estadio_nombre)" 
-                            class="btn btn-outline-danger" 
-                            type="submit"
-            >Eliminar
+            
+            <button (click)="eliminarEstadio(estadio.id_estadio)" 
+                    class="btn btn-outline-danger" 
+                    type="submit"
+                    >Eliminar
             </button>          
           </td>           
         </tr>
         
       </tbody>
-    </table>  
+  </table>  
 
   <footer class="my-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>

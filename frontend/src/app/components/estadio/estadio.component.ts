@@ -40,7 +40,6 @@ export class EstadioComponent implements OnInit {
   id_estado_estadio:number=-1;
   id_pais: number = -1;
   
-  
 
   Estadio:EstadioInterface[] = [];
   Paises:PaisInterface[] = [];
@@ -69,7 +68,6 @@ id_pais != -1
   //agregar nuevo estadio
   guardarEstadio(){
     this.fecha_inaguracion = this.fecha_inaguracion.split("-").reverse().join("/");
-    alert("nombre leido: "+this.estadio_nombre);
     this.sestadioservice
         .InsertEstadios(  this.estadio_nombre, 
                           this.fecha_inaguracion,
@@ -99,7 +97,8 @@ id_pais != -1
     });
   }
 
-  eliminarEstadio(id_estadio:string ){
+
+  eliminarEstadio(id_estadio:number ){
     Swal.fire({
       title: '¿Esta seguro?',
       text: "No podras revertir esto",
@@ -109,11 +108,10 @@ id_pais != -1
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, Eliminar!'
     }).then((result) => {
-      if (result.isConfirmed) {
-        alert("eliminare");
-        /*
-        this.sestadioservice.DeleteEstadio(nombre).subscribe((res:any) => {
-        /*
+      if (result.isConfirmed) {        
+        
+        this.sestadioservice.DeleteEstadio(id_estadio).subscribe((res:any) => {
+        
         if (res['response']) {
           Swal.fire({
             icon: 'success',
@@ -129,14 +127,14 @@ id_pais != -1
             text: res['msg']
           });
         }
-      }); */ 
+      }); 
       }
     });      
   }
 
 
   actualizarEstadio(){
-    alert("actualizando estadio");    
+    
     this.fecha_inaguracion = this.fecha_inaguracion.split("-").reverse().join("/");
     this.sestadioservice.UpdateEstadio( this.estadio_nombre, 
                                         this.fecha_inaguracion,
