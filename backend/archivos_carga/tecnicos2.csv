@@ -1,10 +1,12 @@
 nombres,fecha_nac,pais,estado,pais_equipo,equipo,fecha_ini,fecha_fin
-tecnico1p1,01/01/1981,pais1,Activo,pais1,equipo1p1,01/01/2001,10/10/2010
-tecnico2p1,01/01/1981,pais1,Activo,pais1,equipo2p1,01/01/2001,10/10/2010
-tecnico3p1,01/01/1981,pais1,No Activo,pais1,equipo3p1,01/01/2001,10/10/2010
-tecnico1p2,02/02/1982,pais2,Activo,pais2,equipo1p2,02/02/2002,10/10/2010
-tecnico2p2,02/02/1982,pais2,Activo,pais2,equipo2p2,02/02/2002,10/10/2010
-tecnico3p2,02/02/1982,pais2,No Activo,pais2,equipo3p2,02/02/2002,10/10/2010
-tecnico1p3,03/03/1983,pais3,Activo,pais3,equipo1p3,03/03/2003,10/10/2010
-tecnico2p3,03/03/1983,pais3,Activo,pais3,equipo2p3,03/03/2003,10/10/2010
-tecnico3p3,03/03/1983,pais3,No Activo,pais3,equipo3p3,03/03/2003,10/10/2010
+tecnico1p1,01/01/1981,pais1,Activo,pais1,equipo1p1,01/01/2001,
+tecnico2p1,01/01/1981,pais1,Activo,pais1,equipo2p1,01/01/2001,
+tecnico3p1,01/01/1981,pais1,No Activo,pais1,equipo3p1,01/01/2001,
+tecnico1p2,02/02/1982,pais2,Activo,pais2,equipo1p2,02/02/2002,
+tecnico2p2,02/02/1982,pais2,Activo,pais2,equipo2p2,02/02/2002,
+tecnico3p2,02/02/1982,pais2,No Activo,pais2,equipo3p2,02/02/2002,
+tecnico1p3,03/03/1983,pais3,Activo,pais3,equipo1p3,03/03/2003,
+tecnico2p3,03/03/1983,pais3,Activo,pais3,equipo2p3,03/03/2003,
+tecnico3p3,03/03/1983,pais3,No Activo,pais3,equipo3p3,03/03/2003,10/10/2008
+tecnico3p3,03/03/1983,pais3,No Activo,pais3,equipo2p3,10/10/2008,10/10/2010
+tecnico3p3,03/03/1983,pais3,No Activo,pais3,equipo1p2,10/10/2010,

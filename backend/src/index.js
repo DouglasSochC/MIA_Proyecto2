@@ -21,6 +21,7 @@ const posicionjugadorRoutes = require('./routes/posicion_jugador');
 const membresiaRoutes = require('./routes/membresia');
 const estadousuarioRoutes = require('./routes/estado_usuario');
 const tipousuarioRoutes = require('./routes/tipo_usuario');
+const trayectoriajugadorRoutes = require('./routes/trayectoria_jugador');
 
 //Settings
 app.set('port', 3000);
@@ -60,6 +61,7 @@ app.use(posicionjugadorRoutes);
 app.use(membresiaRoutes);
 app.use(estadousuarioRoutes);
 app.use(tipousuarioRoutes);
+app.use(trayectoriajugadorRoutes);
 
 //Run
 app.listen(app.get('port'), () => {
