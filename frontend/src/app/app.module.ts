@@ -18,6 +18,21 @@ import { TecnicoComponent } from './components/tecnico/tecnico.component';
 import { MembresiaComponent } from './components/membresia/membresia.component';
 import { AjusteclienteComponent } from './components/ajustecliente/ajustecliente.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { AccesodenegadoComponent } from './components/accesodenegado/accesodenegado.component';
+import { JugadorComponent } from './components/jugador/jugador.component';
+import { PartidoComponent } from './components/partido/partido.component';
+import { CompetenciaComponent } from './components/competencia/competencia.component';
+import { TransferenciajugadorComponent } from './components/transferenciajugador/transferenciajugador.component';
+import { TransferenciatecnicoComponent } from './components/transferenciatecnico/transferenciatecnico.component';
+import { EstadopartidoComponent } from './components/estadopartido/estadopartido.component';
+import { IncidenciaspartidoComponent } from './components/incidenciaspartido/incidenciaspartido.component';
+import { EstadojugadorComponent } from './components/estadojugador/estadojugador.component';
+import { EstadotecnicoComponent } from './components/estadotecnico/estadotecnico.component';
+import { PublicarnoticiaComponent } from './components/publicarnoticia/publicarnoticia.component';
+import { InformacionpartidoComponent } from './components/informacionpartido/informacionpartido.component';
+import { NoticiasComponent } from './components/noticias/noticias.component';
+import { ConsultaestadisticaComponent } from './components/consultaestadistica/consultaestadistica.component';
+import { ReportesadministradorComponent } from './components/reportesadministrador/reportesadministrador.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +48,22 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
     TecnicoComponent,
     MembresiaComponent,
     AjusteclienteComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    AccesodenegadoComponent,
+    JugadorComponent,
+    PartidoComponent,
+    CompetenciaComponent,
+    TransferenciajugadorComponent,
+    TransferenciatecnicoComponent,
+    EstadopartidoComponent,
+    IncidenciaspartidoComponent,
+    EstadojugadorComponent,
+    EstadotecnicoComponent,
+    PublicarnoticiaComponent,
+    InformacionpartidoComponent,
+    NoticiasComponent,
+    ConsultaestadisticaComponent,
+    ReportesadministradorComponent
   ],
   imports: [
     BrowserModule,

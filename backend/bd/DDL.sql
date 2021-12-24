@@ -241,7 +241,7 @@ CREATE TABLE USUARIO(
     direccion VARCHAR(150),
     membresia_activa NUMBER(1,0),
     link_fotografia VARCHAR(4000),
-    id_pais INTEGER NOT NULL,
+    id_pais INTEGER,
     id_tipo INTEGER NOT NULL,
     id_estado_usuario INTEGER NOT NULL,
     PRIMARY KEY (id),
@@ -360,13 +360,12 @@ INSERT INTO TIPO_USUARIO(nombre) VALUES('Cliente');
 INSERT INTO ESTADO_USUARIO (nombre) VALUES('Activo');
 INSERT INTO ESTADO_USUARIO (nombre) VALUES('No Activo');
 INSERT INTO MEMBRESIA(nombre) VALUES('Normal');
+INSERT INTO USUARIO(nombres, apellidos, clave, correo, telefono, genero, fecha_nac, fecha_registro, 
+direccion, membresia_activa, id_tipo, id_estado_usuario)  
+VALUES ('Douglas','Soch','123','prueba1@gmail.com',12345678,'M','01/01/1990','02/01/2021','Dir 1',0,
+(SELECT(ID) FROM TIPO_USUARIO WHERE NOMBRE = 'Administrador'),
+(SELECT(ID) FROM ESTADO_USUARIO WHERE NOMBRE = 'Activo'));
 COMMIT;
-
-/*PROCEDIMIENTO ALMACENADO*/
-CREATE OR REPLACE PROCEDURE AGREGAR_BITACORA (descripcion_usu VARCHAR2, operacion_usu VARCHAR2, id_usu INTEGER) is
-BEGIN
-INSERT INTO BITACORA (DESCRIPCION, OPERACION, ID_USUARIO) VALUES(descripcion_usu, operacion_usu, id_usu);
-END;
 
 /*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*/
 /*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*/
@@ -377,23 +376,6 @@ INSERT INTO PAIS(nombre) VALUES('Alemania');
 INSERT INTO PAIS(nombre) VALUES('Italia');
 INSERT INTO PAIS(nombre) VALUES('Francia');
 COMMIT;
-
-INSERT INTO USUARIO(nombres, apellidos, clave, correo, telefono, genero, fecha_nac, fecha_registro, 
-direccion, membresia_activa, id_pais, id_tipo, id_estado_usuario)  
-VALUES (
-    'Douglas',
-    'Soch',
-    '123',
-    'prueba1@gmail.com',
-    12345678,
-    'M',
-    '01/01/1990',
-    '02/01/2021',
-    'Dir 1',
-    0,
-    (SELECT(ID) FROM PAIS WHERE NOMBRE = 'Inglaterra'),
-    (SELECT(ID) FROM TIPO_USUARIO WHERE NOMBRE = 'Administrador'),
-    (SELECT(ID) FROM ESTADO_USUARIO WHERE NOMBRE = 'Activo'));
 
 INSERT INTO USUARIO(nombres, apellidos, clave, correo, telefono, genero, fecha_nac, fecha_registro, 
 direccion, membresia_activa, id_pais, id_tipo, id_estado_usuario) 
@@ -445,3 +427,12 @@ VALUES (
     (SELECT(ID) FROM TIPO_USUARIO WHERE NOMBRE = 'Cliente'),
     (SELECT(ID) FROM ESTADO_USUARIO WHERE NOMBRE = 'Activo'));
 COMMIT;
+/*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*/
+/*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*/
+/*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*//*DATOS DE PRUEBA*/
+
+/*PROCEDIMIENTO ALMACENADO*/
+CREATE OR REPLACE PROCEDURE AGREGAR_BITACORA (descripcion_usu VARCHAR2, operacion_usu VARCHAR2, id_usu INTEGER) is
+BEGIN
+INSERT INTO BITACORA (DESCRIPCION, OPERACION, ID_USUARIO) VALUES(descripcion_usu, operacion_usu, id_usu);
+END;
