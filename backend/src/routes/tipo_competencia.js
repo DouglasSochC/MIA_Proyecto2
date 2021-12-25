@@ -12,7 +12,7 @@ router.get('/getTiposCompetencias', async (req, res) => {
 
     result.rows.map(registro => {
         let LSchema = {
-            "id_competencia": registro[0],
+            "id_tipo_competencia": registro[0],
             "nombre": registro[1]
         }
         Listado.push(LSchema);

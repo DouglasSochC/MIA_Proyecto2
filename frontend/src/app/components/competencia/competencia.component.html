@@ -1,1 +1,90 @@
-<p>competencia works!</p>
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAaVBMVEX///8AAACwsLDf399FRUV5eXlRUVHx8fESEhLl5eXMzMxWVlb09PTCwsIeHh59fX2KiopLS0ulpaVubm4JCQmQkJDX19diYmIlJSWDg4NBQUG4uLiamppqamorKyvq6uozMzNcXFwYGBj/dZCUAAAEVUlEQVR4nO2d64KqIBRGNZtK0+5aWTNd3v8hz6h4oaOABQjOt34Fw3a7UmgEM8cBAAAAAPjbzCe6mA9k6Lm68GAIQxjCEIYwhCEMYQhDGBJO8SbjTFUeisoNKRaluPpzutm+ypyLJicDDadFZUhVLkhTUqRL7uX3dXKgDcOiydRcw7m44TUvBLQhuRQchyE5XDEVMSrDcjuUzSgN54uxGzrR6A2bXXGkhk79sThWwzpqrIb1p6Ithufo8t3LsOqKlhgm2atJL0NnZpNhXLxc9jIMLTJckb/7YobknzfSFa0wDMoGsZDhsW5uieF33eLnQF6wDMk1hpOf1lYY3uoWUYcTVVoUA1MWe7DB8BY3m5RnINvw1OiK5htWA0dOubTJNnQfZfvYBsNWOIburmyYknPcfMMbdSi5hlVX9M2fpyFsqe7IN/yh3xHzDX+vaf1mmWtYd8UC4w1PrntslvmGdVfMMd0w/+8kaFQIGFZdMcdwQz+veDaaihiuml3RcMNlUdMYbEQMqfPabMNq6qwebIQMm13RbMPn/wdFzLDRFY02bEwNRmWdoOGh6oomGzZrq8FG0LA+6iYapqT20awsBxtRw6orpgYakuvCqK2ynCskgQxD0hVv9FYMMcyv7enpUtfdZpVhuaJLAlmGxXvybaShuw2CjfvKz9WbVEvWNy+jPEBeUXoxdK/JZPZSZYqhOmAIQxjCEIYwhCEMYQjDv2zo36d6uPv8nQEACLJfZ+yH3g2FkKFx6N1QCAztB4b2A0P7gaH9wNB+YGg/MLQfGBpCRN/ropNpwN+9z0kG88vQMXO6H9TwS4PhclDDJQxhCMPaUPdiia/dUPeClwdDecBQETCUCAwVAUOJkAetJPyWUiEXbVsNqS67jKvuxzPPr3nei+a0ABjEy4PxKFJ++NukjLxyZ6VYhjOpmWhevzwDw/eBoSpgKA8YqgKG8oChKmAoDxiqAobygKEqYCgPGKoChvKAoSpgKA8YqgKG8hj/rL4z7ybkR79NyMirMC2wnSTIiFSem22EUZ5Xx+0D479TYfx3m8BQETCUCAwVAUOJjN/wUaQa6NsID35Lwe2dZx0syfPIp10Njp/cPng5dm2WfCXwuexqsOn1nvuMyzI+m7cF1x/lvfETVBw/ytQrVZMPHwDX5+lMq89SRfwMrUT8TbNY8TPAEIb2GSZeP/y9FMO93zNv8rZh75mKtRTDdd+4EIb/A8MuYMgBhl3AsAUYdgFDDjDsAoYtwLALGHLQaPi00vDJb1mx3GbcexvG0ywuffc+kCDNwqcxvyVNeM/3V8d8OACKCfZfnewYcTdGnMigse4O37Nmz3eMuPaRYOJ2w3rUHXORQ8CQFc5abflixE20GS4EDF9/4RGGMIQhDGEIQxjCEIYwhCEMYQhDGMIQhjCEIQxhOKQh6ybxoea8WT94027oTbphrQiGjLj2TDSscNYKZsCIG+rH2AEAAAAAFPEPcMVkT7CP6H4AAAAASUVORK5CYII=" alt="" width="200" height="60">
+        <h2>Competencia</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <label class="form-label">Nombre</label>
+                    <input [(ngModel)] = "nombre" name = "nombre" type="text" class="form-control" autocomplete="off" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Año</label>
+                    <input [(ngModel)] = "anio" name = "anio" type="text" class="form-control" autocomplete="off" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Campeon <span class="text-muted">(Opcional)</span></label>
+                    <input [(ngModel)] = "campeon" name = "campeon" type="text" class="form-control" autocomplete="off" placeholder="" value="" required>
+                </div>    
+                <div class="col-sm-6">
+                    <label class="form-label">Tipo de Competencia</label>
+                    <select [(ngModel)] = "id_tipo_competencia" name = "id_tipo_competencia" class="form-select" required>                        
+                        <option *ngFor="let registro of TipoCompetencia" value="{{ registro.id_tipo_competencia }}">{{ registro.nombre }}</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Pais de la Competencia</label>
+                    <select [(ngModel)] = "id_pais" name = "id_pais" class="form-select" required>                        
+                        <option *ngFor="let registro of Paises" value="{{ registro.id_pais }}">{{ registro.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+            <button (click)="guardarCompetencia()" class="w-100 btn btn-primary btn-lg" type="submit">Ingresar Equipo</button><br/><br/>
+            <button (click)="actualizarCompetencia()" class="w-50 btn btn-warning" type="submit">Guardar Cambios</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">AÑO</th>
+            <th scope="col">EQUIPO CAMPEON</th>
+            <th scope="col">PAIS DE LA COMPETENCIA</th>
+            <th scope="col">TIPO COMPETENCIA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of Competencia">
+            <th>{{ registro.id_competencia }}</th>
+            <td>{{ registro.nombre }}</td>
+            <td>{{ registro.anio }}</td>
+            <td>{{ registro.campeon }}</td>
+            <td>{{ registro.pais_nombre }}</td>
+            <td>{{ registro.tipo_competencia_nombre }}</td>
+            <td>
+                <button (click)="setearInterfaz(registro.id_competencia, registro.nombre, registro.anio, registro.campeon, registro.id_tipo_competencia, registro.id_pais)" class="btn btn-outline-warning" type="submit">Editar</button>&nbsp;
+                <button (click)="eliminarCompetencia(registro.id_competencia)" class="btn btn-outline-danger" type="submit">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>

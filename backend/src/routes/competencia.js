@@ -77,6 +77,7 @@ router.post('/addCompetencia', async (req, res) => {
 router.put("/updateCompetencia", async (req, res) => {
     try {
         const { id_competencia, nombre, anio, campeon, id_tipo_competencia, id_pais } = req.body;
+        console.log(id_competencia, nombre, anio, campeon, id_tipo_competencia, id_pais);
         if (!(nombre != "" && anio != -1 && id_tipo_competencia != -1 && id_pais != -1)) {
             res.status(201).json({
                 "response":false,
@@ -97,9 +98,10 @@ router.put("/updateCompetencia", async (req, res) => {
             });
         }
     } catch (error) {
+        console.log(error);
         res.status(201).json({
             "response": false,
-            "msg": "Ha ocurrido un error al actualizar"
+            "msg": "Ha ocurrido un error al actualizar: "+error
         });
     }
 });
