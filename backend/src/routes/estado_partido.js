@@ -13,7 +13,7 @@ router.get('/getEstadosPartidoClave', async (req, res) => {
     result.rows.map(registro => {
         jsonNuevo += '"'+registro[0] +'":"'+ registro[1]+'",';
     })
-    jsonNuevo = jsonNuevo.slice(0, -1);
+    jsonNuevo = jsonNuevo != "{"? jsonNuevo.slice(0, -1): jsonNuevo;
     jsonNuevo += "}";
     res.status(200).json([JSON.parse(jsonNuevo)]);
 });

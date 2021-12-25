@@ -25,12 +25,13 @@ router.get('/getTecnicoMinimo', async (req, res) => {
 //READ
 router.get('/getTrayectoriaTecnico/:id_tecnico', async (req, res) => {
     const { id_tecnico } = req.params;
-    sql = "SELECT TECNICO.ID, TECNICO.NOMBRES, EQUIPO.ID, EQUIPO.NOMBRE,\
+    sql = "SELECT TECNICO.ID, TECNICO.NOMBRES, EQUIPO.ID, EQUIPO.NOMBRE, PAIS.NOMBRE,\
     TO_CHAR(TRAYECTORIA_TECNICO.FECHA_INICIAL, 'DD/MM/YYYY'),\
     TO_CHAR(TRAYECTORIA_TECNICO.FECHA_FINAL, 'DD/MM/YYYY')\
     FROM TRAYECTORIA_TECNICO\
     INNER JOIN TECNICO ON TECNICO.ID = TRAYECTORIA_TECNICO.ID_TECNICO\
     INNER JOIN EQUIPO ON EQUIPO.ID = TRAYECTORIA_TECNICO.ID_EQUIPO\
+    INNER JOIN PAIS ON PAIS.ID = EQUIPO.ID_PAIS\
     WHERE TECNICO.ID = :id_tecnico ORDER BY FECHA_INICIAL ASC";
     
     let result = await BD.Open(sql, [id_tecnico], false);
@@ -42,8 +43,9 @@ router.get('/getTrayectoriaTecnico/:id_tecnico', async (req, res) => {
             "nombre_tecnico": registro[1],
             "id_equipo": registro[2],
             "nombre_equipo": registro[3],
-            "fecha_inicial": registro[4],
-            "fecha_final": registro[5]
+            "nombre_pais_equipo": registro[4],
+            "fecha_inicial": registro[5],
+            "fecha_final": registro[6]
         }
         Listado.push(LSchema);
     })

@@ -26,11 +26,13 @@ router.get('/getJugadoresMinimo', async (req, res) => {
 router.get('/getTrayectoriaJugador/:id_jugador', async (req, res) => {
     const { id_jugador } = req.params;
     sql = "SELECT JUGADOR.ID, JUGADOR.NOMBRES, EQUIPO.ID, EQUIPO.NOMBRE,\
+    PAIS.NOMBRE,\
     TO_CHAR(TRAYECTORIA_JUGADOR.FECHA_INICIAL, 'DD/MM/YYYY'),\
     TO_CHAR(TRAYECTORIA_JUGADOR.FECHA_FINAL, 'DD/MM/YYYY')\
     FROM TRAYECTORIA_JUGADOR\
     INNER JOIN JUGADOR ON JUGADOR.ID = TRAYECTORIA_JUGADOR.ID_JUGADOR\
     INNER JOIN EQUIPO ON EQUIPO.ID = TRAYECTORIA_JUGADOR.ID_EQUIPO\
+    INNER JOIN PAIS ON PAIS.ID = EQUIPO.ID_PAIS\
     WHERE JUGADOR.ID = :id_jugador ORDER BY FECHA_INICIAL ASC";
     
     let result = await BD.Open(sql, [id_jugador], false);
@@ -42,8 +44,9 @@ router.get('/getTrayectoriaJugador/:id_jugador', async (req, res) => {
             "nombre_jugador": registro[1],
             "id_equipo": registro[2],
             "nombre_equipo": registro[3],
-            "fecha_inicial": registro[4],
-            "fecha_final": registro[5]
+            "nombre_pais_equipo": registro[4],
+            "fecha_inicial": registro[5],
+            "fecha_final": registro[6]            
         }
         Listado.push(LSchema);
     })

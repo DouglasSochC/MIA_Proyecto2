@@ -3,6 +3,7 @@ export interface TJugadorTransferencia{
     nombre_jugador:string, 
     id_equipo:number,
     nombre_equipo:string,
+    nombre_pais_equipo:string,
     fecha_inicial:string,
     fecha_final:string
 }

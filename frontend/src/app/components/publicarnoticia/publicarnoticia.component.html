@@ -1,1 +1,68 @@
-<p>publicarnoticia works!</p>
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="data:image/png;base64,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" alt="" width="100" height="100">
+        <h2>Publicar Noticia</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <label class="form-label">Descripcion</label>
+                    <input [(ngModel)] = "descripcion" name = "descripcion" type="text" class="form-control" placeholder="" value="" required>
+                </div>
+    
+                <div class="col-sm-6">
+                    <label for="txtPais" class="form-label">Equipo</label>
+                    <select [(ngModel)] = "id_equipo" name = "id_equpo" class="form-select" id="txtPais" required>                        
+                        <option *ngFor="let registro of Equipo" value="{{ registro.id_equipo }}">{{ registro.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+            <button (click)="publicarNoticia()" class="w-100 btn btn-primary btn-lg" type="submit">Publicar Noticia</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">DESCRIPCION</th>
+            <th scope="col">NOMBRE EQUIPO</th>
+            <th scope="col">PAIS DEL EQUIPO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of Noticia">
+            <th>{{ registro.id_noticia }}</th>
+            <td>{{ registro.descripcion_noticia }}</td>
+            <td>{{ registro.nombre_equipo }}</td>
+            <td>{{ registro.nombre_pais_equipo }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>
