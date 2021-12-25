@@ -13,7 +13,7 @@ export class SPartidoService {
     "Content-Type": "application/json"
   })
 
-  GetPartido(){
+  GetPartidos(){
     const url = "http://localhost:3000/getPartidos";
     return this.http.get(url);
   }
@@ -31,8 +31,18 @@ export class SPartidoService {
     ).pipe(map(data => data));
   }
   
-  GetEstadoPartido(){
+  GetEstadoPartidoClave(){
     const url = "http://localhost:3000/getEstadosPartidoClave";
+    return this.http.get(url);
+  }
+
+  GetEstadoPartido(){
+    const url = "http://localhost:3000/getEstadosPartido";
+    return this.http.get(url);
+  }
+
+  GetPartidoporsuEstado(id_estado:number){
+    const url = "http://localhost:3000/getPartidopsEstado/"+id_estado;
     return this.http.get(url);
   }
 

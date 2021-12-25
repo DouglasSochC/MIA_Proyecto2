@@ -164,4 +164,41 @@ router.put("/updateEstadoPartido", async (req, res) => {
     }
 });
 
+//READ
+router.get('/getPartidopsEstado/:id_estado', async (req, res) => {
+    const { id_estado } = req.params;
+    sql = "SELECT PARTIDO.id, TO_CHAR(PARTIDO.fecha, 'DD/MM/YYYY'), ESTADIO.id, ESTADIO.nombre,\
+    ESTADO_PARTIDO.id, ESTADO_PARTIDO.nombre, PARTIDO.asistencia, PARTIDO.resultado,\
+    PARTIDO.id_equipo_visita, (SELECT nombre FROM EQUIPO WHERE id = PARTIDO.id_equipo_visita),\
+    PARTIDO.id_equipo_local, (SELECT nombre FROM EQUIPO WHERE id = PARTIDO.id_equipo_local)\
+    FROM PARTIDO\
+    INNER JOIN ESTADIO ON ESTADIO.id = PARTIDO.id_estadio\
+    INNER JOIN ESTADO_PARTIDO ON ESTADO_PARTIDO.id = PARTIDO.id_estado\
+    INNER JOIN EQUIPO ON EQUIPO.id = PARTIDO.id_equipo_visita\
+    INNER JOIN EQUIPO ON EQUIPO.id = PARTIDO.id_equipo_local\
+    WHERE PARTIDO.ID_ESTADO = :id_estado";
+    
+    let result = await BD.Open(sql, [id_estado], false);
+    Listado = [];
+
+    result.rows.map(registro => {
+        let LSchema = {
+            "id_partido": registro[0],
+            "fecha_partido": registro[1],
+            "id_estadio": registro[2],
+            "nombre_estadio": registro[3],
+            "id_estado": registro[4],
+            "nombre_estado": registro[5],
+            "asistencia": registro[6],
+            "resultado": registro[7],
+            "id_equipo_visita": registro[8],
+            "nombre_equipo_visita": registro[9],
+            "id_equipo_local": registro[10],
+            "nombre_equipo_local": registro[11]
+        }
+        Listado.push(LSchema);
+    })
+    res.status(200).json(Listado);
+});
+
 module.exports = router;

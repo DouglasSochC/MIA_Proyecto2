@@ -12,3 +12,8 @@ export interface PartidoInterface{
     id_equipo_local: number;
     nombre_equipo_local: string;
 }
+
+export interface EstadoPartidoInterface{
+    id_estado:number,
+    nombre:string
+}

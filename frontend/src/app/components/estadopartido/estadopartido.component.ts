@@ -21,7 +21,7 @@ export class EstadopartidoComponent implements OnInit {
   LEstadoPartido:[{}] = [{}];
 
   mostrarPartidos(){
-    this.spartidoservice.GetPartido().subscribe((res:any) => {
+    this.spartidoservice.GetPartidos().subscribe((res:any) => {
       this.Partido = res;
     });
   }
@@ -68,7 +68,7 @@ export class EstadopartidoComponent implements OnInit {
   }
 
   listadoEstados(){
-    this.spartidoservice.GetEstadoPartido().subscribe((res:any) => {
+    this.spartidoservice.GetEstadoPartidoClave().subscribe((res:any) => {
       this.LEstadoPartido = res;
     });
   }
