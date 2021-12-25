@@ -13,7 +13,7 @@ export class STecnicoService {
     "Content-Type": "application/json"
   });
 
-  GetTecnicos(){
+  GetTecnicosMinimos(){
     const url = "http://localhost:3000/getTecnicoMinimo";
     return this.http.get(url);
   }
@@ -36,6 +36,29 @@ export class STecnicoService {
     //la libreria rxjs/operators
     ).pipe(map(data => data));
     
+  }
+/*ANALISIS*/
+  GetTecnicosCompleto(){
+    const url = "http://localhost:3000/getTecnicos";
+    return this.http.get(url);
+  }
+
+  UpdateEstadoTecnico(id_tecnico:number, id_estado_tecnico:number){
+    const url = "http://localhost:3000/updateEstadoTecnico";
+    return this.http.put(url,
+    {
+      "id_tecnico": id_tecnico,
+      "id_estado_tecnico": id_estado_tecnico
+    }, 
+    { headers: this.headers }
+    //Para retornar el resultado es necesario utilizar la funcion map. Recordar que se debe de importar
+    //la libreria rxjs/operators
+    ).pipe(map(data => data));
+  }
+
+  GetEstadoTecnico(){
+    const url = "http://localhost:3000/getEstadoTecnicoClave";
+    return this.http.get(url);
   }
 
 }

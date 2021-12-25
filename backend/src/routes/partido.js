@@ -136,4 +136,32 @@ router.delete("/deletePartido/:id_partido", async (req, res) => {
     }
 });
 
+//UPDATE - Este actualiza el estado de un partido
+router.put("/updateEstadoPartido", async (req, res) => {
+    try {
+        const { id_partido, id_estado } = req.body;
+        if (!(id_partido != -1 && id_estado != -1)) {
+            res.status(201).json({
+                "response":false,
+                "msg": "No ha ingresado los campos obligatorios"
+            });
+        }else{
+            sql = "UPDATE PARTIDO SET ID_ESTADO = :id_estado\
+            WHERE ID = :id_partido";
+
+            await BD.Open(sql, [id_estado, id_partido], true);
+
+            res.status(201).json({
+                "response": true,
+                "msg": "Actualizado Correctamente"
+            });
+        }
+    } catch (error) {
+        res.status(201).json({
+            "response": false,
+            "msg": "Ha ocurrido un error al actualizar"
+        });
+    }
+});
+
 module.exports = router;

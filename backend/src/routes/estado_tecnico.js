@@ -20,4 +20,20 @@ router.get('/getEstadoTecnico', async (req, res) => {
     res.status(200).json(Listado);
 });
 
+//READ
+router.get('/getEstadoTecnicoClave', async (req, res) => {
+    const {  } = req.body;
+    sql = "SELECT * FROM ESTADO_TECNICO ORDER BY ESTADO_TECNICO.nombre";
+    
+    let result = await BD.Open(sql, [], false);
+    
+    var jsonNuevo = "{";
+    result.rows.map(registro => {
+        jsonNuevo += '"'+registro[0] +'":"'+ registro[1]+'",';
+    })
+    jsonNuevo = jsonNuevo.slice(0, -1);
+    jsonNuevo += "}";
+    res.status(200).json([JSON.parse(jsonNuevo)]);
+});
+
 module.exports = router;

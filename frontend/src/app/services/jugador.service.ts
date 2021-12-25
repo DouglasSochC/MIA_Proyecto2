@@ -37,5 +37,28 @@ export class JugadorService {
     ).pipe(map(data => data));
     
   }
+
+  GetJugadoresCompleto(){
+    const url = "http://localhost:3000/getJugadores";
+    return this.http.get(url);
+  }
+
+  GetEstadoJugadorClave(){
+    const url = "http://localhost:3000/getEstadoJugadorClave";
+    return this.http.get(url);
+  }
+
+  UpdateEstadoJugador(id_jugador:number, id_estado_jugador:number){
+    const url = "http://localhost:3000/updateEstadoJugador";
+    return this.http.put(url, 
+    {
+      "id_jugador": id_jugador,
+      "id_estado_jugador": id_estado_jugador
+    }, 
+    { headers: this.headers }
+    //Para retornar el resultado es necesario utilizar la funcion map. Recordar que se debe de importar
+    //la libreria rxjs/operators
+    ).pipe(map(data => data));
+  }
   
 }

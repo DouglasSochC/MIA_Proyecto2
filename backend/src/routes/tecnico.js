@@ -122,4 +122,32 @@ router.delete("/deleteTecnico/:id_tecnico", async (req, res) => {
     }
 });
 
+//UPDATE - Este actualiza el estado de un tecnico
+router.put("/updateEstadoTecnico", async (req, res) => {
+    try {
+        const { id_tecnico, id_estado_tecnico } = req.body;
+        if (!(id_tecnico != -1 && id_estado_tecnico != -1)) {
+            res.status(201).json({
+                "response":false,
+                "msg": "No ha ingresado los campos obligatorios"
+            });
+        }else{
+            sql = "UPDATE TECNICO SET\
+            id_estado = :id_estado_tecnico\
+            WHERE id = :id_tecnico";
+            await BD.Open(sql, [id_estado_tecnico, id_tecnico], true);
+            res.status(201).json({
+                "response": true,
+                "msg": "Actualizado Correctamente"
+            });
+        }
+    } catch (error) {
+        res.status(201).json({
+            "response": false,
+            "msg": "Ha ocurrido un error al actualizar"
+        });
+    }
+});
+
+
 module.exports = router;

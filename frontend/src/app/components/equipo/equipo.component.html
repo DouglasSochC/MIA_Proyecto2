@@ -62,22 +62,22 @@
             <th scope="col">NOMBRE</th>
             <th scope="col">FECHA DE FUNDACION</th>
             <th scope="col">IMAGEN</th>
-            <th scope="col">ID_PAIS</th>
+            <th scope="col">ID PAIS</th>
             <th scope="col">PAIS</th>
             <th scope="col">OPCION</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let equipo of Equipo">
-            <th>{{ equipo.id_equipo }}</th>
-            <td>{{ equipo.nombre }}</td>
-            <td>{{ equipo.fecha_fundacion }}</td>
-            <td><img src="{{ equipo.link_fotografia }}" alt="" width="50" height="50"></td>
-            <td>{{ equipo.id_pais }}</td>
-            <td>{{ equipo.nombre_pais }}</td> 
+          <tr *ngFor="let registro of Equipo">
+            <th>{{ registro.id_equipo }}</th>
+            <td>{{ registro.nombre }}</td>
+            <td>{{ registro.fecha_fundacion }}</td>
+            <td><img src="{{ registro.link_fotografia }}" alt="" width="50" height="50"></td>
+            <td>{{ registro.id_pais }}</td>
+            <td>{{ registro.nombre_pais }}</td> 
             <td>
-                <button (click)="setearInterfaz(equipo.id_equipo, equipo.nombre, equipo.fecha_fundacion, equipo.link_fotografia, equipo.id_pais)" class="btn btn-outline-warning" type="submit">Editar</button>&nbsp;
-                <button (click)="eliminarEquipo(equipo.id_equipo)" class="btn btn-outline-danger" type="submit">Eliminar</button>
+                <button (click)="setearInterfaz(registro.id_equipo, registro.nombre, registro.fecha_fundacion, registro.link_fotografia, registro.id_pais)" class="btn btn-outline-warning" type="submit">Editar</button>&nbsp;
+                <button (click)="eliminarEquipo(registro.id_equipo)" class="btn btn-outline-danger" type="submit">Eliminar</button>
             </td>
           </tr>
         </tbody>

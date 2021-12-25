@@ -360,6 +360,10 @@ INSERT INTO TIPO_USUARIO(nombre) VALUES('Cliente');
 INSERT INTO ESTADO_USUARIO (nombre) VALUES('Activo');
 INSERT INTO ESTADO_USUARIO (nombre) VALUES('No Activo');
 INSERT INTO MEMBRESIA(nombre) VALUES('Normal');
+INSERT INTO ESTADO_PARTIDO(nombre) VALUES('Sin Iniciar');
+INSERT INTO ESTADO_PARTIDO(nombre) VALUES('En Curso');
+INSERT INTO ESTADO_PARTIDO(nombre) VALUES('Finalizado');
+INSERT INTO ESTADO_PARTIDO(nombre) VALUES('Suspendido');
 INSERT INTO USUARIO(nombres, apellidos, clave, correo, telefono, genero, fecha_nac, fecha_registro, 
 direccion, membresia_activa, id_tipo, id_estado_usuario)  
 VALUES ('Douglas','Soch','123','prueba1@gmail.com',12345678,'M','01/01/1990','02/01/2021','Dir 1',0,

@@ -1,1 +1,53 @@
-<p>estadojugador works!</p>
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt8wDWtp1ClAflTFgxY07Tg4h5f1q88LOyQw&usqp=CAU" alt="" width="100" height="100">
+        <h2>Estado Jugador</h2>
+      </div>
+    </main>
+    <hr class="my-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRES</th>
+            <th scope="col">FECHA DE NACIMIENTO</th>
+            <th scope="col">NACIONALIDAD</th>
+            <th scope="col">POSICION</th>
+            <th scope="col">ESTADO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of TJugadores">
+            <th>{{ registro.id_jugador }}</th>
+            <td>{{ registro.nombres }}</td>
+            <td>{{ registro.fecha_nacimiento }}</td>
+            <td>{{ registro.nombre_pais }}</td>
+            <td>{{ registro.nombre_posicion }}</td>
+            <td>{{ registro.nombre_estado_jugador }}</td> 
+            <td>
+                <button (click)="modificarEstado(registro.id_jugador)" class="btn btn-outline-warning" type="submit">Cambiar Estado</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>

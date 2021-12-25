@@ -23,6 +23,7 @@ const estadousuarioRoutes = require('./routes/estado_usuario');
 const tipousuarioRoutes = require('./routes/tipo_usuario');
 const trayectoriajugadorRoutes = require('./routes/trayectoria_jugador');
 const trayectoriatecnicoRoutes = require('./routes/trayectoria_tecnico');
+const estadopartidoRoutes = require('./routes/estado_partido');
 
 //Settings
 app.set('port', 3000);
@@ -64,6 +65,7 @@ app.use(estadousuarioRoutes);
 app.use(tipousuarioRoutes);
 app.use(trayectoriajugadorRoutes);
 app.use(trayectoriatecnicoRoutes);
+app.use(estadopartidoRoutes);
 
 //Run
 app.listen(app.get('port'), () => {

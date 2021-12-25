@@ -12,3 +12,15 @@ export interface ListadoJugadores{
     nombres:string,
     nombre_pais:string
 }
+
+export interface TJugador{
+    id_jugador: number,
+    nombres: string,
+    fecha_nacimiento: string,
+    id_pais: number,
+    nombre_pais: string,
+    id_posicion: number,
+    nombre_posicion: string,
+    id_estado_jugador: number,
+    nombre_estado_jugador: string
+}

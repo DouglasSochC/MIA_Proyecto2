@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EquipoInterface } from 'src/app/models/equipo-interface';
-import { ListadoTecnico, TTecnicoransferencia } from 'src/app/models/tecnico-interface';
+import { ListadoTecnicoInterface, TTecnicoransferenciaInterface } from 'src/app/models/tecnico-interface';
 import { SEquipoService } from 'src/app/services/s-equipo.service';
 import { STecnicoService } from 'src/app/services/s-tecnico.service';
 import Swal from 'sweetalert2';
@@ -23,8 +23,8 @@ export class TransferenciatecnicoComponent implements OnInit {
   id_tecnico:number = -1;
   id_equipo_nuevo:number = -1;
   fecha_transferencia:string = "";
-  TTecnico:TTecnicoransferencia[] = [];
-  LTecnico:ListadoTecnico[] = [];
+  TTecnico:TTecnicoransferenciaInterface[] = [];
+  LTecnico:ListadoTecnicoInterface[] = [];
   LEquipo:EquipoInterface [] = [];
 
   hacerTranseferencia(){
@@ -64,7 +64,7 @@ export class TransferenciatecnicoComponent implements OnInit {
   }
 
   cargarTecnicos(){
-    this.stecnicoservice.GetTecnicos().subscribe((res:any) => {
+    this.stecnicoservice.GetTecnicosMinimos().subscribe((res:any) => {
       this.LTecnico = res;
     }); 
   }
