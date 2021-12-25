@@ -5,8 +5,7 @@
   import { HttpClient, HttpHeaders } from "@angular/common/http";
 
   import { map } from "rxjs/operators";
-
-  import { Router } from "@angular/router";
+  
 
   @Injectable({
     providedIn: 'root'
@@ -44,30 +43,25 @@ export class SEstadioService {
 
   //------------------------------------------------------------
   //TODO: INSERT estadio
-
   InsertEstadios( nombre:string, 
-                  fechaInauguracion:string,
+                  fecha_inaguracion:string,
                   capacidad:number,
                   direccion:string, 
                   link_fotografia: string,
                   id_estado_estadio:number,
                   id_pais:number
-                ){
-      
+                ){      
       const url = "http://localhost:3000/addEstadio";
       return this.http.post(url, 
       {
         "nombre": nombre,
-        "fecha_inaguracion": fechaInauguracion,
+        "fecha_inaguracion": fecha_inaguracion,
         "capacidad": capacidad,
         "direccion":direccion,
         "link_fotografia": link_fotografia,
         "id_estado_estadio": id_estado_estadio,
         "id_pais": id_pais
-      }, 
-
-     
-
+      },
       { headers: this.headers }
       //Para retornar el resultado es necesario utilizar la funcion map. 
       //Recordar que se debe de importar la libreria rxjs/operators
@@ -75,23 +69,26 @@ export class SEstadioService {
   }
   //------------------------------------------------------------
   //TODO: UPDATE EQUIPOS
-  UpdateEstadio(  nombreEstadio:string, 
-                  fechaInauguracion:string,
+  UpdateEstadio(  id_estadio:number,
+                  nombre:string, 
+                  fecha_inaguracion:string,
                   capacidad:number,
                   direccion:string, 
                   link_fotografia: string,
                   id_estado_estadio:number,
-                  id_pais:number){
+                  id_pais:number
+                  ){
       const url = "http://localhost:3000/updateEstadio";
+      
       return this.http.put(url, 
-      {
-        "nombre": nombreEstadio,
-        "fecha_inauguracion": fechaInauguracion,
+      { "id_estadio":id_estadio,
+        "nombre": nombre,
+        "fecha_inaguracion": fecha_inaguracion,
         "capacidad": capacidad,
         "direccion":direccion,
-        "foto": link_fotografia,
-        "estadio": id_estado_estadio,
-        "pais": id_pais
+        "link_fotografia": link_fotografia,
+        "id_estado_estadio": id_estado_estadio,
+        "id_pais": id_pais
       }, 
       { headers: this.headers }
       //Para retornar el resultado es necesario utilizar la funcion map. 
@@ -101,7 +98,6 @@ export class SEstadioService {
   //------------------------------------------------------------
   //TODO: DELETE EQUIPOS
   DeleteEstadio(id_estadio:number){
-    alert("estoy en s-estadio.service.ts  eliminare: "+id_estadio);
     const url = "http://localhost:3000/deleteEstadio/"+id_estadio;
     return this.http.delete(url).pipe(map(data => data));
   }

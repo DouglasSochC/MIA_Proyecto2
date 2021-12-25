@@ -31,7 +31,7 @@ export class EstadioComponent implements OnInit {
   }
 
   //datos del estadio  estadio_nombre
-  id_nombre:number=-1;
+  id_estadio:number=-1;
   estadio_nombre: string = ""; 
   fecha_inaguracion: string = "";
   capacidad: number =-1;
@@ -55,27 +55,19 @@ direccion != ""
 id_estado_estadio != -1
 id_pais != -1
 
-{           nombre, 
-            fecha_inaguracion, 
-            capacidad, 
-            direccion, 
-            link_fotografia, 
-            id_estado_estadio, 
-            id_pais } 
 **********************************/
 
 
   //agregar nuevo estadio
   guardarEstadio(){
     this.fecha_inaguracion = this.fecha_inaguracion.split("-").reverse().join("/");
-    this.sestadioservice
-        .InsertEstadios(  this.estadio_nombre, 
-                          this.fecha_inaguracion,
-                          this.capacidad, 
-                          this.direccion,
-                          this.link_fotografia,                                          
-                          this.id_estado_estadio, 
-                          this.id_pais                                     
+    this.sestadioservice.InsertEstadios(this.estadio_nombre, 
+                                        this.fecha_inaguracion,
+                                        this.capacidad, 
+                                        this.direccion,
+                                        this.link_fotografia,                                          
+                                        this.id_estado_estadio, 
+                                        this.id_pais                                     
     ).subscribe((res:any) => {
       if (res['response']) {
         Swal.fire({
@@ -96,7 +88,6 @@ id_pais != -1
       }
     });
   }
-
 
   eliminarEstadio(id_estadio:number ){
     Swal.fire({
@@ -132,15 +123,14 @@ id_pais != -1
     });      
   }
 
-
-  actualizarEstadio(){
-    
+  actualizarEstadio(){    
     this.fecha_inaguracion = this.fecha_inaguracion.split("-").reverse().join("/");
-    this.sestadioservice.UpdateEstadio( this.estadio_nombre, 
+    this.sestadioservice.UpdateEstadio( this.id_estadio,
+                                        this.estadio_nombre, 
                                         this.fecha_inaguracion,
                                         this.capacidad, 
                                         this.direccion,
-                                        this.link_fotografia,
+                                        this.link_fotografia,                                          
                                         this.id_estado_estadio, 
                                         this.id_pais
       ).subscribe((res:any) => {
@@ -163,15 +153,16 @@ id_pais != -1
     });
   }
 
-  setearInterfaz( nombre:string, 
+  setearInterfaz( id_estadio:number,
+                  nombre_estadio:string, 
                   fecha_inaguracion: string,
                   capacidad:number, 
                   id_pais:number, 
                   direccion:string,
                   id_estado:number, 
                   link_fotografia:string){
-
-    this.estadio_nombre = nombre;
+    this.id_estadio=id_estadio,                    
+    this.estadio_nombre = nombre_estadio;
     this.fecha_inaguracion = (fecha_inaguracion == null)? "": fecha_inaguracion.split("/").reverse().join("-");
     this.capacidad= capacidad;
     this.id_pais =id_pais;
@@ -202,6 +193,7 @@ id_pais != -1
   }
 
   limpiarDatos(){    
+    this.id_estadio=-1;
     this.estadio_nombre = "";
     this.fecha_inaguracion = "";
     this.capacidad=-1;
@@ -209,6 +201,12 @@ id_pais != -1
     this.link_fotografia="";
     this.id_estado_estadio=-1;
     this.id_pais=-1; 
+  
+  
+  
+  
+  
+  
   }
 
 }//class EstadioComponent

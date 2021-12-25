@@ -1,7 +1,6 @@
 
 
 /*
-
             "id_estadio": registro[0],
             "estadio_nombre": registro[1],
             "fecha_inaguracion": registro[2],
@@ -13,8 +12,6 @@
             "estado_nombre": registro[7],
             "id_pais": registro[8],
             "pais_nombre": registro[9]
-
-
 */
 
 
