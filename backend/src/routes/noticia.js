@@ -51,4 +51,41 @@ router.post('/addNoticia', async (req, res) => {
     }
 });
 
+//READ
+router.get('/getNoticiaCliente/:informacion', async (req, res) => {
+    const { informacion } = req.params;
+
+    if (informacion == "TODAS") {
+        sql = "SELECT NOTICIA_EQUIPO.ID, NOTICIA_EQUIPO.DESCRIPCION, EQUIPO.ID, EQUIPO.NOMBRE,\
+        EQUIPO.LINK_FOTOGRAFIA, PAIS.NOMBRE\
+        FROM NOTICIA_EQUIPO\
+        INNER JOIN EQUIPO ON EQUIPO.ID = NOTICIA_EQUIPO.ID_EQUIPO\
+        INNER JOIN PAIS ON PAIS.ID = EQUIPO.ID_PAIS";
+    }else{
+        sql = "SELECT NOTICIA_EQUIPO.ID, NOTICIA_EQUIPO.DESCRIPCION, EQUIPO.ID, EQUIPO.NOMBRE,\
+        EQUIPO.LINK_FOTOGRAFIA, PAIS.NOMBRE\
+        FROM NOTICIA_EQUIPO\
+        INNER JOIN EQUIPO ON EQUIPO.ID = NOTICIA_EQUIPO.ID_EQUIPO\
+        INNER JOIN PAIS ON PAIS.ID = EQUIPO.ID_PAIS\
+        WHERE UPPER(EQUIPO.NOMBRE) = UPPER('"+informacion+"') OR\
+        UPPER(NOTICIA_EQUIPO.DESCRIPCION) LIKE UPPER('%"+informacion+"%')";
+        
+    }
+    let result = await BD.Open(sql, [], false);
+    Listado = [];
+
+    result.rows.map(registro => {
+        let LSchema = {
+            "id_noticia": registro[0],
+            "descripcion_noticia": registro[1],
+            "id_equipo": registro[2],
+            "nombre_equipo": registro[3],
+            "link_fotografia": registro[4],
+            "nombre_pais_equipo": registro[5]
+        }
+        Listado.push(LSchema);
+    })
+    res.status(200).json(Listado);
+});
+
 module.exports = router;

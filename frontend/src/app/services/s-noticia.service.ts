@@ -32,4 +32,9 @@ export class SNoticiaService {
     return this.http.get(url);
   }
 
+  GetNoticiasCliente(informacion:string){
+    const url = "http://localhost:3000/getNoticiaCliente/"+informacion;
+    return this.http.get(url);
+  }
+
 }
