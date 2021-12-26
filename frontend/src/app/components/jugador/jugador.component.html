@@ -1,1 +1,156 @@
-<p>jugador works!</p>
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" 
+            src="https://images.vexels.com/media/users/3/137047/isolated/lists/5831a17a290077c646a48c4db78a81bb-icono-de-perfil-de-usuario-azul.png" 
+            alt="" width="50" height="60">
+        <h2>JUGADOR</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              
+              <div class="col-sm-6">
+                <label class="form-label">Nombres</label>
+                <input  [(ngModel)] = "nombres" 
+                        name = "nombres" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="" 
+                        value="" required>
+              </div>
+  
+              <div class="col-sm-6">
+                <label class="form-label">Apellidos</label>
+                <input [(ngModel)] = "apellidos" 
+                        name = "apellidos" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="" 
+                        value="" required>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label">Fecha de Nacimiento</label>
+                <input [(ngModel)] = "fecha_nacimiento" 
+                        name = "fecha_nacimiento" 
+                        type="date" 
+                        class="form-control" 
+                        id="start_nacimiento" 
+                        name="trip-start"
+                        min="1900-01-01" 
+                        max="2099-12-31" required>
+              </div>
+
+
+              <div class="col-sm-6">
+                <label class="form-label">Pais-Nacionalidad</label>
+                <select [(ngModel)] = "id_pais" 
+                          name = "id_pais" 
+                          class="form-select" required>                        
+                    <option *ngFor="let pais of Paises" 
+                            value="{{ pais.id_pais }}">
+                            {{ pais.nombre }}
+                    </option>
+                </select>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label">Posicion del Jugador</label>
+                <select [(ngModel)] = "id_posicion" 
+                        name = "id_posicion" 
+                        class="form-select" required>                        
+                    <option *ngFor="let posicion of Posicion" 
+                            value="{{ posicion.id_posicion_jugador }}">
+                            {{ posicion.nombre }}
+                    </option>
+                </select>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label">Estado del Jugador</label>
+                <select [(ngModel)] = "id_estado" 
+                        name = "id_estado" 
+                        class="form-select" required>                        
+                    <option *ngFor="let estado of Estadojugador" 
+                            value="{{ estado.id_estado_jugador }}">
+                            {{ estado.nombre }}
+                    </option>
+                </select>
+              </div>
+
+            </div>
+            <hr class="my-4">
+            
+            <button (click) = "insertarJugador()" 
+                    class="w-100 btn btn-primary btn-lg" 
+                    type="submit">
+                    Registrar
+            </button>
+            <br/>
+            <br/>            
+            <button (click) = "actualizarJugador()"
+                    class="w-50 btn btn-warning" 
+                    type="submit">
+                    Guardar Cambios
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE COMPLETO</th>
+            <th scope="col">FECHANACIMIENTO</th>
+            <th scope="col">NACIONALIDAD</th>
+            <th scope="col">POSICION</th>
+            <th scope="col">ESTADO</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          
+        <tr *ngFor="let jugador of Jugadores">
+          <th>{{ jugador.id_jugador }}</th>
+          <td>{{ jugador.nombres }} </td>
+          <td>{{ jugador.fecha_nacimiento }}</td>
+          <td>{{ jugador.nombre_pais }}</td>
+          <td>{{ jugador.nombre_posicion }}</td>
+          <td>{{ jugador.nombre_estado_jugador }}</td>
+            
+            
+          <td>
+            <button (click)="setearInterfaz(
+                            jugador.id_jugador,
+                            jugador.nombres,
+                            jugador.fecha_nacimiento,
+                            jugador.nombre_pais,
+                            jugador.id_posicion,
+                            jugador.id_estado_jugador
+                            )" 
+                            class="btn btn-outline-warning" 
+                            type="submit">
+                            Editar
+            </button>&nbsp;
+                <button (click)="eliminarJugador(jugador.id_jugador)" 
+                            class="btn btn-outline-danger" 
+                            type="submit">
+                            Eliminar
+                </button>
+            </td>
+          </tr>
+  
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>

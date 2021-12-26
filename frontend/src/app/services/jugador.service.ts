@@ -42,9 +42,19 @@ export class JugadorService {
     const url = "http://localhost:3000/getJugadores";
     return this.http.get(url);
   }
-
+                                    
+  GetEstadoJugador(){
+    const url = "http://localhost:3000/getEstadoJugador";
+    return this.http.get(url);
+  }
+  
   GetEstadoJugadorClave(){
     const url = "http://localhost:3000/getEstadoJugadorClave";
+    return this.http.get(url);
+  }
+ 
+  GetPosicionJugador(){
+    const url = "http://localhost:3000/getPosicionJugador";
     return this.http.get(url);
   }
 
@@ -61,4 +71,61 @@ export class JugadorService {
     ).pipe(map(data => data));
   }
   
+
+  InsertarJugador(
+                  nombres:string, 
+                  fecha_nacimiento:string,
+                  id_pais:number,
+                  id_posicion:number,
+                  id_estado_jugador:number
+                ){      
+      const url = "http://localhost:3000/addJugador";
+      return this.http.post(url, 
+      {
+        "nombres": nombres,
+        "fecha_nacimiento":fecha_nacimiento,
+        "id_pais": id_pais,
+        "id_posicion":id_posicion,
+        "id_estado_jugador":id_estado_jugador
+      },
+      { headers: this.headers }
+      //Para retornar el resultado es necesario utilizar la funcion map. 
+      //Recordar que se debe de importar la libreria rxjs/operators
+      ).pipe(map(data => data));
+
+  }
+
+  ActualizarJugador(  id_jugadr:number,
+                      nombres:string, 
+                      fecha_nacimiento:string,
+                      id_pais:number,
+                      posicion:number,
+                      estado:number                      
+                  ){
+      const url = "http://localhost:3000/updateJugador";
+      
+      return this.http.put(url, 
+      { 
+        "nombres": nombres,
+        "fecha_nacimiento": fecha_nacimiento,
+        "id_pais": id_pais,
+        "id_posicion": posicion,
+        "id_estado_jugador":estado,
+        "id_jugador": id_jugadr,
+      }, 
+      { headers: this.headers }
+      //Para retornar el resultado es necesario utilizar la funcion map. 
+      //Recordar que se debe de importar la libreria rxjs/operators
+      ).pipe(map(data => data));
+  }
+
+  
+
+  DeleteJugador(id_jugador:number){
+    const url = "http://localhost:3000/deleteJugador/"+id_jugador;
+    return this.http.delete(url).pipe(map(data => data));
+  }
+
 }
+
+
