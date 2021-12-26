@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common'; 
+import Swal from 'sweetalert2';
+import { PartidoInterface } from 'src/app/models/partido-interface';
+import { SPartidoService } from 'src/app/services/s-partido.service';
 
 @Component({
   selector: 'app-incidenciaspartido',
@@ -7,9 +11,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncidenciaspartidoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public spartidoservice: SPartidoService) { }
 
   ngOnInit(): void {
+    this.cargarTablaPartidosEnCurso();
+  }
+
+  Partido:PartidoInterface[]=[];
+
+  crearIncidencia(id_partido:number){
+    Swal.fire({
+      title: 'Incidencia',
+      html:
+        'Descripcion'+
+        '<input id="txtDescripcion" class="swal2-input">' +
+        'Minuto de Juego'+
+        '<input id="txtMinuto" class="swal2-input">'+
+        'Equipo que hizo la incidencia'+
+        '<input id="txtEquipoIncidencia" class="swal2-input">'+
+        'Jugador'+
+        '<input id="txtJugador" class="swal2-input">',
+      focusConfirm: false,
+      preConfirm: () => {
+        return [
+          (<HTMLInputElement>document.getElementById("txtDescripcion")).value,
+          (<HTMLInputElement>document.getElementById("txtMinuto")).value,
+          (<HTMLInputElement>document.getElementById("txtEquipoIncidencia")).value,
+          (<HTMLInputElement>document.getElementById("txtJugador")).value
+        ]
+      }
+    }).then((result) => {
+      /////////////////////////////////////////////////////////////////////////////
+      this.spartidoservice.InsertIncidencia(result.value![0], result.value![1], result.value![2],result.value![3],id_partido)
+      .subscribe((res:any) => {
+        if (res['response']) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Exito',
+            text: res['msg']
+          });
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res['msg']
+          });
+        }
+      });
+      /////////////////////////////////////////////////////////////////////////////
+    });
+  }
+
+  cargarTablaPartidosEnCurso(){
+    this.spartidoservice.GetPartidosEnCurso().subscribe((res:any) => {
+      this.Partido = res;
+    });
   }
 
 }

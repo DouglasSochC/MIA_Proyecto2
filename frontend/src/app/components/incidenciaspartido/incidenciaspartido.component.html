@@ -1,1 +1,62 @@
-<p>incidenciaspartido works!</p>
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://icons.veryicon.com/png/o/miscellaneous/winfo-icon/winfo-icon-violation-record.png" alt="" width="70" height="60">
+        <h2>Incidencias en un Partido</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">FECHA PARTIDO</th>
+            <th scope="col">ESTADIO</th>
+            <th scope="col">ESTADO ACTUAL</th>
+            <th scope="col">ASISTENCIA</th>
+            <th scope="col">EQUIPO VISITANTE</th>
+            <th scope="col">EQUIPO LOCAL</th>
+            <th scope="col">RESULTADO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of Partido">
+            <th>{{ registro.id_partido }}</th>
+            <td>{{ registro.fecha_partido }}</td>
+            <td>{{ registro.nombre_estadio }}</td>
+            <td>{{ registro.nombre_estado }}</td>
+            <td>{{ registro.asistencia }}</td>
+            <td>{{ registro.nombre_equipo_visita }}</td> 
+            <td>{{ registro.nombre_equipo_local }}</td> 
+            <td>{{ registro.resultado }}</td> 
+            <td>
+                <button (click)="crearIncidencia(registro.id_partido)" class="btn btn-outline-primary" type="submit">Ingresar Incidencia</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>

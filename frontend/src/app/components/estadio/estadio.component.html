@@ -3,9 +3,9 @@
   <main>
     <div class="py-5 text-center">
       <img  class="d-block mx-auto mb-4"
-            src="https://svgsilh.com/svg/1865345.svg" 
-            alt="" width="200" height="60">
-      <h2>ESTADIO</h2>
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Stadium.svg/2560px-Stadium.svg.png" 
+            alt="" width="100" height="100">
+      <h2>Estadios</h2>
     </div>
 
     <div class="container">
@@ -19,7 +19,8 @@
                           name = "estadio_nombre" 
                           type="text" 
                           class="form-control" 
-                          placeholder="" 
+                          placeholder=""
+                          autocomplete="off" 
                           value="" required>
               </div>
        
@@ -60,7 +61,7 @@
                 <label for="address2" class="form-label">Dirección</label>
                 <input [(ngModel)] = "direccion" 
                       name ="direcion" type="string" 
-                      class="form-control" placeholder=""
+                      class="form-control" autocomplete="off"  placeholder=""
                 >
               </div>
 
@@ -79,7 +80,7 @@
 
               <div class="">
                 <label for="address2" class="form-label">Link de Fotografia <span class="text-muted">(Opcional)</span></label>
-                <input [(ngModel)] = "link_fotografia" name = "link_fotografia" type="text" class="form-control" placeholder="">
+                <input [(ngModel)] = "link_fotografia" name = "link_fotografia" type="text" class="form-control" autocomplete="off" placeholder="">
               </div>
 
           </div>

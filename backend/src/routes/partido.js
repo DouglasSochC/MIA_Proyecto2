@@ -49,6 +49,43 @@ router.get('/getPartidos', async (req, res) => {
     res.status(200).json(Listado);
 });
 
+//READ
+router.get('/getPartidosenCurso', async (req, res) => {
+    const {  } = req.body;
+    sql = "SELECT PARTIDO.id, TO_CHAR(PARTIDO.fecha, 'DD/MM/YYYY'), ESTADIO.id, ESTADIO.nombre,\
+    ESTADO_PARTIDO.id, ESTADO_PARTIDO.nombre, PARTIDO.asistencia, PARTIDO.resultado,\
+    PARTIDO.id_equipo_visita, (SELECT nombre FROM EQUIPO WHERE id = PARTIDO.id_equipo_visita),\
+    PARTIDO.id_equipo_local, (SELECT nombre FROM EQUIPO WHERE id = PARTIDO.id_equipo_local)\
+    FROM PARTIDO\
+    INNER JOIN ESTADIO ON ESTADIO.id = PARTIDO.id_estadio\
+    INNER JOIN ESTADO_PARTIDO ON ESTADO_PARTIDO.id = PARTIDO.id_estado\
+    INNER JOIN EQUIPO ON EQUIPO.id = PARTIDO.id_equipo_visita\
+    INNER JOIN EQUIPO ON EQUIPO.id = PARTIDO.id_equipo_local\
+    WHERE UPPER(ESTADO_PARTIDO.nombre) = UPPER('En Curso')";
+    
+    let result = await BD.Open(sql, [], false);
+    Listado = [];
+
+    result.rows.map(registro => {
+        let LSchema = {
+            "id_partido": registro[0],
+            "fecha_partido": registro[1],
+            "id_estadio": registro[2],
+            "nombre_estadio": registro[3],
+            "id_estado": registro[4],
+            "nombre_estado": registro[5],
+            "asistencia": registro[6],
+            "resultado": registro[7],
+            "id_equipo_visita": registro[8],
+            "nombre_equipo_visita": registro[9],
+            "id_equipo_local": registro[10],
+            "nombre_equipo_local": registro[11]
+        }
+        Listado.push(LSchema);
+    })
+    res.status(200).json(Listado);
+});
+
 //CREATE
 router.post('/addPartido', async (req, res) => {
     const { fecha_partido, id_estadio, id_estado_partido, asistencia, id_equipo_visita, id_equipo_local, resultado } = req.body;
@@ -199,6 +236,31 @@ router.get('/getPartidopsEstado/:id_estado', async (req, res) => {
         Listado.push(LSchema);
     })
     res.status(200).json(Listado);
+});
+
+//CREATE
+router.post('/addIncidenciaPartido', async (req, res) => {
+    const { descripcion, minuto, equipo_incidencia, jugador, id_partido } = req.body;
+    if (!(descripcion != "" && minuto != "" && equipo_incidencia != "" && jugador != "" && id_partido != -1)) {
+        res.status(201).json({
+            "response":false,
+            "msg": "No ha ingresado los campos obligatorios"
+        });
+    }else{        
+        sql = "INSERT INTO INCIDENCIAS_PARTIDO(descripcion, minuto, equipo_incidencia, jugador, id_partido)\
+        VALUES (\
+            :descripcion,\
+            :minuto,\
+            :equipo_incidencia,\
+            :jugador,\
+            :id_partido\
+        )";
+        await BD.Open(sql, [descripcion, minuto, equipo_incidencia, jugador, id_partido], true);
+        res.status(201).json({
+            "response":true,
+            "msg": "Incidencia ingresada correctamente"
+        });        
+    }
 });
 
 module.exports = router;

@@ -26,12 +26,12 @@
             <div class="row g-3">
                 <div class="col-sm-6">
                     <label class="form-label">Descripcion</label>
-                    <input [(ngModel)] = "descripcion" name = "descripcion" type="text" class="form-control" placeholder="" value="" required>
+                    <input [(ngModel)] = "descripcion" name = "descripcion" type="text" class="form-control" autocomplete="off" placeholder="" value="" required>
                 </div>
     
                 <div class="col-sm-6">
-                    <label for="txtPais" class="form-label">Equipo</label>
-                    <select [(ngModel)] = "id_equipo" name = "id_equpo" class="form-select" id="txtPais" required>                        
+                    <label class="form-label">Equipo</label>
+                    <select [(ngModel)] = "id_equipo" name = "id_equpo" class="form-select" required>                        
                         <option *ngFor="let registro of Equipo" value="{{ registro.id_equipo }}">{{ registro.nombre }}</option>
                     </select>
                 </div>
