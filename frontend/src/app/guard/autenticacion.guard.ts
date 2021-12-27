@@ -64,6 +64,8 @@ export class AutenticacionGuard implements CanActivate {
           return true;
         }else if (route.url[0]['path'] == "accesodenegado") {
           return true;
+        }else if (route.url[0]['path'] == "seguirequipo") {
+          return true;
         }else{
           this.router.navigate(['/accesodenegado']);
           return false;

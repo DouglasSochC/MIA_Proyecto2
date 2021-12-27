@@ -28,6 +28,7 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ConsultaestadisticaComponent } from './components/consultaestadistica/consultaestadistica.component';
 import { ReportesadministradorComponent } from './components/reportesadministrador/reportesadministrador.component';
 import { TecnicoComponent } from './components/tecnico/tecnico.component';
+import { SeguirequipoComponent } from './components/seguirequipo/seguirequipo.component';
 
 const routes: Routes = [
   {
@@ -160,6 +161,11 @@ const routes: Routes = [
   {
     path: 'accesodenegado',
     component: AccesodenegadoComponent,
+    canActivate: [AutenticacionGuard]
+  },
+  {
+    path: 'seguirequipo',
+    component: SeguirequipoComponent,
     canActivate: [AutenticacionGuard]
   }
 ];

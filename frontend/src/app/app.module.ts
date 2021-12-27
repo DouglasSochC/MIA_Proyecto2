@@ -33,6 +33,7 @@ import { InformacionpartidoComponent } from './components/informacionpartido/inf
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ConsultaestadisticaComponent } from './components/consultaestadistica/consultaestadistica.component';
 import { ReportesadministradorComponent } from './components/reportesadministrador/reportesadministrador.component';
+import { SeguirequipoComponent } from './components/seguirequipo/seguirequipo.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { ReportesadministradorComponent } from './components/reportesadministrad
     InformacionpartidoComponent,
     NoticiasComponent,
     ConsultaestadisticaComponent,
-    ReportesadministradorComponent
+    ReportesadministradorComponent,
+    SeguirequipoComponent
   ],
   imports: [
     BrowserModule,

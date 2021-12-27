@@ -114,4 +114,76 @@ router.delete("/deleteEquipo/:id_equipo", async (req, res) => {
     }
 });
 
+//READ
+router.get('/getSeguirEquipo/:id_usuario', async (req, res) => {
+    const { id_usuario } = req.params;
+    sql = "SELECT * FROM (\
+        SELECT EQUIPO.ID, EQUIPO.NOMBRE AS NOMBRE_EQUIPO, EQUIPO.LINK_FOTOGRAFIA, PAIS.NOMBRE AS PAIS_NOMBRE, 0 AS SEGUIMIENTO FROM EQUIPO\
+        INNER JOIN PAIS ON PAIS.ID = EQUIPO.ID_PAIS\
+        WHERE NOT EXISTS (SELECT EQUIPO_USUARIO.ID_EQUIPO FROM EQUIPO_USUARIO\
+        WHERE EQUIPO.ID = EQUIPO_USUARIO.ID_EQUIPO\
+        AND EQUIPO_USUARIO.ID_USUARIO = :id_usuario)\
+        UNION\
+        SELECT EQUIPO.ID, EQUIPO.NOMBRE AS NOMBRE_EQUIPO, EQUIPO.LINK_FOTOGRAFIA, PAIS.NOMBRE AS PAIS_NOMBRE, 1 AS SEGUIMIENTO FROM EQUIPO\
+        INNER JOIN PAIS ON PAIS.ID = EQUIPO.ID_PAIS\
+        WHERE EXISTS (SELECT EQUIPO_USUARIO.ID_EQUIPO FROM EQUIPO_USUARIO\
+        WHERE EQUIPO.ID = EQUIPO_USUARIO.ID_EQUIPO\
+        AND EQUIPO_USUARIO.ID_USUARIO = :id_usuario)\
+        ) ORDER BY NOMBRE_EQUIPO ASC";
+    
+    let result = await BD.Open(sql, [id_usuario], false);
+    Listado = [];
+
+    result.rows.map(registro => {
+        let LSchema = {
+            "id_equipo": registro[0],
+            "nombre_equipo": registro[1],
+            "link_fotografia": registro[2],
+            "nombre_pais": registro[3],
+            "seguimiento": registro[4]
+        }
+        Listado.push(LSchema);
+    })
+    res.status(200).json(Listado);
+});
+
+//CREATE
+router.post('/addSeguimientoEquipo', async (req, res) => {
+    const { id_usuario, id_equipo } = req.body;
+    if (!(id_usuario != -1 && id_equipo != -1)) {
+        res.status(201).json({
+            "response":false,
+            "msg": "No ha ingresado los campos obligatorios"
+        });
+    }else{        
+        sql = "INSERT INTO EQUIPO_USUARIO(ID_USUARIO, ID_EQUIPO)\
+        VALUES(\
+            :id_usuario,\
+            :id_equipo)";
+        await BD.Open(sql, [id_usuario, id_equipo], true);
+        res.status(201).json({
+            "response":true,
+            "msg": "Ahora sigues a este equipo"
+        });        
+    }
+});
+
+//DELETE
+router.delete("/deleteSeguimientoEquipo/:id_usuario/:id_equipo", async (req, res) => {
+    try {
+        const { id_usuario, id_equipo } = req.params;
+        sql = "DELETE FROM EQUIPO_USUARIO WHERE ID_USUARIO = :id_usuario AND ID_EQUIPO = :id_equipo";
+        await BD.Open(sql, [id_usuario, id_equipo], true);
+        res.status(201).json({ 
+            "response": true,
+            "msg": "Ha dejado de seguir al equipo" 
+        });
+    } catch (error) {
+        res.status(201).json({ 
+            "response": false,
+            "msg": "El dato que desea eliminar esta siendo utilizado" 
+        });
+    }
+});
+
 module.exports = router;

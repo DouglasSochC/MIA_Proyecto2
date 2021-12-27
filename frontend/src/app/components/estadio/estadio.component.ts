@@ -188,7 +188,6 @@ id_pais != -1
   cargarTabla(){
     this.sestadioservice.GetEstadios().subscribe((res:any) => {
       this.Estadio = res;
-      console.log( this.Estadio);
     });
   }
 

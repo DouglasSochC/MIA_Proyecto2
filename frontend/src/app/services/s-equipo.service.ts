@@ -64,4 +64,29 @@ export class SEquipoService {
     const url = "http://localhost:3000/deleteEquipo/"+id_equipo;
     return this.http.delete(url).pipe(map(data => data));
   }
+
+  InsertSeguirEquipo(id_usuario:number, id_equipo:number){
+    const url = "http://localhost:3000/addSeguimientoEquipo";
+    return this.http.post(url, 
+    {
+      "id_usuario": id_usuario,
+      "id_equipo": id_equipo
+    }, 
+    { headers: this.headers }
+    //Para retornar el resultado es necesario utilizar la funcion map. Recordar que se debe de importar
+    //la libreria rxjs/operators
+    ).pipe(map(data => data));
+  }
+
+  DeleteSeguimiento(id_usuario:number, id_equipo:number){
+    const url = "http://localhost:3000/deleteSeguimientoEquipo/"+id_usuario+"/"+id_equipo;
+    return this.http.delete(url).pipe(map(data => data));
+  }
+
+  //Debe de mostrar loo
+  GetMostrarEquiposSeguidos(id_usuario:number){
+    const url = "http://localhost:3000/getSeguirEquipo/"+id_usuario;
+    return this.http.get(url);
+  }
+
 }

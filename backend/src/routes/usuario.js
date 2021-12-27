@@ -122,7 +122,6 @@ router.post('/addUsuarioCliente', async (req, res) => {
                 "id_pais":id_pais
             }
             var convertirJSON = setBase64(cuerpoUsuario);
-            console.log(convertirJSON);
             var transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
                 port: 465,
@@ -281,7 +280,6 @@ router.post('/addUsuarioAdmEmp', async (req, res) => {
                 "id_estado_usuario":id_estado_usuario
             }
             var convertirJSON = setBase64(cuerpoUsuario);
-            console.log(convertirJSON);
             var transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
                 port: 465,

@@ -161,7 +161,18 @@
             </a>
           </div>
         </div>
-
+        <div *ngIf="VerMembresia() == 1" class="col d-flex align-items-start">
+          <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+            <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+          </div>
+          <div>
+            <h2>Seguir Equipos</h2>
+            <p>Tendrá el beneficio de hacer seguir a sus equipos favoritos</p>
+            <a href="./seguirequipo" class="btn btn-outline-primary">
+              Ir al Modulo
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </main>
