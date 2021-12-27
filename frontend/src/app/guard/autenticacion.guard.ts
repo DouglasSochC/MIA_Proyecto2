@@ -73,6 +73,8 @@ export class AutenticacionGuard implements CanActivate {
       }else if(this.autenticacionServicio.getUsuarioActual()['tipo_usuario'] == "Administrador"){
         if (route.url[0]['path'] == "menu_administrador") {
           return true;
+        }else if (route.url[0]['path'] == "cargamasiva") {
+          return true;
         }else if(route.url[0]['path'] == "reportesadministrador"){
           return true;
         }else if(route.url[0]['path'] == "usuarios"){

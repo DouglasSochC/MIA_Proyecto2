@@ -52,10 +52,17 @@ router.post('/addNoticia', async (req, res) => {
 });
 
 //READ
-router.get('/getNoticiaCliente/:informacion', async (req, res) => {
-    const { informacion } = req.params;
+router.get('/getNoticiaCliente/:informacion/:id_usuario', async (req, res) => {
+    const { informacion, id_usuario } = req.params;
 
-    if (informacion == "TODAS") {
+    if (id_usuario != -1) {
+        sql = "SELECT NOTICIA_EQUIPO.ID, NOTICIA_EQUIPO.DESCRIPCION, EQUIPO.ID, EQUIPO.NOMBRE,\
+        EQUIPO.LINK_FOTOGRAFIA, PAIS.NOMBRE\
+        FROM NOTICIA_EQUIPO\
+        INNER JOIN EQUIPO ON EQUIPO.ID = NOTICIA_EQUIPO.ID_EQUIPO\
+        INNER JOIN PAIS ON PAIS.ID = EQUIPO.ID_PAIS\
+        WHERE NOTICIA_EQUIPO.ID_EQUIPO IN (SELECT ID_EQUIPO FROM EQUIPO_USUARIO WHERE ID_USUARIO = "+id_usuario+")";
+    }else if (informacion == "TODAS") {
         sql = "SELECT NOTICIA_EQUIPO.ID, NOTICIA_EQUIPO.DESCRIPCION, EQUIPO.ID, EQUIPO.NOMBRE,\
         EQUIPO.LINK_FOTOGRAFIA, PAIS.NOMBRE\
         FROM NOTICIA_EQUIPO\
@@ -68,8 +75,7 @@ router.get('/getNoticiaCliente/:informacion', async (req, res) => {
         INNER JOIN EQUIPO ON EQUIPO.ID = NOTICIA_EQUIPO.ID_EQUIPO\
         INNER JOIN PAIS ON PAIS.ID = EQUIPO.ID_PAIS\
         WHERE UPPER(EQUIPO.NOMBRE) = UPPER('"+informacion+"') OR\
-        UPPER(NOTICIA_EQUIPO.DESCRIPCION) LIKE UPPER('%"+informacion+"%')";
-        
+        UPPER(NOTICIA_EQUIPO.DESCRIPCION) LIKE UPPER('%"+informacion+"%')";        
     }
     let result = await BD.Open(sql, [], false);
     Listado = [];

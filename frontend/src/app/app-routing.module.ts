@@ -29,6 +29,7 @@ import { ConsultaestadisticaComponent } from './components/consultaestadistica/c
 import { ReportesadministradorComponent } from './components/reportesadministrador/reportesadministrador.component';
 import { TecnicoComponent } from './components/tecnico/tecnico.component';
 import { SeguirequipoComponent } from './components/seguirequipo/seguirequipo.component';
+import { CargamasivaComponent } from './components/cargamasiva/cargamasiva.component';
 
 const routes: Routes = [
   {
@@ -166,6 +167,11 @@ const routes: Routes = [
   {
     path: 'seguirequipo',
     component: SeguirequipoComponent,
+    canActivate: [AutenticacionGuard]
+  },
+  {
+    path: 'cargamasiva',
+    component: CargamasivaComponent,
     canActivate: [AutenticacionGuard]
   }
 ];
