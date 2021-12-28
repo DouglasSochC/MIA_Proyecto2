@@ -4,7 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { SEquipoService }  from 'src/app/services/s-equipo.service';
 import { JugadorService }  from 'src/app/services/jugador.service';
 
-import { PaisInterface } from 'src/app/models/equipo-interface';
+import {  PaisInterface,
+          EquipoInterface } from 'src/app/models/equipo-interface';
 
 import {  TJugador,
           PosicionJugador,
@@ -27,10 +28,11 @@ export class JugadorComponent implements OnInit {
               public sjugadorservice:JugadorService) { }
 
   ngOnInit(): void {
-    this.limpiarDatos();
-    this.cargarPaises();
+    this.limpiarDatos();    
+    this.cargarPaises();    
     this.cargarPosicionJugador();
     this.cargarEstadoJugador();
+    this.cargarEquipos();    
     this.cargarTabla();
   }
   
@@ -48,21 +50,62 @@ export class JugadorComponent implements OnInit {
   id_estado:number = -1;
   nombre_estado:string="";
 
+  id_equipo:number =-1;
+  nombre_equipo:string="";
 
+  fecha_ini_equipo: string = "";
+
+
+
+  
   Paises:PaisInterface[] = [];
+  Equipos: EquipoInterface [] = [];
   Jugadores:TJugador[] = [];
   Posicion:PosicionJugador [] = [];
   Estadojugador:EstadoJugador[] = [];
- 
+  
+
   insertarJugador(){
     this.fecha_nacimiento = this.fecha_nacimiento.split("-").reverse().join("/");
-    console.log(this.fecha_nacimiento);
-    console.log(this.nombres);
+    this.fecha_ini_equipo = this.fecha_ini_equipo.split("-").reverse().join("/");
     this.sjugadorservice.InsertarJugador( this.nombres, 
                                           this.fecha_nacimiento,
                                           this.id_pais,
                                           this.id_posicion, 
-                                          this.id_estado                                                                             
+                                          this.id_estado,
+                                          this.id_equipo,
+                                          this.fecha_ini_equipo                                                                                                                    
+    ).subscribe((res:any) => {
+      if (res['response']) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito',
+          text: res['msg']
+        });        
+        //this.limpiarDatos();
+        this.cargarPaises();
+        this.cargarPosicionJugador();
+        this.cargarEstadoJugador();   
+        this.cargarEquipos();     
+        this.cargarTabla();
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res['msg']
+        });
+      }
+    });
+    this.insertarTrayectoriaJugador();
+  }
+
+
+  insertarTrayectoriaJugador(){
+    this.fecha_ini_equipo = this.fecha_ini_equipo.split("-").reverse().join("/");
+    this.sjugadorservice.InsertTrayectoria( 
+                                          this.id_jugador,
+                                          this.id_equipo,
+                                          this.fecha_ini_equipo                                                                            
     ).subscribe((res:any) => {
       if (res['response']) {
         Swal.fire({
@@ -73,7 +116,8 @@ export class JugadorComponent implements OnInit {
         this.limpiarDatos();
         this.cargarPaises();
         this.cargarPosicionJugador();
-        this.cargarEstadoJugador();        
+        this.cargarEstadoJugador();   
+        this.cargarEquipos();     
         this.cargarTabla();
       }else{
         Swal.fire({
@@ -84,9 +128,7 @@ export class JugadorComponent implements OnInit {
       }
     });
   }
-
-
-
+  
   
 
   //modificar
@@ -171,12 +213,7 @@ export class JugadorComponent implements OnInit {
       this.id_posicion = posicion;
       this.id_estado = estado;
   }
-
-  cargarTabla(){
-    this.sjugadorservice.GetJugadoresCompleto().subscribe((res:any) => {
-      this.Jugadores = res;
-    });
-  }
+ 
 
   cargarEstadoJugador(){
     this.sjugadorservice.GetEstadoJugador().subscribe((res:any) => {
@@ -184,18 +221,34 @@ export class JugadorComponent implements OnInit {
     });    
   }
 
+
   cargarPosicionJugador(){
     this.sjugadorservice.GetPosicionJugador().subscribe((res:any) => {
       this.Posicion = res;
     });
   }
 
+  cargarTabla(){
+    this.sjugadorservice.GetJugadoresCompleto().subscribe((res:any) => {
+      this.Jugadores = res;
+    });
+  }
+
+
   cargarPaises(){
     this.sequiposervice.GetPaises().subscribe((res:any) => {
       this.Paises = res;
     });
   }
+
+
+  cargarEquipos(){
+    this.sequiposervice.GetEquipos().subscribe((res:any) => {
+      this.Equipos = res;
+    });    
+  }
   
+
   limpiarDatos(){
     this.id_jugador = -1;
     this.nombres = ""; 
@@ -208,14 +261,8 @@ export class JugadorComponent implements OnInit {
     this.nombre_posicion = "";
 
     this.id_estado = -1;
-    this.nombre_estado = "";
-      
+    this.nombre_estado = "";      
   }
 
 }
 
-
-/*
-//
-  
- */

@@ -19,6 +19,7 @@ export class SEquipoService {
     return this.http.get(url);
   } 
 
+  //router.get('/getPaises', async (req, res) => {
   //TODO: GET PAISES
   GetPaises(){
     const url = "http://localhost:3000/getPaises";

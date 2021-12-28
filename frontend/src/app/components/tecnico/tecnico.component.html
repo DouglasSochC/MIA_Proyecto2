@@ -59,6 +59,10 @@
                 </select>
               </div>
 
+
+
+
+
               <div class="col-sm-6">
                 <label class="form-label">Fecha de Inicio</label>
                 <input [(ngModel)] = "fecha_ini" 
@@ -110,8 +114,7 @@
             </div>
             <hr class="my-4">
              
-            <button (click) = "insertarTecnico()"
-                              
+            <button (click) = "insertarTecnico()"                              
                     class="w-100 btn btn-primary btn-lg" 
                     type="submit">
                     Registrar
@@ -135,7 +138,6 @@
             <th scope="col">ID</th>
             <th scope="col">NOMBRE COMPLETO</th>
             <th scope="col">FECHA_NAC</th>
-
             <th scope="col">NACIONALIDAD</th>
             <th scope="col">ESTADO</th>
             <th scope="col">PAIS EQUIPO</th>
@@ -143,9 +145,7 @@
             <th scope="col">FECHA_INI</th>
             <th scope="col">FECHA_FIN</th>
           </tr>
-        </thead>
-
-     
+        </thead>     
         <tbody>        
           <tr *ngFor="let tecnico of Tecnicos">
             <th>{{ tecnico.id_tecnico }}</th>
@@ -154,7 +154,18 @@
             <td>{{ tecnico.nombre_pais }}</td>
             <td>{{ tecnico.nombre_estado_tecnico }}</td>          
             <td>
-              <button (click)="setearInterfaz( )" 
+
+              
+              <button (click)="setearInterfaz(
+                                            tecnico.id_tecnico,
+                                            tecnico.nombre_tecnico,
+                                            tecnico.fecha_nacimiento,                                            
+                                            tecnico.id_tecnico,
+                                            tecnico.id_tecnico,
+                                            tecnico.fecha_nacimiento,
+                                            tecnico.fecha_nacimiento,
+                                            tecnico.id_tecnico,
+                                            tecnico.id_tecnico )" 
                               class="btn btn-outline-warning" 
                               type="submit">
                               Editar

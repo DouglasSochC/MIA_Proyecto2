@@ -50,6 +50,7 @@ export class TecnicoComponent implements OnInit {
   nombre_equipo:string ="";
   id_pais_equipo:number =-1;
   nombre_pais_equipo:string ="";
+
   
   Paises:PaisInterface[] = [];
   Equipos:EquipoInterface[] =[];
@@ -164,11 +165,43 @@ export class TecnicoComponent implements OnInit {
   actualizarTecnico(){
     alert("actualizare tecnico");
   }
-  setearInterfaz(){
-    console.log('setear datos');
+
+
+/*
+
+                                            tecnico.nombre_tecnico,
+                                            tecnico.fecha_nacimiento,
+                                            tecnico.id_pais_tecnico,
+                                            tecnico.id_estado_tecnico,
+                                            tecnico.fecha_ini,
+                                            tecnico.fecha_fin,
+                                            tecnico.id_equipo,
+                                            tecnico.id_pais_equipo 
+*/
+  
+  setearInterfaz( id_tecnico:number, 
+                  nombres:string, 
+                  fecha_nacimiento:string, 
+                  id_pais_tecnico:number,  
+                  id_estado_tecnico:number,
+                  fecha_ini:string, 
+                  fecha_fin:string, 
+                  id_equipo:number,
+                  id_pais_equipo:number,
+                  ){
+    this.limpiarDatos();
+
+    this.id_tecnico = id_tecnico;
+    this.nombres = nombres;
+    this.fecha_nacimiento = (fecha_nacimiento == null)? "": fecha_nacimiento.split("/").reverse().join("-");
+    this.id_pais_tecnico = id_pais_tecnico;
+    this.id_estado_tecnico = id_estado_tecnico;
+    this.fecha_ini = (fecha_ini == null)? "": fecha_ini.split("/").reverse().join("-");
+    this.fecha_fin = (fecha_fin == null)? "": fecha_fin.split("/").reverse().join("-");
+    this.id_equipo=id_equipo;
+    this.id_pais_equipo=id_pais_equipo;    
   }
-/** */
-  /** */
+
 
   cargarTablaTecnicos(){  
     this.stecnicoservice.GetTecnicosCompleto().subscribe((res:any) => {

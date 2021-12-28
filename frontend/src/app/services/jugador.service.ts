@@ -23,20 +23,7 @@ export class JugadorService {
     return this.http.get(url);
   }
 
-  InsertTrayectoria(id_jugador:number, id_equipo_nuevo:number, fecha_transferencia:string){    
-    const url = "http://localhost:3000/addTrayectoriaJugador";
-    return this.http.post(url, 
-    {
-      "id_jugador": id_jugador,
-      "id_equipo_nuevo": id_equipo_nuevo,
-      "fecha_transferencia": fecha_transferencia
-    }, 
-    { headers: this.headers }
-    //Para retornar el resultado es necesario utilizar la funcion map. Recordar que se debe de importar
-    //la libreria rxjs/operators
-    ).pipe(map(data => data));
-    
-  }
+  
 
   GetJugadoresCompleto(){
     const url = "http://localhost:3000/getJugadores";
@@ -77,25 +64,43 @@ export class JugadorService {
                   fecha_nacimiento:string,
                   id_pais:number,
                   id_posicion:number,
-                  id_estado_jugador:number
+                  id_estado_jugador:number,
+                  id_equipo:number,
+                  fecha_ini:string
                 ){      
       const url = "http://localhost:3000/addJugador";
+
       return this.http.post(url, 
       {
         "nombres": nombres,
         "fecha_nacimiento":fecha_nacimiento,
         "id_pais": id_pais,
         "id_posicion":id_posicion,
-        "id_estado_jugador":id_estado_jugador
+        "id_estado_jugador":id_estado_jugador,
+        "id_equipo":id_equipo,
+        "fecha_inicial":fecha_ini
       },
       { headers: this.headers }
       //Para retornar el resultado es necesario utilizar la funcion map. 
       //Recordar que se debe de importar la libreria rxjs/operators
-      ).pipe(map(data => data));
-
+      ).pipe(map(data => data));     
   }
-
-  ActualizarJugador(  id_jugadr:number,
+ 
+  InsertTrayectoria(id_jugador:number, id_equipo_nuevo:number, fecha_transferencia:string){    
+    const url = "http://localhost:3000/addTrayectoriaJugador";
+    return this.http.post(url, 
+    {
+      "id_jugador": id_jugador,
+      "id_equipo_nuevo": id_equipo_nuevo,
+      "fecha_transferencia": fecha_transferencia
+    }, 
+    { headers: this.headers }
+    //Para retornar el resultado es necesario utilizar la funcion map. Recordar que se debe de importar
+    //la libreria rxjs/operators
+    ).pipe(map(data => data));
+    
+  }
+  ActualizarJugador(  id_jugador:number,
                       nombres:string, 
                       fecha_nacimiento:string,
                       id_pais:number,
@@ -111,15 +116,14 @@ export class JugadorService {
         "id_pais": id_pais,
         "id_posicion": posicion,
         "id_estado_jugador":estado,
-        "id_jugador": id_jugadr,
+        "id_jugador": id_jugador,
       }, 
       { headers: this.headers }
       //Para retornar el resultado es necesario utilizar la funcion map. 
       //Recordar que se debe de importar la libreria rxjs/operators
       ).pipe(map(data => data));
   }
-
-  
+ 
 
   DeleteJugador(id_jugador:number){
     const url = "http://localhost:3000/deleteJugador/"+id_jugador;

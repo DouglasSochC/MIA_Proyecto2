@@ -23,8 +23,6 @@
                         value="" required>
               </div>
   
-              
-
               <div class="col-sm-6">
                 <label class="form-label">Fecha de Nacimiento</label>
                 <input [(ngModel)] = "fecha_nacimiento" 
@@ -36,7 +34,6 @@
                         min="1900-01-01" 
                         max="2099-12-31" required>
               </div>
-
 
               <div class="col-sm-6">
                 <label class="form-label">Pais-Nacionalidad</label>
@@ -72,6 +69,30 @@
                             {{ estado.nombre }}
                     </option>
                 </select>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label">Nombre del Equipo</label>
+                <select [(ngModel)] = "id_equipo" 
+                        name = "id_equipo" 
+                        class="form-select" required>                        
+                    <option *ngFor="let equipo of Equipos" 
+                            value="{{ equipo.id_equipo}}">
+                            {{ equipo.nombre }}
+                    </option>
+                </select>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label">Fecha de inicio en Equipo</label>
+                <input [(ngModel)] = "fecha_ini_equipo" 
+                        name = "fecha_ini_equipo" 
+                        type="date" 
+                        class="form-control" 
+                        id="start_ini" 
+                        name="trip-start"
+                        min="1900-01-01" 
+                        max="2099-12-31" required>
               </div>
 
             </div>
