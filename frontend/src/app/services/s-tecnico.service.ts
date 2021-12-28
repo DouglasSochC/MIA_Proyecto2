@@ -37,7 +37,7 @@ export class STecnicoService {
     ).pipe(map(data => data));
     
   }
-/*ANALISIS*/
+
   GetTecnicosCompleto(){
     const url = "http://localhost:3000/getTecnicos";
     return this.http.get(url);

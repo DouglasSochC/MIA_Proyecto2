@@ -2,13 +2,13 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
-const formatoFecha = 'DD/MM/YY';
+const formatoFecha = 'DD/MM/YYYY';
 
-//Usuarios Suscritos a X equipo
-router.get('/getUsuarioEquipo', async (req, res) => {
-    const { id_equipo } = req.body;
+//1. Usuarios Suscritos a X equipo
+router.get('/getUsuarioEquipo/:id_equipo', async (req, res) => {
+    const { id_equipo } = req.params;
     sql = "SELECT USUARIO.id, USUARIO.nombres, USUARIO.apellidos, USUARIO.correo, USUARIO.telefono, \
-    USUARIO.genero, TO_DATE(USUARIO.fecha_nac,'"+formatoFecha+"'), TO_DATE(USUARIO.fecha_registro,'"+formatoFecha+"'), \
+    USUARIO.genero, TO_CHAR(USUARIO.fecha_nac,'"+formatoFecha+"'), TO_DATE(USUARIO.fecha_registro,'"+formatoFecha+"'), \
     USUARIO.direccion \
     FROM EQUIPO_USUARIO\
     INNER JOIN USUARIO ON USUARIO.id = EQUIPO_USUARIO.id_usuario\
@@ -35,11 +35,11 @@ router.get('/getUsuarioEquipo', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//Usuario Con o Sin Membresía
-router.get('/getUsuarioMembresia', async (req, res) => {
-    const { membresia_activa } = req.body;
+//2. Usuario Con o Sin Membresía
+router.get('/getUsuarioMembresia/:membresia_activa', async (req, res) => {
+    const { membresia_activa } = req.params;
     sql = "SELECT USUARIO.id, USUARIO.nombres, USUARIO.apellidos, USUARIO.correo, USUARIO.telefono, \
-    USUARIO.genero, TO_DATE(USUARIO.fecha_nac,'"+formatoFecha+"'), TO_DATE(USUARIO.fecha_registro,'"+formatoFecha+"'), \
+    USUARIO.genero, TO_CHAR(USUARIO.fecha_nac,'"+formatoFecha+"'), TO_CHAR(USUARIO.fecha_registro,'"+formatoFecha+"'), \
     USUARIO.direccion \
     FROM USUARIO \
     WHERE USUARIO.membresia_activa = :membresia_activa AND USUARIO.id_tipo = 3";
@@ -64,7 +64,7 @@ router.get('/getUsuarioMembresia', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//Usuarios que Mas membresías han adquirido
+//3. Usuarios que Mas membresías han adquirido
 router.get('/getMasMembresia', async (req, res) => {
     const {  } = req.body;
     sql = "SELECT COUNT(USUARIO.id) AS cantidad_membresia, USUARIO.nombres, USUARIO.apellidos\
@@ -87,7 +87,7 @@ router.get('/getMasMembresia', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//Usuarios que más dinero han gastado
+//4. Usuarios que más dinero han gastado
 router.get('/getUsuarioDinero', async (req, res) => {
     const {  } = req.body;
     sql = "SELECT (COUNT(USUARIO.id)*15) AS cantidad_membresia, USUARIO.nombres, USUARIO.apellidos\
@@ -110,11 +110,11 @@ router.get('/getUsuarioDinero', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//Usuarios de X País
-router.get('/getUsuarioPais', async (req, res) => {
-    const { id_pais } = req.body;
+//5. Usuarios de X País
+router.get('/getUsuarioPais/:id_pais', async (req, res) => {
+    const { id_pais } = req.params;
     sql = "SELECT USUARIO.id, USUARIO.nombres, USUARIO.apellidos, USUARIO.correo, USUARIO.telefono, \
-    USUARIO.genero, TO_DATE(USUARIO.fecha_nac,'"+formatoFecha+"'), TO_DATE(USUARIO.fecha_registro,'"+formatoFecha+"'), \
+    USUARIO.genero, TO_CHAR(USUARIO.fecha_nac,'"+formatoFecha+"'), TO_CHAR(USUARIO.fecha_registro,'"+formatoFecha+"'), \
     USUARIO.direccion \
     FROM USUARIO\
     WHERE USUARIO.id_pais = :id_pais";
@@ -139,11 +139,11 @@ router.get('/getUsuarioPais', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//Usuarios de X genero
-router.get('/getUsuarioGenero', async (req, res) => {
-    const { genero } = req.body;
+//6. Usuarios de X genero
+router.get('/getUsuarioGenero/:genero', async (req, res) => {
+    const { genero } = req.params;
     sql = "SELECT USUARIO.id, USUARIO.nombres, USUARIO.apellidos, USUARIO.correo, USUARIO.telefono, \
-    USUARIO.genero, TO_DATE(USUARIO.fecha_nac,'"+formatoFecha+"'), TO_DATE(USUARIO.fecha_registro,'"+formatoFecha+"'), \
+    USUARIO.genero, TO_CHAR(USUARIO.fecha_nac,'"+formatoFecha+"'), TO_CHAR(USUARIO.fecha_registro,'"+formatoFecha+"'), \
     USUARIO.direccion \
     FROM USUARIO\
     WHERE USUARIO.genero = :genero";
@@ -168,9 +168,9 @@ router.get('/getUsuarioGenero', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//Usuarios con al menos X años de edad
-router.get('/getUsuarioEdad', async (req, res) => {
-    const { edad } = req.body;
+//7. Usuarios con al menos X años de edad
+router.get('/getUsuarioEdad/:edad', async (req, res) => {
+    const { edad } = req.params;
     sql = "SELECT * FROM (SELECT id, nombres, apellidos,\
     (EXTRACT(YEAR FROM SYSDATE)-EXTRACT(YEAR FROM fecha_nac)) AS EDAD, genero\
     FROM USUARIO) WHERE EDAD >= :edad";
@@ -191,9 +191,9 @@ router.get('/getUsuarioEdad', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//Empleados que MAS/MENOS noticias han publicado
-router.get('/getMENoticias', async (req, res) => {
-    const { es_mas } = req.body;
+//8. Empleados que MAS/MENOS noticias han publicado
+router.get('/getMENoticias/:es_mas', async (req, res) => {
+    const { es_mas } = req.params;
     var tipo_orden = (es_mas == 1) ? "DESC":"ASC";
     sql = "SELECT COUNT(NOTICIA_EQUIPO.id) AS cantidad_noticias, USUARIO.id AS id_usuario, USUARIO.nombres, \
     USUARIO.apellidos, USUARIO.correo FROM NOTICIA_EQUIPO\
@@ -217,9 +217,9 @@ router.get('/getMENoticias', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//Empleados que MAS/MENOS noticias han publicado de X Equipo
-router.get('/getMENoticiasEquipo', async (req, res) => {
-    const { es_mas, id_equipo } = req.body;
+//9. Empleados que MAS/MENOS noticias han publicado de X Equipo
+router.get('/getMENoticiasEquipo/:es_mas/:id_equipo', async (req, res) => {
+    const { es_mas, id_equipo } = req.params;
     var tipo_orden = (es_mas == 1) ? "DESC":"ASC";
     sql = "SELECT COUNT(NOTICIA_EQUIPO.id) AS cantidad_noticias, USUARIO.id AS id_usuario, USUARIO.nombres, \
     USUARIO.apellidos, USUARIO.correo FROM NOTICIA_EQUIPO\
@@ -244,7 +244,7 @@ router.get('/getMENoticiasEquipo', async (req, res) => {
     res.status(200).json(Listado);
 });
 
-//Bitácoras de los administradores.
+//10. Bitácoras de los administradores.
 router.get('/getBicatoras', async (req, res) => {
     const {  } = req.body;
     sql = "SELECT BITACORA.id AS id_bitacora, BITACORA.descripcion, BITACORA.operacion,\

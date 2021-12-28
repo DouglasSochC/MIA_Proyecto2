@@ -1,1 +1,301 @@
-<p>reportesadministrador works!</p>
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="data:image/png;base64,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" alt="" width="100" height="100">
+        <h2>Reportes</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+    
+              <div class="col-sm-12">
+                  <label for="txtPais" class="form-label">Descripcion</label>
+                  <select [(ngModel)] = "id_reporte" name = "id_reporte" class="form-select" id="txtPais" required>                        
+                      <option value="1">1. Usuarios Suscritos a X Equipo</option>
+                      <option value="2">2. Usuarios Con o Sin Membresia</option>
+                      <option value="3">3. Usuarios que Mas Membresias ha Adquirido</option>
+                      <option value="4">4. Usuarios que Mas Dinero a Gastado</option>
+                      <option value="5">5. Usuarios de X Pais</option>
+                      <option value="6">6. Usuarios de X Genero</option>
+                      <option value="7">7. Usuarios con Al Menos X Años de Edad</option>
+                      <option value="8">8. Empleados que MAS/MENOS Noticias han Publicado</option>
+                      <option value="9">9. Empleados que MAS/MENOS Noticias han Publicado de X Equipo</option>
+                      <option value="10">10. Bitacoras</option>
+                  </select>
+              </div>
+
+              <div *ngIf="id_reporte == 1 || id_reporte == 9" class="col-sm-12">
+                  <label class="form-label">Equipo</label>
+                  <select [(ngModel)] = "id_equipo" name = "id_equipo" class="form-select" required>                        
+                      <option *ngFor="let registro of R1Equipo" value="{{ registro.id_equipo }}">{{ registro.nombre }} - {{ registro.nombre_pais }}</option>
+                  </select>
+              </div>
+              <div *ngIf="id_reporte == 5" class="col-sm-12">
+                <label class="form-label">Pais</label>
+                <select [(ngModel)] = "id_pais" name = "id_pais" class="form-select" required>                        
+                    <option *ngFor="let registro of R5Paises" value="{{ registro.id_pais }}">{{ registro.nombre }}</option>
+                </select>
+              </div>
+              <div *ngIf="id_reporte == 2" class="col-sm-12">
+                  <label class="form-label">Membresia</label>
+                  <select [(ngModel)] = "membresia_activa" name = "membresia_activa" class="form-select" required>                        
+                      <option value="0">Sin Membresia</option>
+                      <option value="1">Con Membresia</option>
+                  </select>
+              </div>
+              <div *ngIf="id_reporte == 6" class="col-sm-12">
+                <label class="form-label">Genero</label>
+                <select [(ngModel)] = "genero" name = "genero" class="form-select" required>                        
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+              </div>
+              <div *ngIf="id_reporte == 7" class="col-sm-12">
+                <label class="form-label">Edad</label>
+                <input [(ngModel)] = "edad" name = "edad" type="text" class="form-control" autocomplete="off" placeholder="" value="" required>
+              </div>
+              <div *ngIf="id_reporte == 8 || id_reporte == 9" class="col-sm-12">
+                <label class="form-label">Seleccionar</label>
+                <select [(ngModel)] = "es_mas" name = "es_mas" class="form-select" required>                        
+                    <option value="1">Mas</option>
+                    <option value="0">Menos</option>
+                </select>
+              </div>
+              
+            </div>
+            <br/>
+            <button (click)="mostrarReporte()" class="w-100 btn btn-primary btn-lg" type="submit">Obtener Reporte</button><br/><br/>
+          </form>
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+    <table *ngIf="id_reporte == 1" class="table">
+        <thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE COMPLETO</th>
+            <th scope="col">CORREO</th>
+            <th scope="col">TELEFONO</th>
+            <th scope="col">GENERO</th>
+            <th scope="col">NACIMIENTO</th>
+            <th scope="col">DIRECCION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let registro of Reporte1">
+            <th>{{ registro.id }}</th>
+            <td>{{ registro.nombres }} {{ registro.apellidos }}</td>
+            <td>{{ registro.correo }}</td>
+            <td>{{ registro.telefono }}</td>
+            <td>{{ registro.genero }}</td> 
+            <td>{{ registro.fecha_nac }}</td> 
+            <td>{{ registro.direccion }}</td> 
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="id_reporte == 2" class="table">
+        <thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE COMPLETO</th>
+            <th scope="col">CORREO</th>
+            <th scope="col">TELEFONO</th>
+            <th scope="col">GENERO</th>
+            <th scope="col">NACIMIENTO</th>
+            <th scope="col">DIRECCION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let registro of Reporte2">
+            <th>{{ registro.id }}</th>
+            <td>{{ registro.nombres }} {{ registro.apellidos }}</td>
+            <td>{{ registro.correo }}</td>
+            <td>{{ registro.telefono }}</td>
+            <td>{{ registro.genero }}</td> 
+            <td>{{ registro.fecha_nac }}</td> 
+            <td>{{ registro.direccion }}</td> 
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="id_reporte == 3" class="table">
+      <thead>
+          <tr>
+          <th scope="col">CANTIDAD DE MEMBRESIAS</th>
+          <th scope="col">NOMBRES</th>
+          <th scope="col">APELLIDOS</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let registro of Reporte3">
+          <th>{{ registro.cantidad_membresia }}</th>
+          <td>{{ registro.nombres }} {{ registro.apellidos }}</td>
+          <td>{{ registro.apellidos }}</td>
+          </tr>
+      </tbody>
+    </table>
+    <table *ngIf="id_reporte == 4" class="table">
+      <thead>
+          <tr>
+          <th scope="col">DINERO GASTADO</th>
+          <th scope="col">NOMBRES</th>
+          <th scope="col">APELLIDOS</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let registro of Reporte4">
+          <th>{{ registro.cantidad_membresia }}</th>
+          <td>{{ registro.nombres }} {{ registro.apellidos }}</td>
+          <td>{{ registro.apellidos }}</td>
+          </tr>
+      </tbody>
+    </table>
+    <table *ngIf="id_reporte == 5" class="table">
+      <thead>
+          <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NOMBRE COMPLETO</th>
+          <th scope="col">CORREO</th>
+          <th scope="col">TELEFONO</th>
+          <th scope="col">GENERO</th>
+          <th scope="col">NACIMIENTO</th>
+          <th scope="col">DIRECCION</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let registro of Reporte5">
+          <th>{{ registro.id }}</th>
+          <td>{{ registro.nombres }} {{ registro.apellidos }}</td>
+          <td>{{ registro.correo }}</td>
+          <td>{{ registro.telefono }}</td>
+          <td>{{ registro.genero }}</td> 
+          <td>{{ registro.fecha_nac }}</td> 
+          <td>{{ registro.direccion }}</td> 
+          </tr>
+      </tbody>
+    </table>
+    <table *ngIf="id_reporte == 6" class="table">
+      <thead>
+          <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NOMBRE COMPLETO</th>
+          <th scope="col">CORREO</th>
+          <th scope="col">TELEFONO</th>
+          <th scope="col">GENERO</th>
+          <th scope="col">NACIMIENTO</th>
+          <th scope="col">DIRECCION</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let registro of Reporte6">
+          <th>{{ registro.id }}</th>
+          <td>{{ registro.nombres }} {{ registro.apellidos }}</td>
+          <td>{{ registro.correo }}</td>
+          <td>{{ registro.telefono }}</td>
+          <td>{{ registro.genero }}</td> 
+          <td>{{ registro.fecha_nac }}</td> 
+          <td>{{ registro.direccion }}</td> 
+          </tr>
+      </tbody>
+    </table>
+    <table *ngIf="id_reporte == 7" class="table">
+      <thead>
+          <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NOMBRE COMPLETO</th>
+          <th scope="col">EDAD</th>
+          <th scope="col">GENERO</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let registro of Reporte7">
+          <th>{{ registro.id }}</th>
+          <td>{{ registro.nombres }} {{ registro.apellidos }}</td>
+          <td>{{ registro.edad }}</td>
+          <td>{{ registro.genero }}</td> 
+          </tr>
+      </tbody>
+    </table>
+    <table *ngIf="id_reporte == 8" class="table">
+      <thead>
+          <tr>
+          <th scope="col">CANTIDAD DE NOTICIAS</th>
+          <th scope="col">ID DEL USUARIO</th>
+          <th scope="col">NOMBRES</th>
+          <th scope="col">APELLIDOS</th>
+          <th scope="col">CORREO</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let registro of Reporte8">
+          <th>{{ registro.cantidad_noticias }}</th>
+          <td>{{ registro.id_usuario }}</td>
+          <td>{{ registro.nombres }}</td>
+          <td>{{ registro.apellidos }}</td>
+          <td>{{ registro.correo }}</td>
+          </tr>
+      </tbody>
+    </table>
+    <table *ngIf="id_reporte == 9" class="table">
+      <thead>
+          <tr>
+          <th scope="col">CANTIDAD DE NOTICIAS</th>
+          <th scope="col">ID DEL USUARIO</th>
+          <th scope="col">NOMBRES</th>
+          <th scope="col">APELLIDOS</th>
+          <th scope="col">CORREO</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let registro of Reporte9">
+          <th>{{ registro.cantidad_noticias }}</th>
+          <td>{{ registro.id_usuario }}</td>
+          <td>{{ registro.nombres }}</td>
+          <td>{{ registro.apellidos }}</td>
+          <td>{{ registro.correo }}</td>
+          </tr>
+      </tbody>
+    </table>
+    <table *ngIf="id_reporte == 10" class="table">
+      <thead>
+          <tr>
+          <th scope="col">ID</th>
+          <th scope="col">DESCRIPCION</th>
+          <th scope="col">OPERACION</th>
+          <th scope="col">ID DE USUARIO</th>
+          <th scope="col">USUARIO QUE HIZO LA TRANSACCION</th>
+          <th scope="col">CORREO</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let registro of Reporte10">
+          <th>{{ registro.id_bitacora }}</th>
+          <td>{{ registro.descripcion }}</td>
+          <td>{{ registro.operacion }}</td>
+          <td>{{ registro.id_usuario }}</td>
+          <td>{{ registro.nombres }}</td>
+          <td>{{ registro.correo }}</td> 
+          </tr>
+      </tbody>
+    </table>
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>
