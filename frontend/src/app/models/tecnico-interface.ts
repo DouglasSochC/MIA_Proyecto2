@@ -24,3 +24,16 @@ export interface TTecnicoInterface{
     id_estado_tecnico:number,
     nombre_estado_tecnico:string
 }
+
+/******************** */
+/*------------------ */
+
+export interface EstadoTecnicoInterface{
+    id_estado:number,
+    nombre:string
+}
+
+/*------------------ */
+/******************** */
+
+

@@ -1,1 +1,175 @@
-<p>tecnico works!</p>
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" 
+            src="https://images.vexels.com/media/users/3/137047/isolated/lists/5831a17a290077c646a48c4db78a81bb-icono-de-perfil-de-usuario-azul.png" 
+            alt="" width="50" height="60">
+        <h2>TECNICO</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              
+              <div class="col-sm-6">
+                <label class="form-label">Nombre Tecnico</label>
+                <input  [(ngModel)] = "nombres" 
+                        name = "nombres" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="" 
+                        value="" required>
+              </div>
+  
+              <div class="col-sm-6">
+                <label class="form-label">Fecha de Nacimiento</label>
+                <input [(ngModel)] = "fecha_nacimiento" 
+                        name = "fecha_nacimiento" 
+                        type="date" 
+                        class="form-control" 
+                        id="start_nacimiento" 
+                        name="trip-start"
+                        min="1900-01-01" 
+                        max="2099-12-31" required>
+              </div>
+  
+              <div class="col-sm-6">
+                <label class="form-label">Pais-Nacionalidad-Tecnico</label>
+                <select [(ngModel)] = "id_pais_tecnico" 
+                          name = "id_pais_tecnico" 
+                          class="form-select" required>                        
+                    <option *ngFor="let pais of Paises" 
+                            value="{{ pais.id_pais }}">
+                            {{ pais.nombre }}
+                    </option>
+                </select>
+              </div>
+  
+              <div class="col-sm-6">
+                <label class="form-label">Estado del Tecnico</label>
+                <select [(ngModel)] = "id_estado_tecnico" 
+                        name = "id_estado_tecnico" 
+                        class="form-select" required>                        
+                    <option *ngFor="let estado of EstadoTecnico" 
+                            value="{{ estado.id_estado }}">
+                            {{ estado.nombre }}
+                    </option>
+                </select>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label">Fecha de Inicio</label>
+                <input [(ngModel)] = "fecha_ini" 
+                        name = "fecha_ini" 
+                        type="date" 
+                        class="form-control" 
+                        id="start_ini" 
+                        name="trip-start"
+                        min="1900-01-01" 
+                        max="2099-12-31" required>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label">Fecha de finalizacion</label>
+                <input [(ngModel)] = "fecha_fin" 
+                        name = "fecha_fin" 
+                        type="date" 
+                        class="form-control" 
+                        id="start_fin" 
+                        name="trip-start"
+                        min="1900-01-01" 
+                        max="2099-12-31" required>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label">Nombre - Equipo </label>
+                <select [(ngModel)] = "id_pais_equipo" 
+                          name  = "id_pais_equipo" 
+                          class = "form-select" required>                        
+                    <option *ngFor="let equipo of Equipos" 
+                            value="{{ equipo.id_equipo }}">
+                            {{ equipo.nombre }} 
+                    </option>
+                </select>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label">Pais - Equipo</label>
+                <select [(ngModel)] = "id_pais_equipo" 
+                        name = "id_pais_equipo" 
+                        class="form-select">                        
+                    <option *ngFor="let equipo of Equipos" 
+                            value="{{ equipo.id_equipo }}">
+                            {{ equipo.nombre_pais }}
+                    </option>
+                </select>
+              </div>
+
+            </div>
+            <hr class="my-4">
+             
+            <button (click) = "insertarTecnico()"
+                              
+                    class="w-100 btn btn-primary btn-lg" 
+                    type="submit">
+                    Registrar
+            </button>
+            <br/>
+            <br/>            
+            <button (click) = "actualizarTecnico()"
+                    class="w-50 btn btn-warning" 
+                    type="submit">
+                    Guardar Cambios
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE COMPLETO</th>
+            <th scope="col">FECHA_NAC</th>
+
+            <th scope="col">NACIONALIDAD</th>
+            <th scope="col">ESTADO</th>
+            <th scope="col">PAIS EQUIPO</th>
+            <th scope="col">EQUIPO</th>            
+            <th scope="col">FECHA_INI</th>
+            <th scope="col">FECHA_FIN</th>
+          </tr>
+        </thead>
+
+     
+        <tbody>        
+          <tr *ngFor="let tecnico of Tecnicos">
+            <th>{{ tecnico.id_tecnico }}</th>
+            <td>{{ tecnico.nombre_tecnico }} </td>
+            <td>{{ tecnico.fecha_nacimiento }}</td>
+            <td>{{ tecnico.nombre_pais }}</td>
+            <td>{{ tecnico.nombre_estado_tecnico }}</td>          
+            <td>
+              <button (click)="setearInterfaz( )" 
+                              class="btn btn-outline-warning" 
+                              type="submit">
+                              Editar
+              </button>&nbsp;
+              <button (click)="eliminarTecnico(tecnico.id_tecnico)" 
+                              class="btn btn-outline-danger" 
+                              type="submit">
+                              Eliminar
+              </button>
+            </td>
+          </tr>  
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>
