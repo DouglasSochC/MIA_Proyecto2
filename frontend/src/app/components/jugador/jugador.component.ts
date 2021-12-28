@@ -85,6 +85,10 @@ export class JugadorComponent implements OnInit {
     });
   }
 
+
+
+  
+
   //modificar
   actualizarJugador(){
     console.log('actualizare jugador');
@@ -155,7 +159,7 @@ export class JugadorComponent implements OnInit {
   setearInterfaz( id_jugador:number, 
                   nombres:string, 
                   fecha_nacimiento:string, 
-                  nombre_pais:string, 
+                  pais:number, 
                   posicion:number, 
                   estado:number               
                 ){
@@ -163,7 +167,7 @@ export class JugadorComponent implements OnInit {
       this.id_jugador = id_jugador;
       this.nombres = nombres;
       this.fecha_nacimiento = (fecha_nacimiento == null)? "": fecha_nacimiento.split("/").reverse().join("-"),
-      this.nombre_pais = nombre_pais;
+      this.id_pais = pais;
       this.id_posicion = posicion;
       this.id_estado = estado;
   }

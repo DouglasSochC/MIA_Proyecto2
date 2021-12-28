@@ -13,8 +13,8 @@
           <form class="needs-validation" novalidate>
             <div class="row g-3">
               
-              <div class="col-sm-6">
-                <label class="form-label">Nombres</label>
+              <div class="col-sm-12">
+                <label class="form-label">Nombre Jugador</label>
                 <input  [(ngModel)] = "nombres" 
                         name = "nombres" 
                         type="text" 
@@ -23,15 +23,7 @@
                         value="" required>
               </div>
   
-              <div class="col-sm-6">
-                <label class="form-label">Apellidos</label>
-                <input [(ngModel)] = "apellidos" 
-                        name = "apellidos" 
-                        type="text" 
-                        class="form-control" 
-                        placeholder="" 
-                        value="" required>
-              </div>
+              
 
               <div class="col-sm-6">
                 <label class="form-label">Fecha de Nacimiento</label>
@@ -131,7 +123,7 @@
                             jugador.id_jugador,
                             jugador.nombres,
                             jugador.fecha_nacimiento,
-                            jugador.nombre_pais,
+                            jugador.id_pais,
                             jugador.id_posicion,
                             jugador.id_estado_jugador
                             )" 
