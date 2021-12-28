@@ -45,8 +45,8 @@ router.get('/getJugadores', async (req, res) => {
 
 //CREATE
 router.post('/addJugador', async (req, res) => {
-    const { nombres, fecha_nacimiento, id_pais, id_posicion, id_estado_jugador } = req.body;
-    if (!(nombres != "" && fecha_nacimiento != "" && id_pais != -1 && id_posicion != -1)) {
+    const { nombres, fecha_nacimiento, id_pais, id_posicion, id_estado_jugador, id_equipo, fecha_inicial } = req.body;
+    if (!(nombres != "" && fecha_nacimiento != "" && id_pais != -1 && id_posicion != -1 && id_estado_jugador != -1 && id_equipo != -1 && fecha_inicial != "")) {
         res.status(201).json({
             "response":false,
             "msg": "No ha ingresado los campos obligatorios"
@@ -68,7 +68,15 @@ router.post('/addJugador', async (req, res) => {
                 :id_posicion,\
                 :id_estado_jugador\
             )";
-            await BD.Open(sql, [nombres, fecha_nacimiento, id_pais, id_posicion, id_estado_jugador], true);
+            let result = await BD.Open(sql, [nombres, fecha_nacimiento, id_pais, id_posicion, id_estado_jugador], true);
+            if (result.rowsAffected) {
+                sql_trayectoria = "INSERT INTO TRAYECTORIA_JUGADOR(id_jugador, id_equipo, fecha_inicial) VALUES(\
+                    (SELECT id FROM JUGADOR WHERE nombres = :nombres AND id_nacionalidad = :id_pais AND id_posicion =:id_posicion AND id_estado_jugador = :id_estado_jugador),\
+                    :id_equipo,\
+                    TO_DATE(:fecha_inicial, 'dd/mm/yyyy')\
+                    )"   
+                    await BD.Open(sql_trayectoria, [nombres, id_pais, id_posicion, id_estado_jugador, id_equipo, fecha_inicial], true);
+            }
             res.status(201).json({
                 "response":true,
                 "msg": "Jugador ingresado correctamente"
@@ -81,7 +89,7 @@ router.post('/addJugador', async (req, res) => {
 router.put("/updateJugador", async (req, res) => {
     try {
         const { id_jugador, nombres, fecha_nacimiento, id_pais, id_posicion, id_estado_jugador } = req.body;
-        if (!(nombres != "" && fecha_nacimiento != "" && id_pais != -1 && id_posicion != -1)) {
+        if (!(nombres != "" && fecha_nacimiento != "" && id_pais != -1 && id_posicion != -1 && id_estado_jugador != -1)) {
             res.status(201).json({
                 "response":false,
                 "msg": "No ha ingresado los campos obligatorios"

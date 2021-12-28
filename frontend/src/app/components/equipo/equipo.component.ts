@@ -108,7 +108,7 @@ export class EquipoComponent implements OnInit {
   setearInterfaz(id_equipo:number, nombre:string, fecha_fundacion:string, link_fotografia:string, id_pais:number){
     this.id_equipo = id_equipo,
     this.nombre = nombre;
-    this.fecha_fundacion = (fecha_fundacion == null)? "": fecha_fundacion.split("/").reverse().join("-"),
+    this.fecha_fundacion = (fecha_fundacion == null)? "": fecha_fundacion.split("/").reverse().join("-");
     this.link_fotografia = link_fotografia;
     this.id_pais = id_pais;
   }

@@ -1,1 +1,110 @@
-<p>partido works!</p>
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="data:image/png;base64,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" alt="" width="100" height="100">
+        <h2>Partido</h2>
+      </div>
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            
+            <div class="row g-3">    
+
+                <div class="col-sm-4">
+                    <label class="form-label">Fecha de Partido</label>
+                    <input [(ngModel)] = "fecha_partido" name = "fecha_partido" type="date" class="form-control" id="start" name="trip-start"
+                        min="1900-01-01" max="2099-12-31" required>
+                </div>
+                <div class="col-sm-4">
+                    <label class="form-label">Resultado</label>
+                    <input [(ngModel)] = "resultado" name = "resultado" type="text" class="form-control" autocomplete="off" placeholder="" value="" required>
+                </div>
+                <div class="col-sm-4">
+                    <label class="form-label">Asistencia</label>
+                    <input [(ngModel)] = "asistencia" name = "asistencia" type="text" class="form-control" autocomplete="off" placeholder="" value="" required>
+                </div>                
+                <div class="col-sm-6">
+                    <label class="form-label">Estado de Partido</label>
+                    <select [(ngModel)] = "id_estado" name = "id_estado" class="form-select" required>
+                        <option *ngFor="let registro of EstadoPartido" value="{{ registro.id_estado }}">{{ registro.nombre }}</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Estadio</label>
+                    <select [(ngModel)] = "id_estadio" name = "id_estadio" class="form-select" required>
+                        <option *ngFor="let registro of Estadio" value="{{ registro.id_estadio }}">{{ registro.estadio_nombre }} - {{ registro.pais_nombre }}</option>
+                    </select>
+                </div>                
+                <div class="col-sm-6">
+                    <label class="form-label">Equipo Local</label>
+                    <select [(ngModel)] = "id_equipo_local" name = "id_equipo_local" class="form-select" required>                        
+                        <option *ngFor="let registro_l of Equipo" value="{{ registro_l.id_equipo }}">{{ registro_l.nombre }} - {{ registro_l.nombre_pais }}</option>
+                    </select>
+                </div> 
+                <div class="col-sm-6">
+                    <label class="form-label">Equipo Visitante</label>
+                    <select [(ngModel)] = "id_equipo_visitante" name = "id_equipo_visitante" class="form-select" required>                        
+                        <option *ngFor="let registro_l of Equipo" value="{{ registro_l.id_equipo }}">{{ registro_l.nombre }} - {{ registro_l.nombre_pais }}</option>
+                    </select>
+                </div>
+
+            </div>
+            
+            <br/>
+            <button (click)="insertarPartido()" class="w-100 btn btn-primary btn-lg" type="submit">Ingresar Partido</button><br/><br/>
+            <button (click)="actualizarPartido()" class="w-50 btn btn-warning" type="submit">Actualizar Partido</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <hr class="my-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">FECHA PARTIDO</th>
+            <th scope="col">ESTADIO</th>
+            <th scope="col">ESTADO ACTUAL</th>
+            <th scope="col">ASISTENCIA</th>
+            <th scope="col">EQUIPO LOCAL</th>
+            <th scope="col">EQUIPO VISITANTE</th>            
+            <th scope="col">RESULTADO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of Partido">
+            <th>{{ registro.id_partido }}</th>
+            <td>{{ registro.fecha_partido }}</td>
+            <td>{{ registro.nombre_estadio }}</td>
+            <td>{{ registro.nombre_estado }}</td>
+            <td>{{ registro.asistencia }}</td>
+            <td>{{ registro.nombre_equipo_local }}</td>
+            <td>{{ registro.nombre_equipo_visita }}</td>             
+            <td>{{ registro.resultado }}</td>
+            <td>
+                <button (click)="setearInterfaz(registro.id_partido, registro.fecha_partido, registro.resultado, registro.asistencia, registro.id_estado, registro.id_estadio, registro.id_equipo_local, registro.id_equipo_visita)" class="btn btn-outline-warning" type="submit">Editar</button>&nbsp;
+                <button (click)="eliminarPartido(registro.id_partido)" class="btn btn-outline-danger" type="submit">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>

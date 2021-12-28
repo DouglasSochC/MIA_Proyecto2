@@ -19,12 +19,14 @@ router.get('/getPartidos', async (req, res) => {
     sql = "SELECT PARTIDO.id, TO_CHAR(PARTIDO.fecha, 'DD/MM/YYYY'), ESTADIO.id, ESTADIO.nombre,\
     ESTADO_PARTIDO.id, ESTADO_PARTIDO.nombre, PARTIDO.asistencia, PARTIDO.resultado,\
     PARTIDO.id_equipo_visita, (SELECT nombre FROM EQUIPO WHERE id = PARTIDO.id_equipo_visita),\
-    PARTIDO.id_equipo_local, (SELECT nombre FROM EQUIPO WHERE id = PARTIDO.id_equipo_local)\
+    PARTIDO.id_equipo_local, (SELECT nombre FROM EQUIPO WHERE id = PARTIDO.id_equipo_local),\
+    PARTIDO.fecha AS fecha_partido\
     FROM PARTIDO\
     INNER JOIN ESTADIO ON ESTADIO.id = PARTIDO.id_estadio\
     INNER JOIN ESTADO_PARTIDO ON ESTADO_PARTIDO.id = PARTIDO.id_estado\
     INNER JOIN EQUIPO ON EQUIPO.id = PARTIDO.id_equipo_visita\
-    INNER JOIN EQUIPO ON EQUIPO.id = PARTIDO.id_equipo_local";
+    INNER JOIN EQUIPO ON EQUIPO.id = PARTIDO.id_equipo_local\
+    ORDER BY fecha_partido DESC";
     
     let result = await BD.Open(sql, [], false);
     Listado = [];
@@ -102,6 +104,11 @@ router.post('/addPartido', async (req, res) => {
                 "response":false,
                 "msg": "El partido ya ha sido ingresado debido a su fecha y el lugar del evento"
             });
+        }else if(id_equipo_local == id_equipo_visita){
+            res.status(201).json({
+                "response":false,
+                "msg": "No puede haber un partido con un solo equipo"
+            });
         }else{
             sql = "INSERT INTO PARTIDO(fecha, id_estadio, id_estado, asistencia, id_equipo_visita, id_equipo_local, resultado)\
             VALUES (\
@@ -130,6 +137,11 @@ router.put("/updatePartido", async (req, res) => {
             res.status(201).json({
                 "response":false,
                 "msg": "No ha ingresado los campos obligatorios"
+            });
+        }else if(id_equipo_local == id_equipo_visita){
+            res.status(201).json({
+                "response":false,
+                "msg": "No puede haber un partido con un solo equipo"
             });
         }else{
             sql = "UPDATE PARTIDO SET\
