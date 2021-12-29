@@ -9,7 +9,8 @@ import {  PaisInterface,
 
 import {  TJugador,
           PosicionJugador,
-          EstadoJugador
+          EstadoJugador,
+          TJugadorTransferencia
         } from 'src/app/models/jugador-interface';
 
 import Swal from 'sweetalert2';
@@ -56,20 +57,15 @@ export class JugadorComponent implements OnInit {
   fecha_inicial: string = "";
 
 
-
   
   Paises:PaisInterface[] = [];
   Equipos: EquipoInterface [] = [];
   Jugadores:TJugador[] = [];
   Posicion:PosicionJugador [] = [];
   Estadojugador:EstadoJugador[] = [];
+  Transferencias:TJugadorTransferencia [] = [];
   
 
-/*
-  const { nombres, fecha_nacimiento, id_pais, id_posicion, 
-          id_estado_jugador, id_equipo, fecha_inicial } = req.body;
-   
- */
 
   insertarJugador(){
     this.fecha_nacimiento = this.fecha_nacimiento.split("-").reverse().join("/");
@@ -211,6 +207,13 @@ export class JugadorComponent implements OnInit {
       this.Jugadores = res;
     });
   }
+
+  /*
+  cargarTransferencia(){
+    this.sjugadorservice.GetTrayectoriaJugador(this.id_jugador).subscribe((res:any) => {
+      this.Transferencias = res;      
+    });
+  }*/
 
 
   cargarPaises(){

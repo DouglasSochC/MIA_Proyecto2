@@ -1,15 +1,4 @@
 
-/*  {
-            "id_jugador": registro[0],
-            "nombres": registro[1],
-            "fecha_nacimiento": registro[2],
-            "id_pais": registro[3],
-            "nombre_pais": registro[4],
-            "id_posicion": registro[5],
-            "nombre_posicion": registro[6],
-            "id_estado_jugador": registro[7],
-            "nombre_estado_jugador": registro[8]
-    }   */
 
 
 export interface TJugadorTransferencia{

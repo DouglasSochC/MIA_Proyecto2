@@ -57,18 +57,7 @@ export class JugadorService {
     //la libreria rxjs/operators
     ).pipe(map(data => data));
   }
-  
-/*
- nombres, 
- fecha_nacimiento, 
- id_pais, 
- id_posicion, 
- id_estado_jugador, 
- id_equipo, 
- fecha_inicial 
- */
 
- 
   InsertarJugador(
                   nombres:string, 
                   fecha_nacimiento:string,
@@ -110,6 +99,7 @@ export class JugadorService {
     ).pipe(map(data => data));
     
   }
+
   ActualizarJugador(  id_jugador:number,
                       nombres:string, 
                       fecha_nacimiento:string,
@@ -134,7 +124,6 @@ export class JugadorService {
       ).pipe(map(data => data));
   }
  
-
   DeleteJugador(id_jugador:number){
     const url = "http://localhost:3000/deleteJugador/"+id_jugador;
     return this.http.delete(url).pipe(map(data => data));
