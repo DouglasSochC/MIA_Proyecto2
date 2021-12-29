@@ -61,8 +61,8 @@
 
               <div class="col-sm-6">
                 <label class="form-label">Estado del Jugador</label>
-                <select [(ngModel)] = "id_estado" 
-                        name = "id_estado" 
+                <select [(ngModel)] = "id_estado_jugador" 
+                        name = "id_estado_jugador" 
                         class="form-select" required>                        
                     <option *ngFor="let estado of Estadojugador" 
                             value="{{ estado.id_estado_jugador }}">
@@ -85,8 +85,8 @@
 
               <div class="col-sm-6">
                 <label class="form-label">Fecha de inicio en Equipo</label>
-                <input [(ngModel)] = "fecha_ini_equipo" 
-                        name = "fecha_ini_equipo" 
+                <input [(ngModel)] = "fecha_inicial" 
+                        name = "fecha_inicial" 
                         type="date" 
                         class="form-control" 
                         id="start_ini" 
@@ -139,6 +139,20 @@
           <td>{{ jugador.nombre_estado_jugador }}</td>
             
             
+<!--
+  export interface TJugador{
+    id_jugador: number,
+    nombres: string,
+    fecha_nacimiento: string,
+    id_pais: number,
+    nombre_pais: string,
+    id_posicion: number,
+    nombre_posicion: string,
+    id_estado_jugador: number,
+    nombre_estado_jugador: string
+}
+-->
+
           <td>
             <button (click)="setearInterfaz(
                             jugador.id_jugador,

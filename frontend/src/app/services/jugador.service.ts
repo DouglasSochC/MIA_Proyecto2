@@ -58,7 +58,17 @@ export class JugadorService {
     ).pipe(map(data => data));
   }
   
+/*
+ nombres, 
+ fecha_nacimiento, 
+ id_pais, 
+ id_posicion, 
+ id_estado_jugador, 
+ id_equipo, 
+ fecha_inicial 
+ */
 
+ 
   InsertarJugador(
                   nombres:string, 
                   fecha_nacimiento:string,

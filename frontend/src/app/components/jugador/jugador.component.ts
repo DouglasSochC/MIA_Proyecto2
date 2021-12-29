@@ -47,13 +47,13 @@ export class JugadorComponent implements OnInit {
   id_posicion:number=-1; 
   nombre_posicion:string = "";
 
-  id_estado:number = -1;
+  id_estado_jugador:number = -1;
   nombre_estado:string="";
 
   id_equipo:number =-1;
   nombre_equipo:string="";
 
-  fecha_ini_equipo: string = "";
+  fecha_inicial: string = "";
 
 
 
@@ -65,47 +65,22 @@ export class JugadorComponent implements OnInit {
   Estadojugador:EstadoJugador[] = [];
   
 
+/*
+  const { nombres, fecha_nacimiento, id_pais, id_posicion, 
+          id_estado_jugador, id_equipo, fecha_inicial } = req.body;
+   
+ */
+
   insertarJugador(){
     this.fecha_nacimiento = this.fecha_nacimiento.split("-").reverse().join("/");
-    this.fecha_ini_equipo = this.fecha_ini_equipo.split("-").reverse().join("/");
+    this.fecha_inicial = this.fecha_inicial.split("-").reverse().join("/");
     this.sjugadorservice.InsertarJugador( this.nombres, 
                                           this.fecha_nacimiento,
                                           this.id_pais,
                                           this.id_posicion, 
-                                          this.id_estado,
+                                          this.id_estado_jugador,
                                           this.id_equipo,
-                                          this.fecha_ini_equipo                                                                                                                    
-    ).subscribe((res:any) => {
-      if (res['response']) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Exito',
-          text: res['msg']
-        });        
-        //this.limpiarDatos();
-        this.cargarPaises();
-        this.cargarPosicionJugador();
-        this.cargarEstadoJugador();   
-        this.cargarEquipos();     
-        this.cargarTabla();
-      }else{
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: res['msg']
-        });
-      }
-    });
-    this.insertarTrayectoriaJugador();
-  }
-
-
-  insertarTrayectoriaJugador(){
-    this.fecha_ini_equipo = this.fecha_ini_equipo.split("-").reverse().join("/");
-    this.sjugadorservice.InsertTrayectoria( 
-                                          this.id_jugador,
-                                          this.id_equipo,
-                                          this.fecha_ini_equipo                                                                            
+                                          this.fecha_inicial                                                                                                                    
     ).subscribe((res:any) => {
       if (res['response']) {
         Swal.fire({
@@ -126,22 +101,21 @@ export class JugadorComponent implements OnInit {
           text: res['msg']
         });
       }
-    });
+    });    
   }
-  
+
   
 
   //modificar
   actualizarJugador(){
-    console.log('actualizare jugador');
-    
+    console.log('actualizare jugador');    
     this.fecha_nacimiento = this.fecha_nacimiento.split("-").reverse().join("/");
     this.sjugadorservice.ActualizarJugador( this.id_jugador,
                                             this.nombres, 
                                             this.fecha_nacimiento,
                                             this.id_pais,
                                             this.id_posicion, 
-                                            this.id_estado 
+                                            this.id_estado_jugador
       ).subscribe((res:any) => {
         if (res['response']) {
           Swal.fire({
@@ -201,17 +175,21 @@ export class JugadorComponent implements OnInit {
   setearInterfaz( id_jugador:number, 
                   nombres:string, 
                   fecha_nacimiento:string, 
-                  pais:number, 
-                  posicion:number, 
-                  estado:number               
+                  id_pais:number, 
+                  id_posicion:number, 
+                  id_estado_jugador:number
+                  /*,id_equipo:number,
+                  fecha_inicial:string */
                 ){
       this.limpiarDatos();
       this.id_jugador = id_jugador;
       this.nombres = nombres;
       this.fecha_nacimiento = (fecha_nacimiento == null)? "": fecha_nacimiento.split("/").reverse().join("-"),
-      this.id_pais = pais;
-      this.id_posicion = posicion;
-      this.id_estado = estado;
+      this.id_pais = id_pais;
+      this.id_posicion = id_posicion;
+      this.id_estado_jugador = id_estado_jugador;
+      //this.id_equipo=id_equipo;
+      //this.fecha_inicial=fecha_inicial;
   }
  
 
@@ -260,8 +238,13 @@ export class JugadorComponent implements OnInit {
     this.id_posicion =-1; 
     this.nombre_posicion = "";
 
-    this.id_estado = -1;
+    this.id_estado_jugador = -1;
     this.nombre_estado = "";      
+
+    this.id_equipo  = -1;
+    this.nombre_equipo = "";
+
+    this.fecha_inicial = "";
   }
 
 }
