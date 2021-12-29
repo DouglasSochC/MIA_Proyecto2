@@ -25,6 +25,7 @@ const trayectoriajugadorRoutes = require('./routes/trayectoria_jugador');
 const trayectoriatecnicoRoutes = require('./routes/trayectoria_tecnico');
 const estadopartidoRoutes = require('./routes/estado_partido');
 const noticiaRoutes = require('./routes/noticia');
+const reportesClientes = require('./routes/reportes_usu');
 
 //Settings
 app.set('port', 3000);
@@ -68,6 +69,7 @@ app.use(trayectoriajugadorRoutes);
 app.use(trayectoriatecnicoRoutes);
 app.use(estadopartidoRoutes);
 app.use(noticiaRoutes);
+app.use(reportesClientes);
 
 //Run
 app.listen(app.get('port'), () => {
