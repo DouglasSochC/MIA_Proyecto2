@@ -64,11 +64,105 @@ SID: ORCLCDB
 ```sql
     SELECT * FROM v$version WHERE banner LIKE 'Oracle%';
 ```
+---
+
+## Comandos UTiles 
+
+* para instalar las dependencias del backend y frontend
+```console
+~$ npm install 
+```
+* para levantar el backend (estar dentro de la carpeta de backend)
+```console
+~$  node /src/index.js 
+```
+
+* para levantar el frontend (estar dentro de la carpeta de frontend )
+```console
+~$  ng serve --open 
+```
+
+---
 
 ## Arquitectura
 
+---
+
 ## Diagrama Entidad-Relacion
+
+---
 
 ## Endpoints
 
+* pais 
+* usuario
+* jugador
+* equipo
+* tecnico
+* partido
+* estadio
+* membresia
+* competencias
+* noticias
+* trayectoria_jugador
+* trayectoria_tecnico
+* reportes_admin
+* reportes_usuarios
+
 ## Storeds Procedures
+
+---
+## Listado de Modulos
+
+* Modulo de Login
+* Modulo de Usuarios
+* Modulo de Jugador
+* Modulo de Tecnico
+* Modulo de Estadios
+* Modulo de Equipos
+* Modulo de Partidos
+* Modulo de competencias
+* Modulo de Transferencia de Jugadores
+* Modulo de Transferencia de Tecnicos
+* Modulo de Estado de un partido
+* Modulo de Incidencias
+* Modulo de Estado Jugador
+* Modulo de Estado Tecnico
+* Modulo de Publicar Noticia
+
+---
+presentacion del **MODULO DE LOGIN** 
+
+![modulo_login](images/login.png "modulo_login")
+
+---
+ejemplo de  **MODULO DE USUARIOS** 
+
+![modulo_usuarios](images/moduloUsuarios.png "modulo_usuarios")
+
+---
+ejemplo de  **MODULO DE ESTADIOS** 
+
+![modulo_estadios](images/moduloEstadios.png "modulo_estadios")
+
+---
+ejemplo de  **MODULO DE COMPETENCIA** 
+
+![modulo_competencia](images/moduloCompetencia.png "modulo_competencia")
+
+
+ejemplo de  **MODULO DE TRANSFERENCIA DE JUGADOR** 
+
+![moduloTransferenciaJ](images/moduloTransferenciaJugador.png "modulo_transferenciaJ")
+
+
+ejemplo de  **MODULO DE ESTADO DE TECNICO** 
+
+![moduloEstadoT](images/moduloEstadoT.png "modulo_estadoT")
+
+
+ejemplo de  **MODULO DE ESTADO DE PUBLICAR NOTICIAS** 
+
+![modulo_noticias](images/moduloNoticias.png "modulo_noticias")
+
+
