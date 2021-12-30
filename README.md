@@ -109,6 +109,18 @@ SID: ORCLCDB
 * reportes_admin
 * reportes_usuarios
 
+---
+
+## Detalle de un CRUD de endpoint
+
+* "http://localhost:3000/getEquipos": metodo get para obtener del servidor toda la informacion relacionada con el equipo
+* "http://localhost:3000//addEquipo":  metodo post para agregar un nuevo equipo a la tabla. previo a realizar esta agregacion verifica que no exista duplicidad.
+* "http://localhost:3000//updateEquipo" metodo put para modificar valores en los datos del equipo 
+* "http://localhost:3000//deleteEquipo/:id_equipo"  metodo delete para eliminar los datos de una tabla. este metodo elimina permanentemente el registro 
+
+
+
+
 ## Storeds Procedures
 
 ---
