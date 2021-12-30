@@ -138,12 +138,12 @@ presentacion del **MODULO DE LOGIN**
 ---
 ejemplo de  **MODULO DE USUARIOS** 
 
-![modulo_usuarios](images/moduloUsuarios.png "modulo_usuarios")
+![modulo_usuarios](images/moduloUsuario.png "modulo_usuarios")
 
 ---
 ejemplo de  **MODULO DE ESTADIOS** 
 
-![modulo_estadios](images/moduloEstadios.png "modulo_estadios")
+![modulo_estadios](images/moduloEstadio.png "modulo_estadios")
 
 ---
 ejemplo de  **MODULO DE COMPETENCIA** 
@@ -153,7 +153,7 @@ ejemplo de  **MODULO DE COMPETENCIA**
 
 ejemplo de  **MODULO DE TRANSFERENCIA DE JUGADOR** 
 
-![moduloTransferenciaJ](images/moduloTransferenciaJugador.png "modulo_transferenciaJ")
+![moduloTransferenciaJ](images/moduloTransferenciaJ.png "modulo_transferenciaJ")
 
 
 ejemplo de  **MODULO DE ESTADO DE TECNICO** 
