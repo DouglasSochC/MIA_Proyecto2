@@ -101,4 +101,7 @@ router.post('/addTrayectoriaTecnico', async (req, res) => {
     }
 });
 
+
+
+
 module.exports = router;

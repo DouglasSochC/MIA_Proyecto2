@@ -15,8 +15,8 @@
               
               <div class="col-sm-6">
                 <label class="form-label">Nombre Tecnico</label>
-                <input  [(ngModel)] = "nombres" 
-                        name = "nombres" 
+                <input  [(ngModel)] = "nombre" 
+                        name = "nombre" 
                         type="text" 
                         class="form-control" 
                         placeholder="" 
@@ -63,6 +63,8 @@
 
 
 
+
+
               <div class="col-sm-6">
                 <label class="form-label">Fecha de Inicio</label>
                 <input [(ngModel)] = "fecha_ini" 
@@ -89,24 +91,12 @@
 
               <div class="col-sm-6">
                 <label class="form-label">Nombre - Equipo </label>
-                <select [(ngModel)] = "id_pais_equipo" 
-                          name  = "id_pais_equipo" 
+                <select [(ngModel)] = "id_equipo" 
+                          name  = "id_equipo" 
                           class = "form-select" required>                        
                     <option *ngFor="let equipo of Equipos" 
                             value="{{ equipo.id_equipo }}">
-                            {{ equipo.nombre }} 
-                    </option>
-                </select>
-              </div>
-
-              <div class="col-sm-6">
-                <label class="form-label">Pais - Equipo</label>
-                <select [(ngModel)] = "id_pais_equipo" 
-                        name = "id_pais_equipo" 
-                        class="form-select">                        
-                    <option *ngFor="let equipo of Equipos" 
-                            value="{{ equipo.id_equipo }}">
-                            {{ equipo.nombre_pais }}
+                            {{ equipo.nombre }} __ {{ equipo.nombre_pais }}
                     </option>
                 </select>
               </div>
@@ -154,22 +144,19 @@
             <td>{{ tecnico.nombre_pais }}</td>
             <td>{{ tecnico.nombre_estado_tecnico }}</td>          
             <td>
+              <button (click)="setearInterfaz(
+                                        tecnico.id_tecnico,
+                                        tecnico.nombre_tecnico,
+                                        tecnico.fecha_nacimiento,                                            
+                                        tecnico.nombre_pais,
+                                        tecnico.nombre_estado_tecnico
+                                      )" 
+                      class="btn btn-outline-warning" 
+                      type="submit" >
+                      Editar
+              </button>&nbsp;
 
               
-              <button (click)="setearInterfaz(
-                                            tecnico.id_tecnico,
-                                            tecnico.nombre_tecnico,
-                                            tecnico.fecha_nacimiento,                                            
-                                            tecnico.id_tecnico,
-                                            tecnico.id_tecnico,
-                                            tecnico.fecha_nacimiento,
-                                            tecnico.fecha_nacimiento,
-                                            tecnico.id_tecnico,
-                                            tecnico.id_tecnico )" 
-                              class="btn btn-outline-warning" 
-                              type="submit">
-                              Editar
-              </button>&nbsp;
               <button (click)="eliminarTecnico(tecnico.id_tecnico)" 
                               class="btn btn-outline-danger" 
                               type="submit">

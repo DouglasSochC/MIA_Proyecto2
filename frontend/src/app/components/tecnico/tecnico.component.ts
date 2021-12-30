@@ -34,12 +34,14 @@ export class TecnicoComponent implements OnInit {
     this.cargarTablaTecnicos();
   }
 
-  id_tecnico:number =-1;
-  
-  nombres:string ="";
+  id_tecnico:number =-1;  
+  nombre:string ="";
+
   fecha_nacimiento:string="";
   link_fotografia:string="";
   id_pais_tecnico:number=-1;
+  nombre_pais_tecnico:string ="";
+
   id_estado_tecnico:number=-1;
   nombre_estado_tecnico:string="";
 
@@ -48,8 +50,10 @@ export class TecnicoComponent implements OnInit {
 
   id_equipo:number =-1;
   nombre_equipo:string ="";
+  
   id_pais_equipo:number =-1;
-  nombre_pais_equipo:string ="";
+  //nombre_pais_equipo:string ="";
+
 
   
   Paises:PaisInterface[] = [];
@@ -61,11 +65,16 @@ export class TecnicoComponent implements OnInit {
 
   insertarTecnico(){
     this.fecha_nacimiento = this.fecha_nacimiento.split("-").reverse().join("/");
-    this.stecnicoservice.InsertTecnico( this.nombres, 
+    this.fecha_ini = this.fecha_ini.split("-").reverse().join("/");
+    this.fecha_fin = this.fecha_fin.split("-").reverse().join("/");
+    this.stecnicoservice.InsertTecnico( this.nombre, 
                                         this.fecha_nacimiento,
                                         this.link_fotografia,
                                         this.id_pais_tecnico, 
-                                        this.id_estado_tecnico 
+                                        this.id_estado_tecnico,
+                                        this.id_equipo,
+                                        this.fecha_ini,
+                                        this.fecha_fin
     ).subscribe((res:any) => {
       if (res['response']) {
         Swal.fire({
@@ -85,42 +94,7 @@ export class TecnicoComponent implements OnInit {
           text: res['msg']
         });
       }
-    });
-    this.insertarTrayectoriaTecnico();    
-  }
-
-
-  insertarTrayectoriaTecnico(){  
-    this.fecha_ini = this.fecha_ini.split("-").reverse().join("/");
-    this.fecha_fin = this.fecha_fin.split("-").reverse().join("/");
-    
-    /*
-    this.stecnicoservice.InsertTrayectoriaTecnico(this.id_tecnico,
-                                                  this.id_equipo,
-                                                  this.fecha_ini,
-                                                  this.fecha_fin 
-                          
-                        ).subscribe((res:any) => {
-                          if (res['response']) {
-                            Swal.fire({
-                              icon: 'success',
-                              title: 'Exito',
-                              text: res['msg']
-                            });        
-                            this.limpiarDatos();
-                            this.cargarPaises();
-                            //this.cargarPosicionJugador();
-                            //this.cargarEstadoJugador();        
-                            this.cargarTablaTecnicos();
-                          }else{
-                            Swal.fire({
-                              icon: 'error',
-                              title: 'Oops...',
-                              text: res['msg']
-                            });
-                          }
-                        });     */                     
-
+    });    
   }
 
 
@@ -135,10 +109,8 @@ export class TecnicoComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, Eliminar!'
     }).then((result) => {
-      if (result.isConfirmed) {        
-        
+      if (result.isConfirmed) {         
         this.stecnicoservice.DeleteTecnico(id_tecnico).subscribe((res:any) => {
-        
         if (res['response']) {
           Swal.fire({
             icon: 'success',
@@ -160,52 +132,36 @@ export class TecnicoComponent implements OnInit {
   }
 
 
-/** */
-/** */
   actualizarTecnico(){
     alert("actualizare tecnico");
   }
 
-
-/*
-
-                                            tecnico.nombre_tecnico,
-                                            tecnico.fecha_nacimiento,
-                                            tecnico.id_pais_tecnico,
-                                            tecnico.id_estado_tecnico,
-                                            tecnico.fecha_ini,
-                                            tecnico.fecha_fin,
-                                            tecnico.id_equipo,
-                                            tecnico.id_pais_equipo 
-*/
-  
   setearInterfaz( id_tecnico:number, 
-                  nombres:string, 
+                  nombre:string, 
                   fecha_nacimiento:string, 
-                  id_pais_tecnico:number,  
-                  id_estado_tecnico:number,
-                  fecha_ini:string, 
+                  nombre_pais_tecnico:string,  
+                  nombre_estado_tecnico:string
+                  /*fecha_ini:string, 
                   fecha_fin:string, 
                   id_equipo:number,
-                  id_pais_equipo:number,
+                  id_pais_equipo:number,*/
                   ){
     this.limpiarDatos();
 
     this.id_tecnico = id_tecnico;
-    this.nombres = nombres;
+    this.nombre = nombre;
     this.fecha_nacimiento = (fecha_nacimiento == null)? "": fecha_nacimiento.split("/").reverse().join("-");
-    this.id_pais_tecnico = id_pais_tecnico;
-    this.id_estado_tecnico = id_estado_tecnico;
-    this.fecha_ini = (fecha_ini == null)? "": fecha_ini.split("/").reverse().join("-");
-    this.fecha_fin = (fecha_fin == null)? "": fecha_fin.split("/").reverse().join("-");
-    this.id_equipo=id_equipo;
-    this.id_pais_equipo=id_pais_equipo;    
+    this.nombre_pais_tecnico = nombre_pais_tecnico;
+    this.nombre_estado_tecnico = nombre_estado_tecnico;
+    //this.fecha_ini = (fecha_ini == null)? "": fecha_ini.split("/").reverse().join("-");
+    //this.fecha_fin = (fecha_fin == null)? "": fecha_fin.split("/").reverse().join("-");
+    //this.id_equipo=id_equipo;
+    //this.id_pais_equipo=id_pais_equipo;    
   }
 
 
   cargarTablaTecnicos(){  
     this.stecnicoservice.GetTecnicosCompleto().subscribe((res:any) => {
-      console.log(res);
       this.Tecnicos = res;
     });
   }
@@ -230,7 +186,7 @@ export class TecnicoComponent implements OnInit {
   
   limpiarDatos(){
     this.id_tecnico = -1;
-    this.nombres = "";
+    this.nombre = "";
     this.fecha_nacimiento = "";    
     this.fecha_ini = "";
     this.fecha_fin ="";    
@@ -238,7 +194,7 @@ export class TecnicoComponent implements OnInit {
     this.id_estado_tecnico = -1;
     this.nombre_estado_tecnico = "";
     this.id_pais_equipo = -1;
-    this.nombre_pais_equipo = "";
+    //this.nombre_pais_equipo = "";
     this.id_equipo = -1;
     this.nombre_equipo = "";
     this.link_fotografia = "";      

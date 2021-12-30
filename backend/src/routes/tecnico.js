@@ -2,13 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
-/*********************************
-CAMPOS OBLIGATORIOS
-nombre != ""
-fecha_nacimiento != ""
-id_pais != -1
-id_estado_tecnico != -1
-**********************************/
+
 
 //READ
 router.get('/getTecnicos', async (req, res) => {
@@ -72,6 +66,87 @@ router.post('/addTecnico', async (req, res) => {
         }
     }
 });
+
+/*********************************
+CAMPOS OBLIGATORIOS
+nombre != ""
+fecha_nacimiento != ""
+id_pais != -1
+id_estado_tecnico != -1
+**********************************/
+
+
+// create tecnico y actualiza trayectoria_tecnico
+router.post('/addTecnico2', async (req, res) => {
+    const { nombre, 
+            fecha_nacimiento, 
+            link_fotografia, 
+            id_pais, 
+            id_estado_tecnico,
+            id_equipo,
+            fecha_inicial,
+            fecha_final
+        } = req.body;
+        
+    if (!(nombre != ""   && fecha_nacimiento != "" 
+        && id_pais != -1 && id_estado_tecnico != -1
+        && id_equipo!=-1 && fecha_inicial!=""
+        )) {
+        res.status(201).json({
+            "response":false,
+            "msg": "No ha ingresado los campoooooos obligatorios"
+        });
+    }else{
+        sql_existencia =    "SELECT id \
+                            FROM TECNICO \
+                            WHERE TECNICO.nombres = :nombre \
+                            AND TECNICO.id_nacionalidad = :id_pais";
+        let r_existencia = await BD.Open(sql_existencia, [nombre, id_pais], false);
+        if (r_existencia.rows.length > 0) {
+            res.status(201).json({
+                "response":false,
+                "msg": "El tecnico ya ha sido ingresado"
+            });
+        }else{
+            sql = "INSERT INTO TECNICO(nombres, fecha_nac, \
+                                link_fotografia, id_nacionalidad, id_estado)\
+                    VALUES (\
+                        :nombres, \
+                        TO_DATE(:fecha_nacimiento, 'dd/mm/yyyy'),\
+                        :link_fotografia,\
+                        :id_nacionalidad,\
+                        :id_estado_tecnico\
+                    )";
+          //aqui van los parametros de entrada de entrada para la tabla tecnico
+            let result = await BD.Open(sql, [nombre, fecha_nacimiento, 
+                                link_fotografia, id_pais, 
+                                id_estado_tecnico], true);
+
+            
+            if(result.rowsAffected){
+                
+                sql_insertar = "INSERT INTO TRAYECTORIA_TECNICO (id_tecnico, \
+                                                id_equipo, fecha_inicial)\
+                                VALUES(\
+                                    (select id from TECNICO\
+                                        WHERE nombres= :nombre\
+                                        AND id_nacionalidad =:id_pais;),\
+                                    :id_equipo,\
+                                    TO_DATE(:fecha_inicial, 'dd/mm/yyyy'),\
+                                    TO_DATE(:fecha_finnal, 'dd/mm/yyyy')\
+                                    )";
+                await BD.Open(sql_insertar, [nombre, id_equipo, 
+                                            fecha_inicial, fecha_final], true);
+                 
+                res.status(201).json({
+                    "response":true,
+                    "msg": "Tecnico ingresado correctamente"
+                });            
+            }
+        }
+    }    
+});
+
 
 //UPDATE
 router.put("/updateTecnico", async (req, res) => {
@@ -151,3 +226,25 @@ router.put("/updateEstadoTecnico", async (req, res) => {
 
 
 module.exports = router;
+
+
+
+/*
+
+sql_trayectoria = "INSERT INTO TRAYECTORIA_JUGADOR(id_jugador, id_equipo, fecha_inicial)\
+            VALUES(\
+                    ( SELECT id FROM JUGADOR\ 
+                    WHERE nombres = :nombres\
+                    AND id_nacionalidad = :id_pais\
+                    AND id_posicion =:id_posicion\
+                    AND id_estado_jugador = :id_estado_jugador),\
+                        :id_equipo,\
+                        TO_DATE(:fecha_inicial, 'dd/mm/yyyy')\
+                )"   
+    await BD.Open(sql_trayectoria, [nombres, id_pais, id_posicion, 
+                                    id_estado_jugador, id_equipo, fecha_inicial], true);
+
+*/
+
+    
+    

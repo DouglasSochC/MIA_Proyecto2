@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from "rxjs/operators";
+import { EquipoComponent } from '../components/equipo/equipo.component';
 
 @Injectable({
   providedIn: 'root'
@@ -78,26 +79,37 @@ DeleteTecnico(id_tecnico: number){
   return this.http.delete(url).pipe(map(data => data));
 }
 
+
+
 InsertTecnico(  nombre:string,
                 fecha_nacimiento:string,
                 link_fotografia:string,
-                id_nacionalidad:number, 
-                id_estado:number){    
-  const url = "http://localhost:3000/addTecnico";
+                id_pais_tecnico:number, 
+                id_estado_tecnico:number,
+                id_equipo:number,
+                fecha_inicial:string,
+                fecha_final:string){    
+  const url = "http://localhost:3000/addTecnico2";
+  console.log("dentro del servicio de InsertTecnico s-tecnico-services");
+  
   return this.http.post(url, 
   {      
     "nombre":nombre,
     "fecha_nacimiento":fecha_nacimiento,
     "link_fotografia": link_fotografia,
-    "id_pais": id_nacionalidad,
-    "id_estado_tecnico": id_estado      
+    "id_pais": id_pais_tecnico,
+    "id_estado_tecnico": id_estado_tecnico,
+    "id_equipo":id_equipo,
+    "fecha_inicial":fecha_inicial,
+    "fecha_final":fecha_final     
   }, 
   { headers: this.headers }
   //Para retornar el resultado es necesario utilizar la funcion map. Recordar que se debe de importar
   //la libreria rxjs/operators
-  ).pipe(map(data => data));
-  
+  ).pipe(map(data => data));  
 }
+
+
 
 InsertTrayectoriaTecnico( id_tecnico:number, 
                           id_equipo:number, 
