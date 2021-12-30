@@ -5,7 +5,7 @@ import { SEquipoService } from 'src/app/services/s-equipo.service';
 import { SCompetenciaService } from 'src/app/services/s-competencia.service';
 import { JugadorService } from 'src/app/services/jugador.service';
 import { TJugador } from 'src/app/models/jugador-interface';
-import { JugadorReporteInterface, TecnicoReporteInterface } from 'src/app/models/reportesclientes-interface';
+import { EquipoReporteInterface, EstadioReporteInterface, HistoricoEquipoInterface, JugadorReporteInterface, TecnicoReporteInterface } from 'src/app/models/reportesclientes-interface';
 import { STecnicoService } from 'src/app/services/s-tecnico.service';
 import { TTecnicoInterface } from 'src/app/models/tecnico-interface';
 import { SReporteclienteService } from 'src/app/services/s-reportecliente.service';
@@ -55,6 +55,9 @@ export class ConsultaestadisticaComponent implements OnInit {
   Tecnico:TTecnicoInterface [] = [];
   JugadorTabla:JugadorReporteInterface[]=[];
   TecnicoTabla:TecnicoReporteInterface[]=[];
+  EquipoTabla:EquipoReporteInterface[]=[];
+  EstadioTabla:EstadioReporteInterface[]=[];
+  HistoricoEquipoTabla:HistoricoEquipoInterface[]=[];
 
   mostrarReporte(){
     if (this.id_opcion_inicial == 1 && this.id_opcion_x == 1) {
@@ -80,6 +83,42 @@ export class ConsultaestadisticaComponent implements OnInit {
     }else if(this.id_opcion_inicial == 2 && this.id_opcion_x == 3){
       this.sreporteclienteservice.GetReporteSeis(this.edad).subscribe((res:any) => {
         this.TecnicoTabla = res;
+      });
+    }else if(this.id_opcion_inicial == 3 && this.id_opcion_x == 5){
+      this.sreporteclienteservice.GetReporteSiete(this.id_competencia).subscribe((res:any) => {
+        this.EquipoTabla = res;
+      });
+    }else if(this.id_opcion_inicial == 3 && this.id_opcion_x == 6){
+      this.sreporteclienteservice.GetReporteOcho(this.id_pais).subscribe((res:any) => {
+        this.EquipoTabla = res;
+      });
+    }else if(this.id_opcion_inicial == 3 && this.id_opcion_x == 7){
+      this.sreporteclienteservice.GetReporteNueve(this.anio).subscribe((res:any) => {
+        this.EquipoTabla = res;
+      });
+    }else if(this.id_opcion_inicial == 4 && this.id_opcion_x == 9){
+      this.sreporteclienteservice.GetReporteDiez(this.id_pais).subscribe((res:any) => {
+        this.EstadioTabla = res;
+      });
+    }else if(this.id_opcion_inicial == 4 && this.id_opcion_x == 10){
+      this.sreporteclienteservice.GetReporteOnce(this.cantidad).subscribe((res:any) => {
+        this.EstadioTabla = res;
+      });
+    }else if(this.id_opcion_inicial == 8 && this.id_opcion_x == 15){
+      this.sreporteclienteservice.GetReporteDoce(this.id_equipo).subscribe((res:any) => {
+        this.HistoricoEquipoTabla = res;
+      });
+    }else if(this.id_opcion_inicial == 5 && this.id_opcion_x == 1){
+      this.sreporteclienteservice.GetReporteDoce(this.id_equipo).subscribe((res:any) => {
+        this.HistoricoEquipoTabla = res;
+      });
+    }else if(this.id_opcion_inicial == 5 && this.id_opcion_x == 12){
+      this.sreporteclienteservice.GetReporteTrece(this.id_equipo_1, this.id_equipo_2).subscribe((res:any) => {
+        this.HistoricoEquipoTabla = res;
+      });
+    }else if(this.id_opcion_inicial == 5 && this.id_opcion_x == 11){
+      this.sreporteclienteservice.GetReporteCatorce(this.anio).subscribe((res:any) => {
+        this.HistoricoEquipoTabla = res;
       });
     }
   }

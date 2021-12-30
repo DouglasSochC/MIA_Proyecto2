@@ -59,7 +59,7 @@
                         <option *ngIf="id_opcion_inicial == 8" value="15">de partidos del</option>                    
                     </select>
                 </div>
-                <div *ngIf="(id_opcion_inicial == 1 && id_opcion_x == 1) || (id_opcion_inicial == 2 && id_opcion_x == 1) || (id_opcion_inicial == 5 && id_opcion_x == 1)" class="col-sm-3">
+                <div *ngIf="(id_opcion_inicial == 1 && id_opcion_x == 1) || (id_opcion_inicial == 2 && id_opcion_x == 1) || (id_opcion_inicial == 5 && id_opcion_x == 1) || (id_opcion_inicial == 8 && id_opcion_x == 15)" class="col-sm-3">
                     <label class="form-label">Equipo</label>
                     <select [(ngModel)] = "id_equipo" name = "id_equipo" class="form-select" required>                        
                         <option *ngFor="let registro_l of Equipo" value="{{ registro_l.id_equipo }}">{{ registro_l.nombre }} - {{ registro_l.nombre_pais }}</option>
@@ -120,14 +120,14 @@
                     <label class="form-label">Año</label>
                     <input [(ngModel)] = "anio" name = "anio" type="number" class="form-control" autocomplete="off" placeholder="" value="" required>
                 </div>
-                <div *ngIf="id_opcion_x == 12 || (id_opcion_inicial == 8 && id_opcion_x == 15)" class="col-sm-3">
-                    <label class="form-label">Equipo</label>
+                <div *ngIf="id_opcion_x == 12" class="col-sm-3">
+                    <label class="form-label">Equipo 1</label>
                     <select [(ngModel)] = "id_equipo_1" name = "id_equipo_1" class="form-select" required>                        
                         <option *ngFor="let registro_l of Equipo" value="{{ registro_l.id_equipo }}">{{ registro_l.nombre }} - {{ registro_l.nombre_pais }}</option>
                     </select>
                 </div>            
                 <div *ngIf="id_opcion_x == 12" class="col-sm-3">
-                    <label class="form-label">Equipo</label>
+                    <label class="form-label">Equipo 2</label>
                     <select [(ngModel)] = "id_equipo_2" name = "id_equipo_2" class="form-select" required>                        
                         <option *ngFor="let registro_l of Equipo" value="{{ registro_l.id_equipo }}">{{ registro_l.nombre }} - {{ registro_l.nombre_pais }}</option>
                     </select>
@@ -198,6 +198,72 @@
             <td>{{ registro.fecha_nac }}</td>
             <td>{{ registro.nombre_pais }}</td>
             <td>{{ registro.nombre_equipo }}</td> 
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="id_opcion_inicial == 3" class="table">
+        <thead>
+            <tr>
+            <th scope="col">FOTOGRAFIA</th>
+            <th scope="col">EQUIPO</th>
+            <th scope="col">FECHA DE FUNDACION</th>
+            <th scope="col">PAIS DEL EQUIPO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let registro of EquipoTabla">
+            <td><img src="{{ registro.link_fotografia }}" alt="" width="50" height="50"></td>            
+            <th>{{ registro.nombre_equipo }}</th>            
+            <td>{{ registro.fecha_fundacion }}</td>
+            <td>{{ registro.nombre_pais }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="id_opcion_inicial == 4" class="table">
+        <thead>
+            <tr>
+            <th scope="col">FOTOGRAFIA</th>
+            <th scope="col">ESTADIO</th>
+            <th scope="col">INAGURACION</th>
+            <th scope="col">CAPACIDAD</th>
+            <th scope="col">DIRECCION</th>
+            <th scope="col">PAIS</th>
+            <th scope="col">ESTADO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let registro of EstadioTabla">
+            <td><img src="{{ registro.link_fotografia }}" alt="" width="50" height="50"></td>            
+            <th>{{ registro.nombre_estadio }}</th>            
+            <td>{{ registro.fecha_inaguracion }}</td>
+            <td>{{ registro.capacidad }}</td>
+            <td>{{ registro.direccion }}</td>
+            <td>{{ registro.nombre_pais }}</td>
+            <td>{{ registro.nombre_estado_estadio }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="id_opcion_inicial == 5 || id_opcion_inicial == 8" class="table">
+        <thead>
+            <tr>
+            <th scope="col">FECHA</th>
+            <th scope="col">ESTADIO</th>
+            <th scope="col">ASISTENCIA</th>
+            <th scope="col">EQUIPO LOCAL</th>
+            <th scope="col">RESULTADO</th>
+            <th scope="col">EQUIPO VISITA</th>
+            <th scope="col">ESTADO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let registro of HistoricoEquipoTabla">
+            <th>{{ registro.fecha }}</th>
+            <td>{{ registro.nombre_estadio }}</td>
+            <td>{{ registro.asistencia }}</td>
+            <td>{{ registro.nombre_equipo_local }}</td>
+            <td>{{ registro.resultado }}</td>
+            <td>{{ registro.nombre_equipo_visita }}</td>
+            <td>{{ registro.nombre_estado_partido }}</td>
             </tr>
         </tbody>
     </table>
