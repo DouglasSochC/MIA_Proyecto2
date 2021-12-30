@@ -20,6 +20,17 @@
                         type="text" 
                         class="form-control" 
                         placeholder="" 
+                        autocomplete="off"
+                        value="" required>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label">Link de Fotografia</label>
+                <input  [(ngModel)] = "link_fotografia" 
+                        name = "link_fotografia" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="" 
+                        autocomplete="off"
                         value="" required>
               </div>
   
@@ -36,7 +47,7 @@
               </div>
   
               <div class="col-sm-6">
-                <label class="form-label">Pais-Nacionalidad-Tecnico</label>
+                <label class="form-label">Pais</label>
                 <select [(ngModel)] = "id_pais_tecnico" 
                           name = "id_pais_tecnico" 
                           class="form-select" required>                        
@@ -59,44 +70,25 @@
                 </select>
               </div>
 
-
-
-
-
-
-
               <div class="col-sm-6">
                 <label class="form-label">Fecha de Inicio</label>
                 <input [(ngModel)] = "fecha_ini" 
                         name = "fecha_ini" 
                         type="date" 
                         class="form-control" 
-                        id="start_ini" 
                         name="trip-start"
                         min="1900-01-01" 
                         max="2099-12-31" required>
               </div>
 
               <div class="col-sm-6">
-                <label class="form-label">Fecha de finalizacion</label>
-                <input [(ngModel)] = "fecha_fin" 
-                        name = "fecha_fin" 
-                        type="date" 
-                        class="form-control" 
-                        id="start_fin" 
-                        name="trip-start"
-                        min="1900-01-01" 
-                        max="2099-12-31" required>
-              </div>
-
-              <div class="col-sm-6">
-                <label class="form-label">Nombre - Equipo </label>
+                <label class="form-label">Equipo</label>
                 <select [(ngModel)] = "id_equipo" 
                           name  = "id_equipo" 
                           class = "form-select" required>                        
                     <option *ngFor="let equipo of Equipos" 
                             value="{{ equipo.id_equipo }}">
-                            {{ equipo.nombre }} __ {{ equipo.nombre_pais }}
+                            {{ equipo.nombre }} - {{ equipo.nombre_pais }}
                     </option>
                 </select>
               </div>
@@ -126,30 +118,30 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
+            <th scope="col">FOTOGRAFIA</th>
             <th scope="col">NOMBRE COMPLETO</th>
-            <th scope="col">FECHA_NAC</th>
+            <th scope="col">NACIMIENTO</th>
             <th scope="col">NACIONALIDAD</th>
             <th scope="col">ESTADO</th>
-            <th scope="col">PAIS EQUIPO</th>
-            <th scope="col">EQUIPO</th>            
-            <th scope="col">FECHA_INI</th>
-            <th scope="col">FECHA_FIN</th>
+            <th scope="col">OPCIONES</th>
           </tr>
         </thead>     
         <tbody>        
           <tr *ngFor="let tecnico of Tecnicos">
             <th>{{ tecnico.id_tecnico }}</th>
+            <td><img src="{{ tecnico.link_fotografia }}" alt="" width="50" height="50"></td>
             <td>{{ tecnico.nombre_tecnico }} </td>
             <td>{{ tecnico.fecha_nacimiento }}</td>
             <td>{{ tecnico.nombre_pais }}</td>
-            <td>{{ tecnico.nombre_estado_tecnico }}</td>          
+            <td>{{ tecnico.nombre_estado_tecnico }}</td>
             <td>
               <button (click)="setearInterfaz(
                                         tecnico.id_tecnico,
+                                        tecnico.link_fotografia,
                                         tecnico.nombre_tecnico,
                                         tecnico.fecha_nacimiento,                                            
-                                        tecnico.nombre_pais,
-                                        tecnico.nombre_estado_tecnico
+                                        tecnico.id_nacionalidad,
+                                        tecnico.id_estado_tecnico
                                       )" 
                       class="btn btn-outline-warning" 
                       type="submit" >

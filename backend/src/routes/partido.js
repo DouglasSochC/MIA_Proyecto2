@@ -275,4 +275,26 @@ router.post('/addIncidenciaPartido', async (req, res) => {
     }
 });
 
+//READ
+router.get('/getDetallePartido/:id_partido', async (req, res) => {
+    const { id_partido } = req.params;
+    sql = "SELECT INCIDENCIAS_PARTIDO.DESCRIPCION, INCIDENCIAS_PARTIDO.MINUTO, INCIDENCIAS_PARTIDO.EQUIPO_INCIDENCIA, INCIDENCIAS_PARTIDO.JUGADOR\
+        FROM INCIDENCIAS_PARTIDO\
+        WHERE ID_PARTIDO = :id_partido";
+    
+    let result = await BD.Open(sql, [id_partido], false);
+    Listado = [];
+
+    result.rows.map(registro => {
+        let LSchema = {
+            "descripcion": registro[0],
+            "minuto": registro[1],
+            "equipo_incidencia": registro[2],
+            "jugador": registro[3]
+        }
+        Listado.push(LSchema);
+    })
+    res.status(200).json(Listado);
+});
+
 module.exports = router;

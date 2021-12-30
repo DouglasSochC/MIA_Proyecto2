@@ -191,7 +191,7 @@ CREATE TABLE PARTIDO(
     asistencia INTEGER NOT NULL,
     id_equipo_visita INTEGER NOT NULL,
     id_equipo_local INTEGER NOT NULL,
-    resultado VARCHAR(10) NOT NULL,
+    resultado VARCHAR(10),
     PRIMARY KEY (id),
     FOREIGN KEY (id_estadio) REFERENCES ESTADIO(id),
     FOREIGN KEY (id_estado) REFERENCES ESTADO_PARTIDO(id),
@@ -364,6 +364,8 @@ INSERT INTO ESTADO_PARTIDO(nombre) VALUES('Sin Iniciar');
 INSERT INTO ESTADO_PARTIDO(nombre) VALUES('En Curso');
 INSERT INTO ESTADO_PARTIDO(nombre) VALUES('Finalizado');
 INSERT INTO ESTADO_PARTIDO(nombre) VALUES('Suspendido');
+INSERT INTO ESTADO_JUGADOR(nombre) VALUES('Activo');
+INSERT INTO ESTADO_JUGADOR(nombre) VALUES('No Activo');
 INSERT INTO USUARIO(nombres, apellidos, clave, correo, telefono, genero, fecha_nac, fecha_registro, 
 direccion, membresia_activa, id_tipo, id_estado_usuario)  
 VALUES ('Douglas','Soch','123','prueba1@gmail.com',12345678,'M','01/01/1990','02/01/2021','Dir 1',0,

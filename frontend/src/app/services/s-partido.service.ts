@@ -109,4 +109,9 @@ export class SPartidoService {
     return this.http.delete(url).pipe(map(data => data));
   }
 
+  GetDetallePartido(id_partido:number){
+    const url = "http://localhost:3000/getDetallePartido/"+id_partido;
+    return this.http.get(url);
+  }
+
 }

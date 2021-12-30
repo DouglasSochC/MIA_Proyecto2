@@ -46,9 +46,9 @@
             <th scope="col">ESTADIO</th>
             <th scope="col">ESTADO ACTUAL</th>
             <th scope="col">ASISTENCIA</th>
-            <th scope="col">EQUIPO VISITANTE</th>
             <th scope="col">EQUIPO LOCAL</th>
             <th scope="col">RESULTADO</th>
+            <th scope="col">EQUIPO VISITANTE</th>          
           </tr>
         </thead>
         <tbody>
@@ -58,9 +58,10 @@
             <td>{{ registro.nombre_estadio }}</td>
             <td>{{ registro.nombre_estado }}</td>
             <td>{{ registro.asistencia }}</td>
-            <td>{{ registro.nombre_equipo_visita }}</td> 
             <td>{{ registro.nombre_equipo_local }}</td> 
             <td>{{ registro.resultado }}</td>
+            <td>{{ registro.nombre_equipo_visita }}</td>            
+            <td><button (click)="mostrarPartidoDetalle(registro.id_partido)" class="btn btn-outline-primary" type="submit">Ver Incidencias</button>&nbsp;</td>
           </tr>
         </tbody>
       </table>

@@ -1,0 +1,28 @@
+pais,nombre,fecha_ing,capacidad,direccion,estado
+Inglaterra,Etihad Stadium,25/06/2002,55097,"Ashton New Rd, Manchester M11 3FF, Reino Unido",Activo
+Inglaterra,Stamford Bridge,28/04/1877,41837,"Fulham Rd., London SW6 1HS, Reino Unido",Activo
+Inglaterra,Tottenham Hotspur Stadium,03/04/2019,62850,"782 High Rd, London N17 0BX, Reino Unido",Activo
+Inglaterra,Anfield,28/09/1884,53394,"Anfield Rd, Anfield, Liverpool L4 0TH, Reino Unido",Activo
+Inglaterra,Old Trafford,19/02/1910,76000,"Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, Reino Unido",Activo
+Inglaterra,Emirates Stadium,22/07/2006,60260,"Hornsey Rd, London N7 7AJ, Reino Unido",Activo
+Inglaterra,Goodison Park,24/08/1892,39572,"Goodison Rd, Liverpool L4 4EL, Reino Unido",Activo
+Alemania,Allianz Arena,03/05/2005,75024,"Werner-Heisenberg-Allee 25, 80939 München, Alemania",Activo
+Alemania,Signal Iduna Park,02/04/1974,81365,"Strobelallee 50, 44139 Dortmund, Alemania",Activo
+Alemania,BayArena,02/08/1958,30210,"Bismarckstraße 122-124, 51373 Leverkusen, Alemania",Activo
+Alemania,Red Bull Arena - Leipzig,04/08/1956,50000,"Am Sportforum 3, 04105 Leipzig, Alemania",Activo
+Alemania,Borussia Park,30/06/2004,59724,"Hennes Weisweiler Allee 1, 41179 Mönchengladbach, Alemania",Activo
+Francia,Pierre-Mauroy,17/08/2012,50186,"261 Bd de Tournai, 59650 Villeneuve-d'Ascq, Francia",Activo
+Francia,Parc Olympique Lyonnais,09/01/2016,59186,"10 Av. Simone Veil, 69150 Décines-Charpieu, Francia",Activo
+Francia,Stade Vélodrome,13/06/1937,67394,"3 Bd Michelet, 13008 Marseille, Francia",Activo
+Francia,Estadio Luis II,01/01/1985,15000,"7 Av. des Castelans, 18000 Monaco, Mónaco",Activo
+Francia,Parque de los Príncipes,08/06/1967,50000,"24 Rue du Commandant Guilbaud, 75016 Paris, Francia",Activo
+España,Camp Nou,24/09/1957,99354,"d'Arístides Maillol, 12, 08028 Barcelona, España",Activo
+España,Santiago Bernabéu,14/12/1947,81044,"Av. de Concha Espina, 1, 28036 Madrid, España",Activo
+España,Wanda Metropolitano,16/09/2017,68456,"Av. de Luis Aragonés, 4, 28022 Madrid, España",Activo
+España,Ramón Sánchez-Pizjuán,07/09/1958,43883,"C. Sevilla Fútbol Club, s/n, 41005 Sevilla, España",Activo
+España,Estadio de la Cerámica,17/06/1923,23500,"Carrer Blasco Ibáñez, 2, 12540 Vila-real, Castelló, España",Activo
+España,Mestalla,20/05/1923,55000,"Av. de Suècia, s/n, 46010 València, Valencia, España",Activo
+Italia,Giuseppe Meazza,19/09/1926,80018,"Piazzale Angelo Moratti, 20151 Milano MI, Italia",Activo
+Italia,Estadio Juventus,08/09/2011,41507,"Corso Gaetano Scirea, 50, 10151 Torino TO, Italia",Activo
+Italia,Olímpico de Roma,01/01/1937,72698,"Viale dei Gladiatori, 00135 Roma RM, Italia",Activo
+Italia,San Paolo,06/12/1959,54726,"Piazzale Vincenzo Tecchio, 80125 Napoli NA, Italia",Activo

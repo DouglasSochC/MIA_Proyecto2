@@ -17,3 +17,10 @@ export interface EstadoPartidoInterface{
     id_estado:number,
     nombre:string
 }
+
+export interface IncidenciasPartidoInterface{
+    descripcion:string,
+    minuto:string,
+    equipo_incidencia:string,
+    jugador: string
+}
