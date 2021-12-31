@@ -94,6 +94,8 @@ SID: ORCLCDB
 
 ## Endpoints
 
+-Los endpoints son las URLs de un API o un backend que responden a una petición. 
+
 * pais 
 * usuario
 * jugador
@@ -164,56 +166,69 @@ S.S.C. Napoli,01/08/1926,Italia
 ## Listado de Modulos
 
 * Modulo de Login
-para ingresar a la aplicacion web, cada usuario debe colocar su correo electronico y su respectiva clave de acceso.
+
+-Para ingresar a la aplicacion web, cada usuario debe colocar su correo electronico y su respectiva clave de acceso.
 
 
 * Modulo de Usuarios
-Todos los usuarios deben estar registrados para poder ingresar al sistema y hay diferentes tipos de usuarios al momento de ingresar.
+
+-Todos los usuarios deben estar registrados para poder ingresar al sistema y hay diferentes tipos de usuarios al momento de ingresar.
 
 
 * Modulo de Jugador
-En este modulo se ingresa la informacion personal  del jugador asi como su trayectoria en su vida deportiva.
+
+-En este modulo se ingresa la informacion personal  del jugador asi como su trayectoria en su vida deportiva.
 
 
 * Modulo de Tecnico
-En este modulo se ingresa la informacion personal del tecnico asi como su trayectoria profesional en el cuerpo tecnico.
+
+-En este modulo se ingresa la informacion personal del tecnico asi como su trayectoria profesional en el cuerpo tecnico.
 
 
 * Modulo de Estadios
-En este modulo se puede ingresar el historial de un estadio asi como sus caracteristica.
+
+-En este modulo se puede ingresar el historial de un estadio asi como sus caracteristica.
 
 
 * Modulo de Equipos
-En este modulo se ingresara los datos relacionados con los equipos asi como la fecha de su fundacion
+
+-En este modulo se ingresara los datos relacionados con los equipos asi como la fecha de su fundacion
 
 
 * Modulo de Partidos
-Modulo que gestionara el historial y resultados de los partidos, cada equipo involucrado debe existir previamente.
+
+-Modulo que gestionara el historial y resultados de los partidos, cada equipo involucrado debe existir previamente.
 
 
 * Modulo de Transferencia de Jugadores
-En este modulo se podra transferir un jugador de un equipo a otro y se actualiza la trayectoria del jugador.
+
+-En este modulo se podra transferir un jugador de un equipo a otro y se actualiza la trayectoria del jugador.
 
 
 * Modulo de Transferencia de Tecnicos
-En este modulo se podra tranferir un miembro del cuerpo tecnico a otro equipo y se actualizadra la trayectoria del ejecutivo tecnico.
+
+-En este modulo se podra tranferir un miembro del cuerpo tecnico a otro equipo y se actualizadra la trayectoria del ejecutivo tecnico.
 
 
 * Modulo de Incidencias
-Este modulo lleva un historial de las incidencias ocurridas durante un encuentro entre dos equipos.
+
+-Este modulo lleva un historial de las incidencias ocurridas durante un encuentro entre dos equipos.
 
 * Modulo de Estado Jugador
-Para configurar el estado del jugador, por ejemplo si esta suspendido, activo y no activo.
+
+-Para configurar el estado del jugador, por ejemplo si esta suspendido, activo y no activo.
 
 
 
 * Modulo de Estado Tecnico
-Para configurar el estado del tecnico, por ejemplo si esta suspendido, activo y no activo.
+
+-Para configurar el estado del tecnico, por ejemplo si esta suspendido, activo y no activo.
 
 
 
 * Modulo de Publicar Noticia
-Los usuarios podrán filtrar las noticias si están relacionadas solo con sus equipos favoritos o si las quiere ver TODAS en general y deberá mostrar la noticia completamente detallada.
+
+-Los usuarios podrán filtrar las noticias si están relacionadas solo con sus equipos favoritos o si las quiere ver TODAS en general y deberá mostrar la noticia completamente detallada.
 
 
 
@@ -222,7 +237,39 @@ presentacion del **MODULO DE LOGIN**
 
 ![modulo_login](images/login.png "modulo_login")
 
+
 ---
+presentacion del **LISTADO DE MODULOS PARTE 1** 
+
+![modulo_login](images/modulo1.png "modulo_login")
+
+---
+
+presentacion del **LISTADO DE MODULOS PARTE 2** 
+
+![modulo_login](images/modulo2.png "modulo_login")
+
+---
+
+presentacion del **LISTADO DE JUGADORES** 
+
+![modulo_login](images/tjugadores.png "modulo_login")
+
+---
+
+presentacion del **LISTADO DE ESTADO DE JUGADORES** 
+
+![modulo_login](images/testadoJ.png "modulo_login")
+
+---
+
+presentacion del **LISTADO INCIDENCIAS ENTRE PARTIDOS** 
+
+![modulo_login](images/tincidenciasP.png "modulo_login")
+
+---
+
+
 ejemplo de  **MODULO DE USUARIOS** 
 
 ![modulo_usuarios](images/moduloUsuario.png "modulo_usuarios")
@@ -237,19 +284,34 @@ ejemplo de  **MODULO DE COMPETENCIA**
 
 ![modulo_competencia](images/moduloCompetencia.png "modulo_competencia")
 
+---
 
 ejemplo de  **MODULO DE TRANSFERENCIA DE JUGADOR** 
 
 ![moduloTransferenciaJ](images/moduloTransferenciaJ.png "modulo_transferenciaJ")
 
+---
 
 ejemplo de  **MODULO DE ESTADO DE TECNICO** 
 
 ![moduloEstadoT](images/moduloEstadoT.png "modulo_estadoT")
 
+---
 
 ejemplo de  **MODULO DE ESTADO DE PUBLICAR NOTICIAS** 
 
 ![modulo_noticias](images/moduloNoticias.png "modulo_noticias")
+
+---
+
+ejemplo de  **MODULO DE ESTADO DE PUBLICAR NOTICIAS** 
+
+![modulo_noticias](images/moduloNoticias.png "modulo_noticias")
+
+---
+
+ejemplo de  **MODULO DE ESTADO DE PUBLICAR NOTICIAS** 
+
+![modulo_noticias](images/moduloReportes.png "modulo_noticias")
 
 
