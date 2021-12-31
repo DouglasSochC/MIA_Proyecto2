@@ -21,7 +21,7 @@
     <h1 class="h3 mb-3 fw-normal">¡Bienvenido!</h1>
 
     <div class="form-floating">
-      <input [(ngModel)] = "correo" name = "correo" type="email" class="form-control" placeholder="name@example.com">
+      <input [(ngModel)] = "correo" name = "correo" type="email" class="form-control" placeholder="name@example.com" autocomplete="off">
       <label>Correo Electronico</label>
     </div>
     <div class="form-floating">
@@ -32,6 +32,8 @@
     <button (click)="loguearse()" class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
     <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes una cuenta? 
     <a href="./crearcuenta" class="link-danger">Registrarse</a></p>
+    <p class="small fw-bold mt-2 pt-1 mb-0">¿Has olvidado tu contraseña? 
+      <a href="./restablecercontrasenia" class="link-danger">Recuperar</a></p>
     <p class="mt-5 mb-3 text-muted">&copy; 2021-2021</p>
   </form>
 </main>

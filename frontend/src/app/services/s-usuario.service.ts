@@ -173,4 +173,15 @@ export class SUsuarioService {
     ).pipe(map(data => data));
   }
 
+  recuperarCuenta(correo:string){
+    const url = "http://localhost:3000/recuperarCuenta";
+
+    return this.http.post(url,
+      {
+        "correo": correo
+      }
+      , { headers: this.headers })
+      .pipe(map(data => data));
+  }
+
 }

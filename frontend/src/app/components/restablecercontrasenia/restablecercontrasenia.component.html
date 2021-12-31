@@ -1,0 +1,42 @@
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Google_Forms_logo_%282014-2020%29.svg/640px-Google_Forms_logo_%282014-2020%29.svg.png" alt="" width="50" height="60">
+        <h2>Recuperacion de Cuenta</h2>
+      </div>
+  
+      <div class="container">
+        <div class="">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-12">
+                <label class="form-label">Correo Electronico </label>
+                <input [(ngModel)] = "correo_electronico" name = "correo_electronico" type="email" class="form-control" placeholder="you@example.com" autocomplete="off">
+              </div>
+            </div>
+            <hr class="my-4">
+            <button (click) = "recuperarCuenta()" class="w-100 btn btn-primary btn-lg" type="submit">Seguir Proceso</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021–2021 Soccer Statistics</p>
+    </footer>
+  </div>

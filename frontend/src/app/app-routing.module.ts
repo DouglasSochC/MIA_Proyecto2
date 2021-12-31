@@ -30,11 +30,17 @@ import { ReportesadministradorComponent } from './components/reportesadministrad
 import { TecnicoComponent } from './components/tecnico/tecnico.component';
 import { SeguirequipoComponent } from './components/seguirequipo/seguirequipo.component';
 import { CargamasivaComponent } from './components/cargamasiva/cargamasiva.component';
+import { RestablecercontraseniaComponent } from './components/restablecercontrasenia/restablecercontrasenia.component';
+import { VencimientotokenComponent } from './components/vencimientotoken/vencimientotoken.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'restablecercontrasenia',
+    component: RestablecercontraseniaComponent
   },
   {
     path: 'login',
@@ -43,6 +49,10 @@ const routes: Routes = [
   {
     path: 'crearcuenta',
     component: CrearcuentaComponent
+  },
+  {
+    path: 'vencimientotoken',
+    component: VencimientotokenComponent
   },
   {
     path: 'menu_administrador',

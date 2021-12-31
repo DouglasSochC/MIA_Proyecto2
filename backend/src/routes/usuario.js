@@ -200,6 +200,94 @@ router.get('/confirmarCuenta/:data_user', async (req, res) => {
     }
 });
 
+//SEND EMAIL
+router.post('/recuperarCuenta', async (req, res) => {
+    const { correo } = req.body;
+
+    if (!(correo != "")) {
+        res.status(201).json({
+            "response":false,
+            "msg": "No ha ingresado los campos obligatorios"
+        });
+    }else{
+        sql_verificacion_usuario = "SELECT id FROM USUARIO WHERE USUARIO.correo = :correo";
+        let r_verificacion_usuario = await BD.Open(sql_verificacion_usuario, [correo], false);
+        if (r_verificacion_usuario.rows.length <= 0) {
+            res.status(201).json({
+                "response": false,
+                "msg": "El correo que ha ingresado no existe"
+            });
+        }else{
+            let id_token = tokenTemporal();
+            sql_insertar_token = "INSERT INTO TOKEN_TEMPORAL(ID, FECHA_GENERACION)\
+            VALUES(:id_token,CURRENT_TIMESTAMP)";
+            await BD.Open(sql_insertar_token, [id_token], true);
+            var cuerpoRecuperacion = {
+                "tocken":id_token,
+                "correo":correo
+            }
+            var convertirJSON = setBase64(cuerpoRecuperacion);
+            var transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: 'soccerstatistics2021@gmail.com',
+                    pass: 'byrfnhgzntmetssn',
+                },
+            });
+            
+            var mailOptions = {
+                from: '"Soccer Statistics ⚽" <soccerstatistics2021@gmail.com>', 
+                to: correo, 
+                subject: "Recuperacion de Cuenta", 
+                html: `¡Hola!<br/>
+                Nos hemos percatado que has olvidado tu contraseña, por lo tanto se te ha generado la siguiente <b>`+id_token+`</b><br/>
+                Tienes 2 minutos para confirmar el cambio de contraseña.<br/>
+                Por favor has click en el siguiente link, o pegalo dentro de tu navegador prefererido para completar el proceso <a href="http://localhost:3000/actualizarContraseniaCuenta/`+convertirJSON+`">Modificar contraseña</a>`, // html body
+            }
+            
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    res.status(201).json({
+                        "response": false,
+                        "msg": error.message
+                    });
+                }else{
+                    res.status(201).json({
+                        "response": true,
+                        "msg": "Por favor, verifique el correo electronico que usted a proporcionado"
+                    });
+                }
+            });     
+        }
+    }    
+});
+
+//RECUPERAR CUENTA
+router.get('/actualizarContraseniaCuenta/:data_user', async (req, res) => {
+    const { data_user } = req.params;
+    var datos_JSON = getJSONfromB64(data_user);
+    var token = datos_JSON['tocken'];
+    var correo = datos_JSON['correo'];
+    var date_Actual = new Date();
+    fecha_actual = date_Actual.toLocaleString();
+    sql = "SELECT COUNT(FECHA) AS CANTIDAD FROM (SELECT (CURRENT_TIMESTAMP - FECHA_GENERACION) AS FECHA FROM TOKEN_TEMPORAL WHERE TOKEN_TEMPORAL.ID=:token)\
+        WHERE FECHA <= '+00 00:02:00'";
+    let result = await BD.Open(sql, [token], false);
+    var cantidad = 0;
+    result.rows.map(registro => {
+        cantidad = registro[0]
+    });
+    if (cantidad == 0) {
+        res.redirect('http://localhost:4200/vencimientotoken');
+    }else{
+        sql_actualizar = "UPDATE USUARIO SET CLAVE = :token WHERE CORREO = :correo"
+        await BD.Open(sql_actualizar, [token, correo], true);
+        res.redirect('http://localhost:4200/login');
+    }    
+});
+
 //CONFIRM EMAIL ADM_EMP
 router.get('/confirmarCuentaAE/:data_user', async (req, res) => {
     const { data_user } = req.params;
@@ -426,5 +514,8 @@ function getJSONfromB64(base64) {
     return JSON.parse(Buffer.from(base64, 'base64').toString('ascii'));
 }
 
+function tokenTemporal() {
+    return Math.random().toString(36).substr(2);
+};
 /*FIN - UTILS*/
 module.exports = router;

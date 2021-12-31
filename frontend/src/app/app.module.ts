@@ -35,6 +35,8 @@ import { ConsultaestadisticaComponent } from './components/consultaestadistica/c
 import { ReportesadministradorComponent } from './components/reportesadministrador/reportesadministrador.component';
 import { SeguirequipoComponent } from './components/seguirequipo/seguirequipo.component';
 import { CargamasivaComponent } from './components/cargamasiva/cargamasiva.component';
+import { RestablecercontraseniaComponent } from './components/restablecercontrasenia/restablecercontrasenia.component';
+import { VencimientotokenComponent } from './components/vencimientotoken/vencimientotoken.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { CargamasivaComponent } from './components/cargamasiva/cargamasiva.compo
     ConsultaestadisticaComponent,
     ReportesadministradorComponent,
     SeguirequipoComponent,
-    CargamasivaComponent
+    CargamasivaComponent,
+    RestablecercontraseniaComponent,
+    VencimientotokenComponent
   ],
   imports: [
     BrowserModule,
