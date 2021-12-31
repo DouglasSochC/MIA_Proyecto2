@@ -118,6 +118,43 @@ SID: ORCLCDB
 * "http://localhost:3000//updateEquipo" metodo put para modificar valores en los datos del equipo 
 * "http://localhost:3000//deleteEquipo/:id_equipo"  metodo delete para eliminar los datos de una tabla. este metodo elimina permanentemente el registro 
 
+---
+
+**EJEMPLO DE ARCHIVO DE ENTRADA**  archivo con extension .scv
+
+
+```
+nombre,fecha_fun,pais
+Manchester City F.C.,16/04/1880,Inglaterra
+Chelsea F.C.,10/03/1905,Inglaterra
+Tottenham Hotspur,05/09/1882,Inglaterra
+Liverpool F.C.,03/06/1892,Inglaterra
+Manchester United F.C.,05/03/1878,Inglaterra
+Arsenal F.C.,01/12/1886,Inglaterra
+Everton F.C.,01/01/1878,Inglaterra
+Bayern de Múnich,27/02/1900,Alemania
+Borussia Dortmund,19/12/1909,Alemania
+Bayer 04 Leverkusen,01/07/1904,Alemania
+R.B. Leipzig,19/05/2009,Alemania
+Borussia Mönchengladbach,01/08/1900,Alemania
+Lille O.S.C.,23/09/1944,Francia
+Olympique de Lyon,03/08/1950,Francia
+Olympique de Marsella,31/08/1899,Francia
+A.S. Mónaco F.C.,23/08/1924,Francia
+Paris-Saint-Germain F.C.,12/08/1970,Francia
+F.C. Barcelona,29/11/1899,España
+Real Madrid C.F.,06/03/1902,España
+Atlético de Madrid,26/04/1903,España
+Sevilla F.C.,25/01/1890,España
+Villarreal C.F.,10/03/1923,España
+Valencia C.F.,18/03/1919,España
+A.C. Milan,16/12/1899,Italia
+Inter de Milán,09/03/1908,Italia
+Juventus,01/11/1897,Italia
+A.S. Roma,07/06/1927,Italia
+S.S.C. Napoli,01/08/1926,Italia
+
+```
 
 
 
@@ -127,20 +164,58 @@ SID: ORCLCDB
 ## Listado de Modulos
 
 * Modulo de Login
+para ingresar a la aplicacion web, cada usuario debe colocar su correo electronico y su respectiva clave de acceso.
+
+
 * Modulo de Usuarios
+Todos los usuarios deben estar registrados para poder ingresar al sistema y hay diferentes tipos de usuarios al momento de ingresar.
+
+
 * Modulo de Jugador
+En este modulo se ingresa la informacion personal  del jugador asi como su trayectoria en su vida deportiva.
+
+
 * Modulo de Tecnico
+En este modulo se ingresa la informacion personal del tecnico asi como su trayectoria profesional en el cuerpo tecnico.
+
+
 * Modulo de Estadios
+En este modulo se puede ingresar el historial de un estadio asi como sus caracteristica.
+
+
 * Modulo de Equipos
+En este modulo se ingresara los datos relacionados con los equipos asi como la fecha de su fundacion
+
+
 * Modulo de Partidos
-* Modulo de competencias
+Modulo que gestionara el historial y resultados de los partidos, cada equipo involucrado debe existir previamente.
+
+
 * Modulo de Transferencia de Jugadores
+En este modulo se podra transferir un jugador de un equipo a otro y se actualiza la trayectoria del jugador.
+
+
 * Modulo de Transferencia de Tecnicos
-* Modulo de Estado de un partido
+En este modulo se podra tranferir un miembro del cuerpo tecnico a otro equipo y se actualizadra la trayectoria del ejecutivo tecnico.
+
+
 * Modulo de Incidencias
+Este modulo lleva un historial de las incidencias ocurridas durante un encuentro entre dos equipos.
+
 * Modulo de Estado Jugador
+Para configurar el estado del jugador, por ejemplo si esta suspendido, activo y no activo.
+
+
+
 * Modulo de Estado Tecnico
+Para configurar el estado del tecnico, por ejemplo si esta suspendido, activo y no activo.
+
+
+
 * Modulo de Publicar Noticia
+Los usuarios podrán filtrar las noticias si están relacionadas solo con sus equipos favoritos o si las quiere ver TODAS en general y deberá mostrar la noticia completamente detallada.
+
+
 
 ---
 presentacion del **MODULO DE LOGIN** 
