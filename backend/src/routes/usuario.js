@@ -135,9 +135,9 @@ router.post('/addUsuarioCliente', async (req, res) => {
             var mailOptions = {
                 from: '"Soccer Statistics ⚽" <soccerstatistics2021@gmail.com>', 
                 to: correo, 
-                subject: "Recuperacion de Contraseña", 
+                subject: "Confirmacion de Cuenta", 
                 html: `¡Hola!<br/>
-                Nos hemos percatado que quieres recuperar tu contraseña.
+                ¡Bienvenido a la familia Soccer Statistics!
                 Por favor has click en el siguiente link, o pegalo dentro de tu navegador prefererido para completar el proceso <a href="http://localhost:3000/confirmarCuenta/`+convertirJSON+`">Confirmar mi cuenta</a>`, // html body
             }
             
