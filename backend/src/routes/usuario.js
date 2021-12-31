@@ -282,8 +282,8 @@ router.get('/actualizarContraseniaCuenta/:data_user', async (req, res) => {
     if (cantidad == 0) {
         res.redirect('http://localhost:4200/vencimientotoken');
     }else{
-        sql_actualizar = "UPDATE USUARIO SET CLAVE = :token WHERE CORREO = :correo"
-        await BD.Open(sql_actualizar, [token, correo], true);
+        sql_actualizar = "BEGIN ACTUALIZAR_CONTRASENIA(:correo,:token); END;"
+        await BD.Open(sql_actualizar, [correo, token], true);
         res.redirect('http://localhost:4200/login');
     }    
 });

@@ -3,6 +3,11 @@ import { EquipoInterface, PaisInterface } from 'src/app/models/equipo-interface'
 import { RP1Interface,RP2Interface,RP3Interface,RP4Interface,RP5Interface,RP6Interface,RP7Interface,RP8Interface,RP9Interface,RP10Interface } from 'src/app/models/reporte-interface';
 import { SEquipoService } from 'src/app/services/s-equipo.service';
 import { SReporteadministradorService } from 'src/app/services/s-reporteadministrador.service';
+import jsPDF from 'jspdf'
+// import jsPDF = require('jspdf') // // typescript without esModuleInterop flag
+// import jsPDF from 'yworks-pdf' // using yworks fork
+// import jsPDF from 'jspdf/dist/jspdf.node.debug' // for nodejs
+import autoTable from 'jspdf-autotable'
 
 @Component({
   selector: 'app-reportesadministrador',
@@ -132,6 +137,14 @@ export class ReportesadministradorComponent implements OnInit {
     this.sreporteadm.GetBicatoras().subscribe((res:any) => {
       this.Reporte10 = res;
     });
+  }
+
+  reportePDF(numero_reporte:number){
+    const doc = new jsPDF()
+    autoTable(doc, { 
+      html: '#tablaR'+numero_reporte
+    })
+    doc.save('reporte'+numero_reporte+'.pdf')
   }
 
 }

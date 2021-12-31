@@ -87,8 +87,11 @@
       </div>
     </main>
     <hr class="my-4">
-    <table *ngIf="id_reporte == 1" class="table">
+    <table *ngIf="id_reporte == 1" class="table" id="tablaR1">
         <thead>
+            <tr *ngIf="Reporte1.length > 0">
+              <button (click)="reportePDF(1)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+            </tr>
             <tr>
             <th scope="col">ID</th>
             <th scope="col">NOMBRE COMPLETO</th>
@@ -111,8 +114,11 @@
             </tr>
         </tbody>
     </table>
-    <table *ngIf="id_reporte == 2" class="table">
+    <table *ngIf="id_reporte == 2" class="table" id="tablaR2">
         <thead>
+            <tr *ngIf="Reporte2.length > 0">
+              <button (click)="reportePDF(2)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+            </tr>
             <tr>
             <th scope="col">ID</th>
             <th scope="col">NOMBRE COMPLETO</th>
@@ -135,13 +141,16 @@
             </tr>
         </tbody>
     </table>
-    <table *ngIf="id_reporte == 3" class="table">
+    <table *ngIf="id_reporte == 3" class="table" id="tablaR3">
       <thead>
-          <tr>
-          <th scope="col">CANTIDAD DE MEMBRESIAS</th>
-          <th scope="col">NOMBRES</th>
-          <th scope="col">APELLIDOS</th>
-          </tr>
+        <tr *ngIf="Reporte3.length > 0">
+          <button (click)="reportePDF(3)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+        </tr>
+        <tr>
+        <th scope="col">CANTIDAD DE MEMBRESIAS</th>
+        <th scope="col">NOMBRES</th>
+        <th scope="col">APELLIDOS</th>
+        </tr>
       </thead>
       <tbody>
           <tr *ngFor="let registro of Reporte3">
@@ -151,8 +160,11 @@
           </tr>
       </tbody>
     </table>
-    <table *ngIf="id_reporte == 4" class="table">
+    <table *ngIf="id_reporte == 4" class="table" id="tablaR4">
       <thead>
+        <tr *ngIf="Reporte4.length > 0">
+          <button (click)="reportePDF(4)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+        </tr>
           <tr>
           <th scope="col">DINERO GASTADO</th>
           <th scope="col">NOMBRES</th>
@@ -167,8 +179,11 @@
           </tr>
       </tbody>
     </table>
-    <table *ngIf="id_reporte == 5" class="table">
+    <table *ngIf="id_reporte == 5" class="table" id="tablaR5">
       <thead>
+        <tr *ngIf="Reporte5.length > 0">
+          <button (click)="reportePDF(5)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+        </tr>
           <tr>
           <th scope="col">ID</th>
           <th scope="col">NOMBRE COMPLETO</th>
@@ -191,8 +206,11 @@
           </tr>
       </tbody>
     </table>
-    <table *ngIf="id_reporte == 6" class="table">
+    <table *ngIf="id_reporte == 6" class="table" id="tablaR6">
       <thead>
+        <tr *ngIf="Reporte6.length > 0">
+          <button (click)="reportePDF(6)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+        </tr>
           <tr>
           <th scope="col">ID</th>
           <th scope="col">NOMBRE COMPLETO</th>
@@ -215,8 +233,11 @@
           </tr>
       </tbody>
     </table>
-    <table *ngIf="id_reporte == 7" class="table">
+    <table *ngIf="id_reporte == 7" class="table" id="tablaR7">
       <thead>
+        <tr *ngIf="Reporte7.length > 0">
+          <button (click)="reportePDF(7)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+        </tr>
           <tr>
           <th scope="col">ID</th>
           <th scope="col">NOMBRE COMPLETO</th>
@@ -233,8 +254,11 @@
           </tr>
       </tbody>
     </table>
-    <table *ngIf="id_reporte == 8" class="table">
+    <table *ngIf="id_reporte == 8" class="table" id="tablaR8">
       <thead>
+        <tr *ngIf="Reporte8.length > 0">
+          <button (click)="reportePDF(8)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+        </tr>
           <tr>
           <th scope="col">CANTIDAD DE NOTICIAS</th>
           <th scope="col">ID DEL USUARIO</th>
@@ -253,8 +277,11 @@
           </tr>
       </tbody>
     </table>
-    <table *ngIf="id_reporte == 9" class="table">
+    <table *ngIf="id_reporte == 9" class="table" id="tablaR9">
       <thead>
+        <tr *ngIf="Reporte9.length > 0">
+          <button (click)="reportePDF(9)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+        </tr>
           <tr>
           <th scope="col">CANTIDAD DE NOTICIAS</th>
           <th scope="col">ID DEL USUARIO</th>
@@ -273,8 +300,11 @@
           </tr>
       </tbody>
     </table>
-    <table *ngIf="id_reporte == 10" class="table">
+    <table *ngIf="id_reporte == 10" class="table" id="tablaR10">
       <thead>
+        <tr *ngIf="Reporte10.length > 0">
+          <button (click)="reportePDF(10)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+        </tr>
           <tr>
           <th scope="col">ID</th>
           <th scope="col">DESCRIPCION</th>
