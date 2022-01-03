@@ -84,9 +84,11 @@ SID: ORCLCDB
 ```
 
 ## Arquitectura
-
+La arquitectura implementada fue una API-REST en el cual se utilizaron las siguientes tecnologias:
+![arquitectura.png](images/arquitectura.png "Arquitectura")
 
 ## Diagrama Entidad-Relacion
+![Diagrama_ER.svg](images/Diagrama_ER.svg "Diagrama_ER")
 
 ## Routes
 
