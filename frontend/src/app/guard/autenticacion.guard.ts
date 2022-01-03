@@ -12,7 +12,6 @@ export class AutenticacionGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot){
     
-    //RECORDAR: HAY QUE VALIDAR SI EL CLIENTE TIENE MEMBRESIA O NO PARA DAR PERMISOS A LAS PAGINAS
     if (this.autenticacionServicio.getUsuarioActual()) {
       if (this.autenticacionServicio.getUsuarioActual()['tipo_usuario'] == "Empleado") {
         if (route.url[0]['path'] == "menu_empleado") {

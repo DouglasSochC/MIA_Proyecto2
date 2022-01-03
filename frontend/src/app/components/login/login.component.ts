@@ -14,6 +14,15 @@ export class LoginComponent implements OnInit {
   constructor(public autenticacion: SUsuarioService, public router: Router) { }
 
   ngOnInit(): void {
+    if (this.autenticacion.getUsuarioActual()) {
+      if (this.autenticacion.getUsuarioActual()['tipo_usuario'] == "Administrador") {
+        this.router.navigate(['/menu_administrador']);
+      }else if(this.autenticacion.getUsuarioActual()['tipo_usuario'] == "Empleado"){
+        this.router.navigate(['/menu_empleado']);
+      }else if(this.autenticacion.getUsuarioActual()['tipo_usuario'] == "Cliente"){
+        this.router.navigate(['/menu_cliente']);
+      }
+    }
   }
 
   correo: string = "";
