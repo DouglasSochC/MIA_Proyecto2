@@ -64,37 +64,31 @@ SID: ORCLCDB
 ```sql
     SELECT * FROM v$version WHERE banner LIKE 'Oracle%';
 ```
----
+### Levantando el proyecto
 
-## Comandos UTiles 
-
-* para instalar las dependencias del backend y frontend
+* Instalar las dependencias del Backend y Frontend
 ```console
 ~$ npm install 
 ```
-* para levantar el backend (estar dentro de la carpeta de backend)
+* Levantar el Backend (estar dentro de la carpeta de Backend)
 ```console
-~$  node /src/index.js 
+~$ node /src/index.js 
 ```
-
-* para levantar el frontend (estar dentro de la carpeta de frontend )
+* (En el caso que se tenga un error en el instantclient)
+```console
+~$ export LD_LIBRARY_PATH=/opt/instantclient_21_4/
+```
+* Levantar el Frontend (estar dentro de la carpeta de Frontend)
 ```console
 ~$  ng serve --open 
 ```
 
----
-
 ## Arquitectura
 
----
 
 ## Diagrama Entidad-Relacion
 
----
-
-## Endpoints
-
--Los endpoints son las URLs de un API o un backend que responden a una petición. 
+## Routes
 
 * pais 
 * usuario
@@ -111,19 +105,14 @@ SID: ORCLCDB
 * reportes_admin
 * reportes_usuarios
 
----
-
 ## Detalle de un CRUD de endpoint
 
-* "http://localhost:3000/getEquipos": metodo get para obtener del servidor toda la informacion relacionada con el equipo
-* "http://localhost:3000//addEquipo":  metodo post para agregar un nuevo equipo a la tabla. previo a realizar esta agregacion verifica que no exista duplicidad.
-* "http://localhost:3000//updateEquipo" metodo put para modificar valores en los datos del equipo 
-* "http://localhost:3000//deleteEquipo/:id_equipo"  metodo delete para eliminar los datos de una tabla. este metodo elimina permanentemente el registro 
+* "http://localhost:3000/getEquipos": Metodo get para obtener del servidor toda la informacion relacionada con el equipo
+* "http://localhost:3000//addEquipo":  Metodo post para agregar un nuevo equipo a la tabla. previo a realizar esta agregacion verifica que no exista duplicidad.
+* "http://localhost:3000//updateEquipo" Metodo put para modificar valores en los datos del equipo 
+* "http://localhost:3000//deleteEquipo/:id_equipo"  Metodo delete para eliminar los datos de una tabla. Este metodo elimina permanentemente el registro 
 
----
-
-**EJEMPLO DE ARCHIVO DE ENTRADA**  archivo con extension .scv
-
+**EJEMPLO DE ARCHIVO DE ENTRADA .csv**
 
 ```
 nombre,fecha_fun,pais
@@ -158,160 +147,123 @@ S.S.C. Napoli,01/08/1926,Italia
 
 ```
 
+## Stored Procedures
+``` sql
+CREATE OR REPLACE PROCEDURE AGREGAR_BITACORA (descripcion_usu VARCHAR2, operacion_usu VARCHAR2, id_usu INTEGER) is
+BEGIN
+INSERT INTO BITACORA (DESCRIPCION, OPERACION, ID_USUARIO) VALUES(descripcion_usu, operacion_usu, id_usu);
+END;
+/
+CREATE OR REPLACE PROCEDURE ACTUALIZAR_CONTRASENIA (correo_usu VARCHAR2, token VARCHAR2) is
+BEGIN
+UPDATE USUARIO SET CLAVE = token WHERE CORREO = correo_usu;
+END;
+```
 
-
-## Storeds Procedures
-
----
 ## Listado de Modulos
 
-* Modulo de Login
+#### Modulo de Login
 
--Para ingresar a la aplicacion web, cada usuario debe colocar su correo electronico y su respectiva clave de acceso.
+Para ingresar a la aplicacion web, cada usuario debe colocar su correo electronico y su respectiva clave de acceso.
 
+#### Modulo de Usuarios
 
-* Modulo de Usuarios
+Todos los usuarios deben estar registrados para poder ingresar al sistema y hay diferentes tipos de usuarios al momento de ingresar.
 
--Todos los usuarios deben estar registrados para poder ingresar al sistema y hay diferentes tipos de usuarios al momento de ingresar.
+#### Modulo de Jugador
 
+En este modulo se ingresa la informacion personal  del jugador asi como su trayectoria en su vida deportiva.
 
-* Modulo de Jugador
+#### Modulo de Tecnico
 
--En este modulo se ingresa la informacion personal  del jugador asi como su trayectoria en su vida deportiva.
+En este modulo se ingresa la informacion personal del tecnico asi como su trayectoria profesional en el cuerpo tecnico.
 
+#### Modulo de Estadios
 
-* Modulo de Tecnico
+En este modulo se puede ingresar el historial de un estadio asi como sus caracteristica.
 
--En este modulo se ingresa la informacion personal del tecnico asi como su trayectoria profesional en el cuerpo tecnico.
+#### Modulo de Equipos
 
+En este modulo se ingresara los datos relacionados con los equipos asi como la fecha de su fundacion
 
-* Modulo de Estadios
+#### Modulo de Partidos
 
--En este modulo se puede ingresar el historial de un estadio asi como sus caracteristica.
+Modulo que gestionara el historial y resultados de los partidos, cada equipo involucrado debe existir previamente.
 
+#### Modulo de Transferencia de Jugadores
 
-* Modulo de Equipos
+En este modulo se podra transferir un jugador de un equipo a otro y se actualiza la trayectoria del jugador.
 
--En este modulo se ingresara los datos relacionados con los equipos asi como la fecha de su fundacion
+#### Modulo de Transferencia de Tecnicos
 
-
-* Modulo de Partidos
-
--Modulo que gestionara el historial y resultados de los partidos, cada equipo involucrado debe existir previamente.
-
-
-* Modulo de Transferencia de Jugadores
-
--En este modulo se podra transferir un jugador de un equipo a otro y se actualiza la trayectoria del jugador.
+En este modulo se podra tranferir un miembro del cuerpo tecnico a otro equipo y se actualizadra la trayectoria del ejecutivo tecnico.
 
 
-* Modulo de Transferencia de Tecnicos
+#### Modulo de Incidencias
 
--En este modulo se podra tranferir un miembro del cuerpo tecnico a otro equipo y se actualizadra la trayectoria del ejecutivo tecnico.
+Este modulo lleva un historial de las incidencias ocurridas durante un encuentro entre dos equipos.
 
+#### Modulo de Estado Jugador
 
-* Modulo de Incidencias
+Para configurar el estado del jugador, por ejemplo si esta suspendido, activo y no activo.
 
--Este modulo lleva un historial de las incidencias ocurridas durante un encuentro entre dos equipos.
+#### Modulo de Estado Tecnico
 
-* Modulo de Estado Jugador
+Para configurar el estado del tecnico, por ejemplo si esta suspendido, activo y no activo.
 
--Para configurar el estado del jugador, por ejemplo si esta suspendido, activo y no activo.
+#### Modulo de Publicar Noticia
 
+Los usuarios podrán filtrar las noticias si están relacionadas solo con sus equipos favoritos o si las quiere ver TODAS en general y deberá mostrar la noticia completamente detallada.
 
-
-* Modulo de Estado Tecnico
-
--Para configurar el estado del tecnico, por ejemplo si esta suspendido, activo y no activo.
-
-
-
-* Modulo de Publicar Noticia
-
--Los usuarios podrán filtrar las noticias si están relacionadas solo con sus equipos favoritos o si las quiere ver TODAS en general y deberá mostrar la noticia completamente detallada.
-
-
-
----
-presentacion del **MODULO DE LOGIN** 
+## Interfaz Grafica
+**MODULO DE LOGIN** 
 
 ![modulo_login](images/login.png "modulo_login")
 
-
----
-presentacion del **LISTADO DE MODULOS PARTE 1** 
+**LISTADO DE MODULOS PARTE 1** 
 
 ![modulo_login](images/modulo1.png "modulo_login")
 
----
-
-presentacion del **LISTADO DE MODULOS PARTE 2** 
+**LISTADO DE MODULOS PARTE 2** 
 
 ![modulo_login](images/modulo2.png "modulo_login")
 
----
-
-presentacion del **LISTADO DE JUGADORES** 
+**LISTADO DE JUGADORES** 
 
 ![modulo_login](images/tjugadores.png "modulo_login")
 
----
-
-presentacion del **LISTADO DE ESTADO DE JUGADORES** 
+**LISTADO DE ESTADO DE JUGADORES** 
 
 ![modulo_login](images/testadoJ.png "modulo_login")
 
----
-
-presentacion del **LISTADO INCIDENCIAS ENTRE PARTIDOS** 
+**LISTADO INCIDENCIAS ENTRE PARTIDOS** 
 
 ![modulo_login](images/tincidenciasP.png "modulo_login")
 
----
-
-
-ejemplo de  **MODULO DE USUARIOS** 
+**MODULO DE USUARIOS** 
 
 ![modulo_usuarios](images/moduloUsuario.png "modulo_usuarios")
 
----
-ejemplo de  **MODULO DE ESTADIOS** 
+**MODULO DE ESTADIOS** 
 
 ![modulo_estadios](images/moduloEstadio.png "modulo_estadios")
 
----
-ejemplo de  **MODULO DE COMPETENCIA** 
+**MODULO DE COMPETENCIA** 
 
 ![modulo_competencia](images/moduloCompetencia.png "modulo_competencia")
 
----
-
-ejemplo de  **MODULO DE TRANSFERENCIA DE JUGADOR** 
+**MODULO DE TRANSFERENCIA DE JUGADOR** 
 
 ![moduloTransferenciaJ](images/moduloTransferenciaJ.png "modulo_transferenciaJ")
 
----
-
-ejemplo de  **MODULO DE ESTADO DE TECNICO** 
+**MODULO DE ESTADO DE TECNICO** 
 
 ![moduloEstadoT](images/moduloEstadoT.png "modulo_estadoT")
 
----
-
-ejemplo de  **MODULO DE ESTADO DE PUBLICAR NOTICIAS** 
+**MODULO PUBLICAR NOTICIAS**
 
 ![modulo_noticias](images/moduloNoticias.png "modulo_noticias")
 
----
-
-ejemplo de  **MODULO DE ESTADO DE PUBLICAR NOTICIAS** 
-
-![modulo_noticias](images/moduloNoticias.png "modulo_noticias")
-
----
-
-ejemplo de  **MODULO DE ESTADO DE PUBLICAR NOTICIAS** 
+**MODULO DE ESTADO DE REPORTES PARA UN USUARIO ADMINISTRADOR** 
 
 ![modulo_noticias](images/moduloReportes.png "modulo_noticias")
-
-
