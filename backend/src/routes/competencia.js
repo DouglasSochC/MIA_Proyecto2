@@ -18,7 +18,7 @@ router.get('/getCompetencias', async (req, res) => {
     FROM COMPETENCIA\
     INNER JOIN TIPO_COMPETENCIA ON COMPETENCIA.id_tipo_competencia = TIPO_COMPETENCIA.id\
     INNER JOIN PAIS ON COMPETENCIA.id_pais = PAIS.id\
-    ORDER BY COMPETENCIA.id ASC";
+    ORDER BY COMPETENCIA.anio DESC, COMPETENCIA.nombre";
     
     let result = await BD.Open(sql, [], false);
     Listado = [];
