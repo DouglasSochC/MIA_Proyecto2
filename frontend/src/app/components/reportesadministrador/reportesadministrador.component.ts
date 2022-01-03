@@ -4,9 +4,6 @@ import { RP1Interface,RP2Interface,RP3Interface,RP4Interface,RP5Interface,RP6Int
 import { SEquipoService } from 'src/app/services/s-equipo.service';
 import { SReporteadministradorService } from 'src/app/services/s-reporteadministrador.service';
 import jsPDF from 'jspdf'
-// import jsPDF = require('jspdf') // // typescript without esModuleInterop flag
-// import jsPDF from 'yworks-pdf' // using yworks fork
-// import jsPDF from 'jspdf/dist/jspdf.node.debug' // for nodejs
 import autoTable from 'jspdf-autotable'
 
 @Component({

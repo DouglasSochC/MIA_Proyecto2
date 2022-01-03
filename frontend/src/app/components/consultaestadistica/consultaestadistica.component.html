@@ -157,8 +157,11 @@
       </div>
     </main>
     <hr class="my-4">
-    <table *ngIf="id_opcion_inicial == 1" class="table">
+    <table *ngIf="id_opcion_inicial == 1" class="table" id="tablaOP1">
         <thead>
+            <tr *ngIf="JugadorTabla.length > 0">
+                <button (click)="reportePDF(1)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+            </tr>
             <tr>
             <th scope="col">ID</th>
             <th scope="col">NOMBRE COMPLETO</th>
@@ -179,8 +182,11 @@
             </tr>
         </tbody>
     </table>
-    <table *ngIf="id_opcion_inicial == 2" class="table">
+    <table *ngIf="id_opcion_inicial == 2" class="table" id="tablaOP2">
         <thead>
+            <tr *ngIf="TecnicoTabla.length > 0">
+                <button (click)="reportePDF(2)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+            </tr>
             <tr>
             <th scope="col">ID</th>
             <th scope="col">FOTOGRAFIA</th>
@@ -201,8 +207,11 @@
             </tr>
         </tbody>
     </table>
-    <table *ngIf="id_opcion_inicial == 3" class="table">
+    <table *ngIf="id_opcion_inicial == 3" class="table" id="tablaOP3">
         <thead>
+            <tr *ngIf="EquipoTabla.length > 0">
+                <button (click)="reportePDF(3)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+            </tr>
             <tr>
             <th scope="col">FOTOGRAFIA</th>
             <th scope="col">EQUIPO</th>
@@ -219,8 +228,11 @@
             </tr>
         </tbody>
     </table>
-    <table *ngIf="id_opcion_inicial == 4" class="table">
+    <table *ngIf="id_opcion_inicial == 4" class="table" id="tablaOP4">
         <thead>
+            <tr *ngIf="EstadioTabla.length > 0">
+                <button (click)="reportePDF(4)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+            </tr>
             <tr>
             <th scope="col">FOTOGRAFIA</th>
             <th scope="col">ESTADIO</th>
@@ -243,8 +255,11 @@
             </tr>
         </tbody>
     </table>
-    <table *ngIf="id_opcion_inicial == 5 || id_opcion_inicial == 8" class="table">
+    <table *ngIf="id_opcion_inicial == 5 || id_opcion_inicial == 8" class="table" id="tablaOP5">
         <thead>
+            <tr *ngIf="HistoricoEquipoTabla.length > 0">
+                <button (click)="reportePDF(5)" class="btn btn-outline-primary" type="submit">Descargar PDF</button>
+            </tr>
             <tr>
             <th scope="col">FECHA</th>
             <th scope="col">ESTADIO</th>

@@ -9,6 +9,8 @@ import { EquipoReporteInterface, EstadioReporteInterface, HistoricoEquipoInterfa
 import { STecnicoService } from 'src/app/services/s-tecnico.service';
 import { TTecnicoInterface } from 'src/app/models/tecnico-interface';
 import { SReporteclienteService } from 'src/app/services/s-reportecliente.service';
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
 
 @Component({
   selector: 'app-consultaestadistica',
@@ -171,6 +173,14 @@ export class ConsultaestadisticaComponent implements OnInit {
       console.log(res);
       this.Tecnico = res;
     });
+  }
+
+  reportePDF(numero_reporte:number){
+    const doc = new jsPDF()
+    autoTable(doc, { 
+      html: '#tablaOP'+numero_reporte
+    })
+    doc.save('reporte'+numero_reporte+'.pdf')
   }
 
 }
