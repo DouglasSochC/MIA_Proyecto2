@@ -1,22 +1,131 @@
 nombre,año,tipo,campeon,pais,pais_equipo,equipo
-Champions League,2021,Copa,Chelsea F.C.,Portugal,Inglaterra,Chelsea F.C.
-Champions League,2021,Copa,Chelsea F.C.,Portugal,Alemania,Bayern de Múnich
 Champions League,2020,Copa,Bayern de Múnich,Portugal,Alemania,Bayern de Múnich
-Champions League,2019,Copa,Liverpool F.C.,España,Inglaterra,Liverpool F.C.
-Champions League,2018,Copa,Real Madrid C.F.,Ucrania,España,Real Madrid C.F.
-Champions League,2017,Copa,Real Madrid C.F.,Gales,España,Real Madrid C.F.
-Champions League,2016,Copa,Real Madrid C.F.,Italia,España,Real Madrid C.F.
-Champions League,2015,Copa,F.C. Barcelona,Alemania,España,F.C. Barcelona
-Europa League,2021,Copa,Villarreal C.F.,Polonia,España,Villarreal C.F.
-Europa League,2020,Copa,Sevilla F.C.,Alemania,España,Sevilla F.C.
-Europa League,2019,Copa,Chelsea F.C.,Azerbaiyán,Inglaterra,Chelsea F.C.
-Europa League,2018,Copa,Atlético de Madrid,Francia,España,Atlético de Madrid
-Europa League,2017,Copa,Manchester United F.C.,Suecia,Inglaterra,Manchester United F.C.
-Europa League,2016,Copa,Sevilla F.C.,Suiza,España,Sevilla F.C.
-Premier League,2021,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Liverpool F.C.
-Premier League,2021,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Manchester City F.C.
-Premier League,2021,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Chelsea F.C.
-Premier League,2021,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Tottenham Hotspur
-Premier League,2021,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Manchester United F.C.
-Premier League,2021,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Arsenal F.C.
-Premier League,2021,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Everton F.C.
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Alemania,Borussia Dortmund
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Alemania,Bayer 04 Leverkusen
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Alemania,R.B. Leipzig
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Inglaterra,Liverpool F.C.
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Inglaterra,Manchester City F.C.
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Inglaterra,Chelsea F.C.
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Inglaterra,Manchester United F.C.
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Francia,Lille O.S.C.
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Francia,Olympique de Lyon
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Francia,Olympique de Marsella
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Francia,Paris-Saint-Germain F.C.
+Champions League,2020,Copa,Bayern de Múnich,Portugal,España,Atlético de Madrid
+Champions League,2020,Copa,Bayern de Múnich,Portugal,España,F.C. Barcelona
+Champions League,2020,Copa,Bayern de Múnich,Portugal,España,Real Madrid C.F.
+Champions League,2020,Copa,Bayern de Múnich,Portugal,España,Sevilla F.C.
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Italia,Inter de Milán
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Italia,A.C. Milan
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Italia,Juventus
+Champions League,2020,Copa,Bayern de Múnich,Portugal,Italia,A.S. Roma
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Liverpool F.C.
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Manchester City F.C.
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Chelsea F.C.
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Tottenham Hotspur
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Manchester United F.C.
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Arsenal F.C.
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Everton F.C.
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Leicester City F. C.
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Aston Villa F.C.
+Premier League,2020,Liga,Liverpool F.C.,Inglaterra,Inglaterra,Newcastle United F. C.
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,Bayern de Múnich
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,Borussia Dortmund
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,Bayer 04 Leverkusen
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,R.B. Leipzig
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,Borussia Mönchengladbach
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,VfB Stuttgart
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,VfL Wolfsburgo
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,Eintracht Fráncfort
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,TSG 1899 Hoffenheim
+Bundesliga,2020,Liga,Bayern de Múnich,Alemania,Alemania,BFC Dinamo
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,Lille O.S.C.
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,Olympique de Lyon
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,Olympique de Marsella
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,A.S.Mónaco F.C.
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,Paris-Saint-Germain F.C.
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,F.C.Nantes
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,Montpellier Hérault S.C.
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,Stade Rennais F.C.
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,O.G.C. Nice
+Ligue 1,2020,Liga,Lille O.S.C.,Francia,Francia,F.C. Metz
+LaLiga,2020,Liga,Atlético de Madrid,España,España,Atlético de Madrid
+LaLiga,2020,Liga,Atlético de Madrid,España,España,F.C. Barcelona
+LaLiga,2020,Liga,Atlético de Madrid,España,España,Real Madrid C.F.
+LaLiga,2020,Liga,Atlético de Madrid,España,España,Sevilla F.C.
+LaLiga,2020,Liga,Atlético de Madrid,España,España,Villarreal C.F.
+LaLiga,2020,Liga,Atlético de Madrid,España,España,Valencia C.F.
+LaLiga,2020,Liga,Atlético de Madrid,España,España,Real Betis Balompié
+LaLiga,2020,Liga,Atlético de Madrid,España,España,Real Sociedad
+LaLiga,2020,Liga,Atlético de Madrid,España,España,Athletic Club
+LaLiga,2020,Liga,Atlético de Madrid,España,España,Deportivo de La Coruña
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,Inter de Milán
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,A.C. Milan
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,Juventus
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,A.S. Roma
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,S.S.C. Napoli
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,Lazio
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,ACF Fiorentina
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,U.C. Sampdoria
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,Torino F.C.
+Serie A,2020,Liga,Inter de Milán,Italia,Italia,Bologna
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,Sporting de Lisboa
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,Oporto
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,S.L. Benfica
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,Belenenses
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,Atlético CP
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,Vitória Setúbal
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,Vitória de Guimarães
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,Académica de Coimbra
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,Boavista
+Primeira Liga,2020,Liga,Sporting de Lisboa,Portugal,Portugal,S.C. Braga
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,A.F.C. Ajax
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,AZ Alkmaar
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,F.C. Groningen
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,F.C. Twente
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,F.C. Utrecht
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,Feyenoord
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,Fortuna Sittard
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,PSV Eindhoven
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,NEC Nijmegen
+Eredivisie,2020,Liga,A.F.C. Ajax,Holanda,Holanda,Heracles Almelo
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,Atlético Mineiro
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,Atlético Goianiense
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,S.C. Corinthians
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,Flamengo
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,Fluminense
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,Grêmio
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,Palmeiras
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,Santos F.C.
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,São Paulo
+Campeonato Brasileño de Serie A,2020,Liga,Atlético Mineiro,Brasil,Brasil,Internacional
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,River Plate
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,Boca Juniors
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,Central Córdoba (SdE)
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,Club Atlético Colón
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,Defensa y Justicia
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,Estudiantes de La Plata
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,Independiente
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,Newell's Old Boys
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,Racing Club
+Primera División de Argentina,2020,Liga,River Plate,Argentina,Argentina,Rosario Central
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,Antigua G.F.C.
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,C.D. Cobán Imperial
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,Comunicaciones F.C.
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,C.D. Guastatoya
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,Deportivo Malacateco
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,C.S.D. Municipal
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,Xelajú M.C.
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,Tipografía Nacional
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,C.D. Iztapa
+Liga Nacional de Fútbol de Guatemala,2020,Liga,Antigua G.F.C.,Guatemala,Guatemala,F.C. Santa Lucía Cotzumalguapa
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Atlas
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Club América
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Club Deportivo Guadalajara
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Deportivo Toluca Fútbol Club
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Cruz Azul
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Club de Fútbol Monterrey
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Universidad Nacional
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Atlante Fútbol Club
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Club León
+Primera División de México,2020,Liga,Atlas,Mexico,Mexico,Club Puebla
