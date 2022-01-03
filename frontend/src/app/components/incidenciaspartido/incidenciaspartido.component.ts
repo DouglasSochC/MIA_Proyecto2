@@ -20,6 +20,16 @@ export class IncidenciaspartidoComponent implements OnInit {
   Partido:PartidoInterface[]=[];
 
   crearIncidencia(id_partido:number){
+    
+    let equipo_local:string = "";
+    let equipo_visita:string = "";
+    for (const i in this.Partido) {
+      if (this.Partido[i].id_partido == id_partido) {
+        equipo_local = this.Partido[i].nombre_equipo_local;
+        equipo_visita = this.Partido[i].nombre_equipo_visita;
+      }
+    }
+
     Swal.fire({
       title: 'Incidencia',
       html:
@@ -28,7 +38,11 @@ export class IncidenciaspartidoComponent implements OnInit {
         'Minuto de Juego'+
         '<input id="txtMinuto" class="swal2-input">'+
         'Equipo que hizo la incidencia'+
-        '<input id="txtEquipoIncidencia" class="swal2-input">'+
+        '<select id="txtEquipoIncidencia" class="swal2-select">'+
+          '<option value="">Seleccione una Opcion</option>'+
+          '<option value="'+equipo_local+'">'+equipo_local+'</option>'+
+          '<option value="'+equipo_visita+'">'+equipo_visita+'</option>'+
+        '</select><br/>'+
         'Jugador'+
         '<input id="txtJugador" class="swal2-input">',
       focusConfirm: false,
