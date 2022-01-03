@@ -51,7 +51,7 @@ export class SPartidoService {
     return this.http.get(url);
   }
 
-  InsertIncidencia(descripcion:string, minuto:string, equipo_incidencia:string, jugador:string, id_partido:number){
+  InsertIncidencia(descripcion:string, minuto:string, equipo_incidencia:string, jugador:string, id_partido:number, resultado:string){
     const url = "http://localhost:3000/addIncidenciaPartido";
     return this.http.post(url, 
     {
@@ -59,7 +59,8 @@ export class SPartidoService {
       "minuto":minuto,
       "equipo_incidencia":equipo_incidencia,
       "jugador":jugador,
-      "id_partido":id_partido
+      "id_partido":id_partido,
+      "resultado":resultado
     }, 
     { headers: this.headers }
     //Para retornar el resultado es necesario utilizar la funcion map. Recordar que se debe de importar

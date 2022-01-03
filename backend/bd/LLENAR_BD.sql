@@ -214,16 +214,27 @@ WHERE
     AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_visita)
 ) <= 0;
 
-INSERT INTO PARTIDO(fecha, id_estadio, id_estado, asistencia, id_equipo_visita, id_equipo_local, resultado)
+INSERT INTO PARTIDO(fecha, id_estadio, id_estado, asistencia, id_equipo_visita, id_equipo_local)
 SELECT DISTINCT
 TO_DATE(fecha,'DD/MM/YYYY'), 
 (SELECT id FROM ESTADIO WHERE ESTADIO.nombre = TEMP_INCIDENCIAS.estadio),
 (SELECT id FROM ESTADO_PARTIDO WHERE UPPER(ESTADO_PARTIDO.nombre) = UPPER(TEMP_INCIDENCIAS.estado)),
-asistencia,
+TEMP_INCIDENCIAS.asistencia,
 (SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_visita AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_visita)),
-(SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_local AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_local)),
-resultado
+(SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_local AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_local))
 FROM TEMP_INCIDENCIAS;
+
+UPDATE PARTIDO SET RESULTADO = (SELECT MAX(TEMP_INCIDENCIAS.RESULTADO)
+                                FROM TEMP_INCIDENCIAS 
+                                WHERE 
+                                PARTIDO.FECHA = TEMP_INCIDENCIAS.FECHA AND
+                                PARTIDO.ID_ESTADIO = (SELECT id FROM ESTADIO WHERE ESTADIO.nombre = TEMP_INCIDENCIAS.estadio) AND 
+                                PARTIDO.ID_ESTADO = (SELECT id FROM ESTADO_PARTIDO WHERE UPPER(ESTADO_PARTIDO.nombre) = UPPER(TEMP_INCIDENCIAS.estado)) AND 
+                                PARTIDO.ASISTENCIA = (TEMP_INCIDENCIAS.asistencia) AND 
+                                PARTIDO.ID_EQUIPO_VISITA = (SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_visita AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_visita)) AND 
+                                PARTIDO.ID_EQUIPO_LOCAL = (SELECT id FROM EQUIPO WHERE EQUIPO.nombre = TEMP_INCIDENCIAS.equipo_local AND EQUIPO.id_pais = (SELECT id FROM PAIS WHERE PAIS.nombre = TEMP_INCIDENCIAS.pais_local))
+                                )
+WHERE PARTIDO.ID IN (SELECT DISTINCT ID FROM PARTIDO);
 
 INSERT INTO INCIDENCIAS_PARTIDO(descripcion, minuto, equipo_incidencia, jugador, id_partido)
 SELECT DISTINCT

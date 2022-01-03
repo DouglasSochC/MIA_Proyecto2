@@ -23,10 +23,12 @@ export class IncidenciaspartidoComponent implements OnInit {
     
     let equipo_local:string = "";
     let equipo_visita:string = "";
+    let resultado:string = "";
     for (const i in this.Partido) {
       if (this.Partido[i].id_partido == id_partido) {
         equipo_local = this.Partido[i].nombre_equipo_local;
         equipo_visita = this.Partido[i].nombre_equipo_visita;
+        resultado = this.Partido[i].resultado;
       }
     }
 
@@ -44,19 +46,22 @@ export class IncidenciaspartidoComponent implements OnInit {
           '<option value="'+equipo_visita+'">'+equipo_visita+'</option>'+
         '</select><br/>'+
         'Jugador'+
-        '<input id="txtJugador" class="swal2-input">',
+        '<input id="txtJugador" class="swal2-input">'+
+        'Resultado'+
+        '<input id="txtResultado" class="swal2-input" value="'+resultado+'">',
       focusConfirm: false,
       preConfirm: () => {
         return [
           (<HTMLInputElement>document.getElementById("txtDescripcion")).value,
           (<HTMLInputElement>document.getElementById("txtMinuto")).value,
           (<HTMLInputElement>document.getElementById("txtEquipoIncidencia")).value,
-          (<HTMLInputElement>document.getElementById("txtJugador")).value
+          (<HTMLInputElement>document.getElementById("txtJugador")).value,
+          (<HTMLInputElement>document.getElementById("txtResultado")).value
         ]
       }
     }).then((result) => {
       /////////////////////////////////////////////////////////////////////////////
-      this.spartidoservice.InsertIncidencia(result.value![0], result.value![1], result.value![2],result.value![3],id_partido)
+      this.spartidoservice.InsertIncidencia(result.value![0], result.value![1], result.value![2],result.value![3],id_partido,result.value![4])
       .subscribe((res:any) => {
         if (res['response']) {
           Swal.fire({
@@ -64,6 +69,7 @@ export class IncidenciaspartidoComponent implements OnInit {
             title: 'Exito',
             text: res['msg']
           });
+          this.cargarTablaPartidosEnCurso();
         }else{
           Swal.fire({
             icon: 'error',

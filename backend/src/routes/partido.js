@@ -252,8 +252,8 @@ router.get('/getPartidopsEstado/:id_estado', async (req, res) => {
 
 //CREATE
 router.post('/addIncidenciaPartido', async (req, res) => {
-    const { descripcion, minuto, equipo_incidencia, jugador, id_partido } = req.body;
-    if (!(descripcion != "" && minuto != "" && equipo_incidencia != "" && jugador != "" && id_partido != -1)) {
+    const { descripcion, minuto, equipo_incidencia, jugador, id_partido, resultado } = req.body;
+    if (!(descripcion != "" && minuto != "" && equipo_incidencia != "" && jugador != "" && id_partido != -1 && resultado != "")) {
         res.status(201).json({
             "response":false,
             "msg": "No ha ingresado los campos obligatorios"
@@ -267,11 +267,20 @@ router.post('/addIncidenciaPartido', async (req, res) => {
             :jugador,\
             :id_partido\
         )";
-        await BD.Open(sql, [descripcion, minuto, equipo_incidencia, jugador, id_partido], true);
-        res.status(201).json({
-            "response":true,
-            "msg": "Incidencia ingresada correctamente"
-        });        
+        let result = await BD.Open(sql, [descripcion, minuto, equipo_incidencia, jugador, id_partido], true);
+        if (result.rowsAffected) {
+            sql_actualizar = "UPDATE PARTIDO SET RESULTADO = :resultado WHERE ID = :id_partido";
+            await BD.Open(sql_actualizar, [resultado, id_partido], true);
+            res.status(201).json({
+                "response":true,
+                "msg": "Incidencia ingresada correctamente"
+            });
+        }else{
+            res.status(201).json({
+                "response":false,
+                "msg": "Ha ocurrido un error al grabar la incidencia"
+            });
+        }
     }
 });
 
