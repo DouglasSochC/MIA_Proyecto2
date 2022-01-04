@@ -289,7 +289,8 @@ router.get('/getDetallePartido/:id_partido', async (req, res) => {
     const { id_partido } = req.params;
     sql = "SELECT INCIDENCIAS_PARTIDO.DESCRIPCION, INCIDENCIAS_PARTIDO.MINUTO, INCIDENCIAS_PARTIDO.EQUIPO_INCIDENCIA, INCIDENCIAS_PARTIDO.JUGADOR\
         FROM INCIDENCIAS_PARTIDO\
-        WHERE ID_PARTIDO = :id_partido";
+        WHERE ID_PARTIDO = :id_partido\
+        ORDER BY INCIDENCIAS_PARTIDO.MINUTO ASC";
     
     let result = await BD.Open(sql, [id_partido], false);
     Listado = [];
