@@ -1,28 +1,109 @@
 pais,nombre,fecha_ing,capacidad,direccion,estado
-Inglaterra,Etihad Stadium,25/06/2002,55097,"Ashton New Rd, Manchester M11 3FF, Reino Unido",Activo
-Inglaterra,Stamford Bridge,28/04/1877,41837,"Fulham Rd., London SW6 1HS, Reino Unido",Activo
-Inglaterra,Tottenham Hotspur Stadium,03/04/2019,62850,"782 High Rd, London N17 0BX, Reino Unido",Activo
-Inglaterra,Anfield,28/09/1884,53394,"Anfield Rd, Anfield, Liverpool L4 0TH, Reino Unido",Activo
-Inglaterra,Old Trafford,19/02/1910,76000,"Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, Reino Unido",Activo
-Inglaterra,Emirates Stadium,22/07/2006,60260,"Hornsey Rd, London N7 7AJ, Reino Unido",Activo
-Inglaterra,Goodison Park,24/08/1892,39572,"Goodison Rd, Liverpool L4 4EL, Reino Unido",Activo
-Alemania,Allianz Arena,03/05/2005,75024,"Werner-Heisenberg-Allee 25, 80939 München, Alemania",Activo
-Alemania,Signal Iduna Park,02/04/1974,81365,"Strobelallee 50, 44139 Dortmund, Alemania",Activo
-Alemania,BayArena,02/08/1958,30210,"Bismarckstraße 122-124, 51373 Leverkusen, Alemania",Activo
-Alemania,Red Bull Arena - Leipzig,04/08/1956,50000,"Am Sportforum 3, 04105 Leipzig, Alemania",Activo
-Alemania,Borussia Park,30/06/2004,59724,"Hennes Weisweiler Allee 1, 41179 Mönchengladbach, Alemania",Activo
-Francia,Pierre-Mauroy,17/08/2012,50186,"261 Bd de Tournai, 59650 Villeneuve-d'Ascq, Francia",Activo
-Francia,Parc Olympique Lyonnais,09/01/2016,59186,"10 Av. Simone Veil, 69150 Décines-Charpieu, Francia",Activo
-Francia,Stade Vélodrome,13/06/1937,67394,"3 Bd Michelet, 13008 Marseille, Francia",Activo
-Francia,Estadio Luis II,01/01/1985,15000,"7 Av. des Castelans, 18000 Monaco, Mónaco",Activo
-Francia,Parque de los Príncipes,08/06/1967,50000,"24 Rue du Commandant Guilbaud, 75016 Paris, Francia",Activo
-España,Camp Nou,24/09/1957,99354,"d'Arístides Maillol, 12, 08028 Barcelona, España",Activo
-España,Santiago Bernabéu,14/12/1947,81044,"Av. de Concha Espina, 1, 28036 Madrid, España",Activo
-España,Wanda Metropolitano,16/09/2017,68456,"Av. de Luis Aragonés, 4, 28022 Madrid, España",Activo
-España,Ramón Sánchez-Pizjuán,07/09/1958,43883,"C. Sevilla Fútbol Club, s/n, 41005 Sevilla, España",Activo
-España,Estadio de la Cerámica,17/06/1923,23500,"Carrer Blasco Ibáñez, 2, 12540 Vila-real, Castelló, España",Activo
-España,Mestalla,20/05/1923,55000,"Av. de Suècia, s/n, 46010 València, Valencia, España",Activo
-Italia,Giuseppe Meazza,19/09/1926,80018,"Piazzale Angelo Moratti, 20151 Milano MI, Italia",Activo
-Italia,Estadio Juventus,08/09/2011,41507,"Corso Gaetano Scirea, 50, 10151 Torino TO, Italia",Activo
-Italia,Olímpico de Roma,01/01/1937,72698,"Viale dei Gladiatori, 00135 Roma RM, Italia",Activo
-Italia,San Paolo,06/12/1959,54726,"Piazzale Vincenzo Tecchio, 80125 Napoli NA, Italia",Activo
+Inglaterra,Etihad Stadium,01/01/1910,55000,"Ashton New Rd, Manchester M11 3FF, Reino Unido",activo
+Inglaterra,Stamford Bridge,02/02/1930,41623,"Fulham Rd., London SW6 1HS, Reino Unido",activo
+Inglaterra,Tottenham Hotspur Stadium,01/01/2019,62062,"782 High Rd, London N17 0BX, Reino Unido",activo
+Inglaterra,Anfield,02/02/1984,54074,"Anfield Rd, Anfield, Liverpool L4 0TH, Reino Unido",activo
+Inglaterra,Old Trafford,01/01/1910,76100,"Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, Reino Unido",activo
+Inglaterra,Emirates Stadium,03/02/2006,60338,"Hornsey Rd, London N7 7AJ, Reino Unido",activo
+Inglaterra,Goodison Park,03/03/1990,40569,"Goodison Rd, Liverpool L4 4EL, Reino Unido",activo
+Inglaterra,King Power Stadium,04/04/1980,32500,"Leicester, Inglaterra",activo
+Inglaterra,Villa Park,05/05/1991,42785,Birmingham (Inglaterra) Reino,activo
+Inglaterra,St James' Park,06/06/1880,52401,"Newcastle-upon-Tyne, Inglaterra",activo
+Alemania,Allianz Arena,30/05/2006,75000,Allianz Arena,activo
+Alemania,Signal Iduna Park,30/06/1974,75000,Dortmund,activo
+Alemania,BayArena,01/01/1958,30210,Leverkusen,activo
+Alemania,Leipzig Arena,02/02/1984,44345,Leipzig,activo
+Alemania,Borussia Park,03/03/2004,54070,Mönchengladbach,activo
+Alemania,Mercedes-Benz Arena,02/02/1933,60440,Stuttgart,activo
+Alemania,Volkswagen-Arena,04/03/2002,30000,Wolfsburg,activo
+Alemania,Commerzbank-Arena,04/04/1925,51500,Fráncfort del Meno,activo
+Alemania,Rhein-Neckar-Arena,04/06/2009,30164,Sinsheim,activo
+Alemania,Sportforum Stadion Berlín,08/07/1966,17900,"Berlín, Alemania",activo
+Francia,Stade Pierre-Mauroy,08/06/2012,50186,Villeneuve-d'Ascq,activo
+Francia,Parc Olympique Lyonnais,05/05/2015,59186,Lyon,activo
+Francia,Stade Vélodrome,09/09/1937,67394,Marsella,activo
+Francia,Estadio Luis II,25/01/1985,18525,Mónaco,activo
+Francia,Parc des Princes,08/08/1897,48712,París,activo
+Francia,Stade de la Beaujoire,09/08/1984,38285,Nantes,activo
+Francia,Stade de la Mosson,07/07/1972,32939,Montpellier,activo
+Francia,Roazhon Park,09/02/1912,31127,Rennes,activo
+Francia,Allianz Riviera,06/06/2013,35624,Niza,activo
+Francia,Stade Saint-Symphorien,03/02/1923,26700,Metz,activo
+España,Camp Nou,08/02/1957,99354,Barcelona,activo
+España,Santiago Bernabéu,09/02/1947,81044,Madrid,activo
+España,Estadio Metropolitano,20/02/2017,68456,Madrid,activo
+España,Ramón Sánchez-Pizjuán,20/04/1958,43000,Sevilla,activo
+España,Estadio de la Cerámica,09/01/1923,23000,Villarreal,activo
+España,Mestalla,02/02/1923,55000,Valencia,activo
+España,Benito Villamarín,12/09/1926,60720,sevilla,activo
+España,Reale Arena,09/03/1993,39500,San Sebastián,activo
+España,San Mamés,07/04/2013,53331,Bilbao,activo
+España,Abanca-Riazor,04/04/1944,34889,La Coruña,activo
+Italia,Calcistico San Siro,06/02/1927,80018,Milán,activo
+Italia,Giuseppe Meazza,19/09/1926,80018,"Milán, Italia",activo
+Italia,Juventus Stadium,03/09/1931,47300,Florencia,activo
+Italia,Estadio Olímpico de Roma,19/05/1952,72700,Roma,activo
+Italia,Estadio Diego Armando Maradona,19/01/1959,5500,Nápoles,activo
+Italia,Estadio Artemio Franchi,01/03/1931,47300,Florencia,activo
+Italia,Estadio Luigi Ferraris,10/11/1911,36599,Génova,activo
+Italia,Estadio Olímpico de Turín,06/03/1933,28177,Turín,activo
+Italia,Estadio Renato Dall'Ara,21/05/1927,36462,Bolonia,activo
+Portugal,Estadio do Dragão,12/02/1940,52000,Oporto,activo
+Portugal,Estadio José Alvalade,08/06/1960,51870,Lisboa,activo
+Portugal,Estadio da Luz,10/06/1970,66500,Lisboa,activo
+Portugal,Estadio do Restelo,07/04/1972,30000,Faro,activo
+Portugal,Estádio da Tapadinha,18/10/1964,25000,Alcântara  Portugal,activo
+Portugal,Estadio do Bonfim,18/04/1986,20000,lisboa,activo
+Portugal,Estadio Dom Afonso Henriques,20/02/1957,30000,Guimarães,activo
+Portugal,Estadio Ciudad de Coimbra,27/04/1978,31000,Coímbra,activo
+Portugal,Estadio do Bessa,11/12/1981,28000,Oporto,activo
+Portugal,Estadio Municipal de Braga,04/06/1979,30154,Braga,activo
+Holanda,Johan Cruyff Arena,09/04/1984,54990,Ámsterdam,activo
+Holanda,AFAS Stadion,07/10/1973,19000,AZ Alkmaar,activo
+Holanda,Euroborg,04/02/1969,24400,Groningen,activo
+Holanda,De Grolsch Veste,02/03/2005,30200,Enschede,activo
+Holanda,Stadion Galgenwaard,06/04/1994,24500,Utrecht,activo
+Holanda,Stadion Feijenoord,10/05/1977,51000,Róterdam,activo
+Holanda,Fortuna Sittard Stadion,06/05/1958,22000,Sittard,activo
+Holanda,Philips Stadion,09/03/1987,35000,Eindhoven,activo
+Holanda,Stadion de Goffert,22/08/1981,22000,Nimega,activo
+Holanda,Polman Stadion,25/10/1889,19000,Almelo,activo
+Brasil,Estádio Mineirão,08/06/1990,61800,Avenida Ismênia Tunes s num Belo Horizonte  Brasil,activo
+Brasil,Estadio Serra Dourada,09/09/1993,50000,Goiás,activo
+Brasil,Arena Corinthians,06/03/1984,49000,São Paulo,activo
+Brasil,Estadio Maracanã,06/07/1979,78000,Río de Janeiro,activo
+Brasil,Arena do Grêmio,09/05/1974,61000,Rio Grande do Sul,activo
+Brasil,Allianz Parque,09/07/1987,44200,Campo Grande,activo
+Brasil,Estadio Urbano Caldeira,18/06/1974,17000,São Paulo,activo
+Brasil,Estadio Morumbi,06/03/1960,72000,São Paulo,activo
+Brasil,Estadio Beira-Rio,09/12/1987,50000,Goiás,activo
+Argentina,Alberto J. Armando,10/10/1940,54000,Buenos Aires,activo
+Argentina,Madre de Ciudades,20/01/1940,28500,Buenos Aires,activo
+Argentina,Brigadier General Estanislao López,26/05/1946,40000,Santa Fe,activo
+Argentina,Norberto Tomaghello,26/02/1978,20000,Av. Humahuaca 244 y Calle 501 Florencio Varela  Buenos Aires  Argentina,activo
+Argentina,Jorge Luis Hirschi,27/03/1945,30000,La Plata  Argentina,activo
+Argentina,Libertadores de América,14/04/1947,48300,Buenos Aires,activo
+Argentina,Marcelo Bielsa,06/07/1926,41654,Rosario,activo
+Argentina,Antonio Vespucio Liberti,07/03/1938,7000,Buenos Aires,activo
+Argentina,Presidente Perón,05/03/1950,51389,Avellaneda,activo
+Argentina,Gigante de Arroyito,06/02/1929,47000,Rosario,activo
+Guatemala,Estadio Pensativo,12/12/2012,10000,Antigua Guatemala,activo
+Guatemala,Estadio José Ángel Rossi,07/09/1936,15000,Cobán,activo
+Guatemala,Mateo Flores,20/06/1948,26000,ciudad de Guatemala,activo
+Guatemala,David Cordón Hichos ,16/05/1950,3100,Guastatoya,activo
+Guatemala,Estadio Santa Lucía ,11/05/1963,5500,San Marcos,activo
+Guatemala,Estadio Manuel Felipe Carrera,26/11/1967,10000,ciudad de Guatemala,activo
+Guatemala,Estadio Mario Camposeco,06/08/1964,12400,ciudad de Guatemala,activo
+Guatemala,Cementos Progreso,09/04/1991,17000,Ciudad de Guatemala,activo
+Guatemala,Estadio Municipal Morón,10/09/1981,3500,Iztapa  Departamento de Escuintla  Guatemala,activo
+Guatemala,Estadio Ricardo Muñoz Gálvez ,05/05/1962,6000,Santa Lucía Cotzumalguapa,activo
+Mexico,Estadio Azteca,10/12/1916,87000,Calzada de Tlalpan 3665,activo
+Mexico,Estadio Akron,05/08/1954,48000,Avenida Circuito JVC 2800. 45019,activo
+Mexico,Nemesio Díez,16/11/1958,31000,"Toluca, Estado de México",activo
+Mexico,Estadio Azteca,17/10/1957,87000,"Calzada de Tlalpan, 3465",activo
+Mexico,Jalisco,31/01/1960,5500,"Guadalajara, Jalisco",activo
+Mexico,BBVA,28/06/1945,53500,"Guadalupe, Nuevo León, México",activo
+Mexico,Olímpico Universitario,20/11/1952,72000,Ciudad de México,activo
+Mexico,Ciudad de los Deportes,10/06/1946,36600,Ciudad de los Deportes,activo
+Mexico,León,02/04/1967,30300,"Bulevar Adolfo López Mateos 1810, Colonia La Martinica, CP 37500",activo
+Mexico,Cuauhtémoc,10/06/1968,51700,"Calzada Ignacio Zaragoza S/N, Parque Industrial Puebla 2000, 72220, Puebla de Zaragoza",activo
