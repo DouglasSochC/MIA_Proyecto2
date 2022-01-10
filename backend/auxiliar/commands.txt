@@ -1,0 +1,42 @@
+//Iniciar el proyecto con NodeJS
+npm init --yes
+
+//Instalacion de modulos necesarios
+npm install express cors morgan oracledb
+
+//Instalacion de nodemon
+npm i nodemon
+
+//Ejecutar el proyecto
+node src/index.js - Hay que parar e iniciar el servidor cuando se realiza un cambio
+npm run dev - Este realiza el reinicio automatico cuando nota algun cambio en el codigo
+
+//Crear variable de entorno - Hay que recordar que la variable de entorno solo se setea localmente en la terminal que se esta utilizando actualmente
+export LD_LIBRARY_PATH=/opt/instantclient_21_4/
+
+//Visualizar Variable de entorno
+echo $LD_LIBRARY_PATH
+
+//Si en dado caso se muestra el error de libai.so.1
+sudo apt-get install libaio1
+
+COMANDOS EXTRAS: 
+
+//Acceder al bash del container
+docker exec -it --user=oracle oracle_soch bash
+
+//Crear variable de entorno en el container
+export ORACLE_SID="ORCLCDB"
+
+//Acceder al bash de oracle desde el bash del container
+source /home/oracle/.bashrc; sqlplus /nolog
+
+//Acceder directamente a la linea de comando de oracle en el container; OJO: Se necesita crear una variable de entorno
+docker exec -it oracle_soch bash -c "source /home/oracle/.bashrc; sqlplus /nolog"
+
+//Crear variable de entorno dentro del container
+. oraenv
+ORCLCDB
+
+//Salimos por completo del contenedor
+exit

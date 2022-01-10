@@ -6,41 +6,42 @@ _Este es un proyecto universitario del curso de Manejo e Implementacion de Archi
 
 ### Requerimientos
 
-* Nodejs 16.13.1 ó superior.   [Instalar Nodejs](https://github.com/nodesource/distributions/blob/master/README.md)
+* Nodejs 16.13.1   [Instalar Nodejs](https://github.com/nodesource/distributions/blob/master/README.md)
 ```console
 ~$ node --version
 ```
 
-* Angular CLI: 13.0.3 ó superior [Instalar Angular](https://cli.angular.io/)
+* Angular CLI: 13.0.3 [Instalar Angular](https://cli.angular.io/)
 ```console
 ~$ ng version
 ```
 
-* Oracle 18c ó superior
-    
+* Docker 20.10.12
+```console
+~$ docker version
+```
+
+* Oracle 18c ó superior (en este caso se virtualizo con docker)
 
 ### Instalacion de Oracle
 
 La instalación de Node.js y Angular es relativamente facil sin embargo la instalación de Oracle es un poco más trabajosa una de las formas menos complejas de implementarlo es por medio de Docker el cual este será el metodo a utilizar.
 
-* Se deberá de instalar docker
-```console
-~$ docker version
-```
+1. Instalar Oracle SQL Developer (Opcional), esto es con el fin de facilitar el uso de Oracle
 
-* Se deberá instalar Oracle SQL Developer, esto es con el fin de facilitar el uso de Oracle
+#### Proceso
 
-* Ahora se descarga una imagen de Oracle en este caso se utiliza la imagen proporcionada por el usuario **ynraju4**
+* Hay que descargar una imagen de Oracle en este caso se utiliza la imagen proporcionada por el usuario **ynraju4**
 ```console
 ~$ docker pull ynraju4/oracle18c
 ```
 
 * Se crea un containter de la imagen descargada
 ```console
-~$ docker run --name oracle_soch \
+~$ docker run --name nombre_del_container \
     -d \
     -p 1521:1521 \
-    -e ORACLE_PWD=psw123 \
+    -e ORACLE_PWD=contrasenia_que_deseas \
     -e ORACLE_CHARACTERSET=AL32UTF8 \
     ynraju4/oracle18c
 ```
@@ -50,11 +51,11 @@ La instalación de Node.js y Angular es relativamente facil sin embargo la insta
 ~$ docker logs -f 'CONTAINER ID'
 ```
 
-* Ahora realizamos la conexion del container en el SQL Developer
+* Ahora realizamos la conexion del container al SQL Developer
 ```
 Name: 'Cualquier Nombre' en mi caso escribi 'Oracle Docker'
 Usuario: SYS
-Contraseña: psw123
+Contraseña: contrasenia_que_deseas
 Nombre del Host: localhost
 Puerto: 1521
 SID: ORCLCDB
@@ -74,7 +75,7 @@ SID: ORCLCDB
 ```console
 ~$ node /src/index.js 
 ```
-* (En el caso que se tenga un error en el instantclient)
+* _En el caso que se tenga un error en el instantclient_
 ```console
 ~$ export LD_LIBRARY_PATH=/opt/instantclient_21_4/
 ```
