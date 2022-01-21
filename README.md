@@ -27,8 +27,6 @@ _Este es un proyecto universitario del curso de Manejo e Implementacion de Archi
 
 La instalación de Node.js y Angular es relativamente facil sin embargo la instalación de Oracle es un poco más trabajosa una de las formas menos complejas de implementarlo es por medio de Docker el cual este será el metodo a utilizar.
 
-1. Instalar Oracle SQL Developer (Opcional), esto es con el fin de facilitar el uso de Oracle
-
 #### Proceso
 
 * Hay que descargar una imagen de Oracle en este caso se utiliza la imagen proporcionada por el usuario **ynraju4**
@@ -41,7 +39,7 @@ La instalación de Node.js y Angular es relativamente facil sin embargo la insta
 ~$ docker run --name nombre_del_container \
     -d \
     -p 1521:1521 \
-    -e ORACLE_PWD=contrasenia_que_deseas \
+    -e ORACLE_PWD=contrasenia_que_se_desea \
     -e ORACLE_CHARACTERSET=AL32UTF8 \
     ynraju4/oracle18c
 ```
@@ -50,21 +48,51 @@ La instalación de Node.js y Angular es relativamente facil sin embargo la insta
 ```console
 ~$ docker logs -f 'CONTAINER ID'
 ```
+#### Metodos de Uso
 
-* Ahora realizamos la conexion del container al SQL Developer
+##### 1. Oracle SQL Developer
+
+* Se debe realizar la instalacion del SQL Developer
+
+* Se debe crear una nueva conexion en SQL Developer
 ```
 Name: 'Cualquier Nombre' en mi caso escribi 'Oracle Docker'
 Usuario: SYS
-Contraseña: contrasenia_que_deseas
+Contraseña: contrasenia_que_se_desea
 Nombre del Host: localhost
 Puerto: 1521
 SID: ORCLCDB
 ```
 
-* Si se ha hecho correctamente lo anterior se debe de retornar la versión de Oracle instalado
+* Si se ha hecho correctamente lo anterior, se debe de retornar la versión de Oracle instalado
 ```sql
     SELECT * FROM v$version WHERE banner LIKE 'Oracle%';
 ```
+##### 2. Linea de Comando
+
+* Acceder al container creado
+```console
+~$ docker exec -it --user=oracle nombre_del_container bash
+```
+
+* Crear la variable de entorno dentro del container
+```console
+[~]$ export ORACLE_SID="ORCLCDB"
+```
+
+* Acceder al bash de oracle desde el bash del container
+```console
+[~]$ source /home/oracle/.bashrc; sqlplus /nolog
+```
+
+* Conexion a un usuario
+```console
+SQL> connect SYSTEM;
+```
+* _La contraseña que se utiliza para ingresar es la que se definio al crear el container docker_
+
+* _Utilizar este metodo requiere que siempre se repita el mismo procedimiento_
+
 ### Levantando el proyecto
 
 * Instalar las dependencias del Backend y Frontend
